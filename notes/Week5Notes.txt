@@ -41,3 +41,10 @@ Class: Pile:
 	init()
 	matches_array
 	total_cards_matched()
+
+
+-----------------------------------------------
+
+We talked about the outline for all of our project and who would be doing what. For now, Bethany is designing the cards and Kristine is starting to make some code outline.  We met up on Thursday of Week 5 and talked all of this out and how we want to code it. We still aren't sure exactly how we are splitting it up, but we know our current workload a bit now.
+
+We are also looking into how to code/show the cards on some graphics pop-up. That's the biggest thing on what we don't know what to do yet, and once we get an idea of the workload of that we will have an idea of the total workload of the project.
