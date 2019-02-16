@@ -1,0 +1,14 @@
+- Met and discussed which graphics to use.
+- Decided on SFML.
+
+Both:
+ - Go through SFML getting started tutorials and graphics module
+ - Kristine still working on outline
+ - Bethany still working on pictures
+ 	- 18 total images (16 unique, a back, and blank)
+
+ The biggest roadblocks we encountered this week were illnesses, and midterms (aka life happened). We are both giving each other a pass for this week to finish our normal 330 project. We feel like this next class project will help us get more comfortable programming in C++ and implementing classes. We will work on our group project more after our class project is finished this next weekend/week.
+
+ We assigned ourselves the task of going through the SFML tutorials and finishing up our assignments from last week. We hope that our project is approved since we got a 10/10 on the proposal . . . !
+
+
