@@ -1,0 +1,7 @@
+Met on Thursday 2/21 
+
+Decided on card faces being famous women in computer science. Looked through them for a bit and learned about them. Bethany will be taking pictures and turning them into cards with their names on them for later when we want to load the pictures into the files.
+
+Kristine made a header file after the notes we made last week. Everything is now a prototype and ready to be declared. Most things are ready to go. We did research on SFML and did some tutorials so we are now familiar with SFML.
+
+We talked about meeting with Boyana labout installing SFML and how we wanted to code the project (with button presses or with mouse clicks). We think mouse clicks would be better if we can figure our how to tell where a card is on the board. Our jobs from here are meet with Boyana to get SFML installed, and then start coding by trying to open a window and make events work. After that, start working on (coding) our logic.
