@@ -42,7 +42,7 @@ public:
     // memory of last four cards picked
     vector<CardType> last_four(4); 
 
-    void move():
+    void move();
     int random_pick();
 
 };
@@ -93,3 +93,4 @@ public:
     void run_game();
 };
 
+#endif /* IOUTILS_HPP_ */
