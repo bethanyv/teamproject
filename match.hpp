@@ -39,7 +39,7 @@ public:
     PileType pile;
     //TODO add memory?
 
-    void move():
+    void move();
     int random_pick();
 
 };
@@ -87,3 +87,4 @@ public:
     void run_game();
 };
 
+#endif /* IOUTILS_HPP_ */
