@@ -15,9 +15,10 @@ public:
 
     vector<CardType> matches;
     
+    int num_matched;
     // in notes we said function call
     // but couldn't it just be an running total
-    // with an int?
+    // with an int? Yes!
     void total_cards_matched();
 };
 
@@ -25,10 +26,10 @@ class PlayerType{
     PlayerType();
     // default destructor
 
-    int number;
-    PileType pile;
+    int number; // number of player (player 1/player 2)
+    PileType pile; // each player has a pile
 
-    virtual void move();
+    virtual void move(); // each player makes a move
 };
 
 class AI : public PlayerType{
@@ -37,7 +38,9 @@ public:
     // default destructor
 
     PileType pile;
-    //TODO add memory?
+    
+    // memory of lastfour cards picked
+    vector<CardType> last_four(4); 
 
     void move();
     int random_pick();
@@ -55,35 +58,38 @@ public:
     void flip();
     void check_match();
     // TODO: add pair
-    // I don't know what type -> (int, int) pair was ...
 };
 
 class BoardType{
 public:
-    BoardType();
-    // default destructor
+    // for when the user doesn't specify a size
+    BoardType(); 
+    // for when the user does specify the size
+    BoardType(int size); 
 
     vector<CardType> matrix;
     vector<CardType> placed_cards_array;
 
     void init();
     void set_card();
+    // in update board, update the screen too
     void update_board();
     void is_full();
     void remove_match();
-
 };
 
 class GameType{
 public:
     GameType();
     // default destructor
+    int size;
 
-    BoardType board;
+    BoardType board();
+
     PlayerType player1;
     PlayerType player2;
-    // TODO add AI stuff???
 
+    // need if's in the run_game() to determine what type players are ->
     void run_game();
 };
 
