@@ -32,14 +32,14 @@ class PlayerType{
     virtual void move(); // each player makes a move
 };
 
-class AI : public PlayerType{
+class AI : public PlayerType {
 public:
     AI();
     // default destructor
 
     PileType pile;
     
-    // memory of lastfour cards picked
+    // memory of last four cards picked
     vector<CardType> last_four(4); 
 
     void move():
