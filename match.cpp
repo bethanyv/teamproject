@@ -17,6 +17,25 @@
 
 using namespace std;
 
+CardType::CardType();
+CardType::check_match();
+
+PileType::PileType():
+
+PlayerType::PlayerType();
+PlayerType::move();
+
+AI::AI();
+AI::move();
+AI::random_pick();
+
+BoardType::BoardType();
+BoardType::set_card();
+BoardType::update_board();
+BoardType::is_full();
+BoardType::remove_match();
+
+GameType::GameType();
 int GameType::runGame()
 {
     /*******************************************
@@ -87,4 +106,13 @@ int GameType::runGame()
 			window.display();
 	}
     return 0;
+}
+
+int main(int argc, char const *argv[])
+{
+	// BoardType myboard;
+	GameType game;
+
+	game.runGame();
+	return 0;
 }
