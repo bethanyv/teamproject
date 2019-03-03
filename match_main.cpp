@@ -10,11 +10,11 @@
 #include <cstddef>  
 #define USEDEBUG
 
-#ifdef USEDEBUG
-#define DEBUG(X) cout << #X << ": " << (X) << endl;
-#else
-#define DEBUG(X)
-#endif
+// #ifdef USEDEBUG
+// #define DEBUG(X) cout << #X << ": " << (X) << endl;
+// #else
+// #define DEBUG(X)
+// #endif
 
 using namespace std;
 
