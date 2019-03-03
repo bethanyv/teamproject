@@ -17,33 +17,33 @@
 
 using namespace std;
 
-void CardType::check_match() {
-    ;
-}
+// void CardType::check_match() {
+//     ;
+// }
 
-void PlayerType::move() {
-    ;
-}
+// void PlayerType::move() {
+//     ;
+// }
 
-void AI::move() {
-    ;
-}
-int AI::random_pick() {
-    ;
-}
+// void AI::move() {
+//     ;
+// }
+// int AI::random_pick() {
+//     ;
+// }
 
-void BoardType::set_card() {
-    ;
-}
-void BoardType::update_board() {
-    ;
-}
-void BoardType::is_full() {
-    ;
-}
-void BoardType::remove_match() {
-    ;
-}
+// void BoardType::set_card() {
+//     ;
+// }
+// void BoardType::update_board() {
+//     ;
+// }
+// void BoardType::is_full() {
+//     ;
+// }
+// void BoardType::remove_match() {
+//     ;
+// }
 
 int GameType::runGame()
 {
