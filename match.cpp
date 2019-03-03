@@ -50,7 +50,7 @@ int GameType::runGame()
     /*******************************************
      * SFML Events Here
      * To Compile:
-     * g++ -c main.cpp
+     * g++ -c match_main.cpp main.cpp main.ppp
      * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
      * ./match-app
      ******************************************/
@@ -117,11 +117,11 @@ int GameType::runGame()
     return 0;
 }
 
-int main(int argc, char const *argv[])
-{
-	// BoardType myboard;
-	GameType game;
+// int main(int argc, char const *argv[])
+// {
+// 	// BoardType myboard;
+// 	GameType game;
 
-	game.runGame();
-	return 0;
-}
+// 	game.runGame();
+// 	return 0;
+// }
