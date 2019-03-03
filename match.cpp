@@ -18,31 +18,31 @@
 using namespace std;
 
 void CardType::check_match() {
-    pass;
+    ;
 }
 
 void PlayerType::move() {
-    pass;
+    ;
 }
 
 void AI::move() {
-    pass;
+    ;
 }
-void AI::random_pick() {
-    pass;
+int AI::random_pick() {
+    ;
 }
 
 void BoardType::set_card() {
-    pass;
+    ;
 }
 void BoardType::update_board() {
-    pass;
+    ;
 }
 void BoardType::is_full() {
-    pass;
+    ;
 }
 void BoardType::remove_match() {
-    pass;
+    ;
 }
 
 int GameType::runGame()
