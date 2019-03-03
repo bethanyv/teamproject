@@ -13,6 +13,19 @@ using namespace std;
 
 //Kristine 3/1 - added more includes.
 
+class CardType{
+public:
+    CardType();
+    // default destructor
+
+    bool is_flipped;
+    int front; // index into card_type vector
+    int back; // card_type_vector[0]
+    void flip();
+    void check_match();
+    // TODO: add pair
+};
+
 class PileType{
 public:
     PileType();
@@ -50,19 +63,6 @@ public:
     void move();
     int random_pick();
 
-};
-
-class CardType{
-public:
-    CardType();
-    // default destructor
-
-    bool is_flipped;
-    int front; // index into card_type vector
-    int back; // card_type_vector[0]
-    void flip();
-    void check_match();
-    // TODO: add pair
 };
 
 class BoardType{
