@@ -59,7 +59,7 @@ public:
     PileType pile;
     
     // memory of lastfour cards picked
-    vector<CardType> last_four(4); 
+    vector<CardType> last_four; 
 
     void move();
     int random_pick();
