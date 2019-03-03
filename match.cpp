@@ -17,31 +17,31 @@
 
 using namespace std;
 
-CardType::check_match() {
+void CardType::check_match() {
     pass;
 }
 
-PlayerType::move() {
+void PlayerType::move() {
     pass;
 }
 
-AI::move() {
+void AI::move() {
     pass;
 }
-AI::random_pick() {
+void AI::random_pick() {
     pass;
 }
 
-BoardType::set_card() {
+void BoardType::set_card() {
     pass;
 }
-BoardType::update_board() {
+void BoardType::update_board() {
     pass;
 }
-BoardType::is_full() {
+void BoardType::is_full() {
     pass;
 }
-BoardType::remove_match() {
+void BoardType::remove_match() {
     pass;
 }
 
