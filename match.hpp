@@ -95,7 +95,7 @@ public:
     PlayerType player2;
 
     // need if's in the run_game() to determine what type players are ->
-    void run_game();
+    void runGame();
 };
 
 #endif /* IOUTILS_HPP_ */
