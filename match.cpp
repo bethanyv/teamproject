@@ -17,7 +17,7 @@
 
 using namespace std;
 
-void GameType::runGame()
+int GameType::runGame()
 {
     /*******************************************
      * SFML Events Here
@@ -86,5 +86,5 @@ void GameType::runGame()
 			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 			window.display();
 	}
-	return 0;
+    return 0;
 }
