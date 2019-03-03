@@ -1,12 +1,17 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
 
-#include <fstream>
 #include <iostream>
+#include <cstdlib> // Stream declarations
+#include <fstream>
 #include <string>
 #include <vector>
+#include <cassert>
+#include <cstddef>  // For size_t
 
 using namespace std;
+
+//Kristine 3/1 - added more includes.
 
 class PileType{
 public:
