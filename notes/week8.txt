@@ -1,0 +1,25 @@
+Kristine finally figured out how to install Ubuntu and 
+got a hello world working with SFML. //cheer
+
+Bethany filled in some constructor stuff in match.hpp and is almost done with the jpegs
+for our cards.
+
+Neither of us want to do threading, so hopefully we can avoid it.
+
+We want to add a happy sound if we make a match and a sad sound if it's not a match.
+But we want to get visualization done first.
+
+TODO:
+
+Card Array Setup - Kristine
+
+jpeg's - Bethany
+
+Board Set up - Kristine
+
+Pile - Bethany
+
+CardType, Move - Both
+
+By next meeting we want to have some actual working game code written!
+
