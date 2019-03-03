@@ -1,6 +1,7 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
 
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib> // Stream declarations
 #include <fstream>
