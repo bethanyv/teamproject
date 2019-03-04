@@ -93,8 +93,8 @@ public:
 
     BoardType board();
 
-    PlayerType player1;
-    PlayerType player2;
+    // PlayerType player1;
+    // PlayerType player2;
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
