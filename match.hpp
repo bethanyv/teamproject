@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class PileType{
+class PileType {
 public:
     PileType();
     // default destructor
