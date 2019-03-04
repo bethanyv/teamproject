@@ -55,7 +55,7 @@ int GameType::runGame()
      * ./match-app
      ******************************************/
 
-     sf::RenderWindow window(sf::VideoMode(800, 650), "A Matching Game");
+    sf::RenderWindow window(sf::VideoMode(800, 650), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
