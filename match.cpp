@@ -117,11 +117,11 @@ int GameType::runGame()
     return 0;
 }
 
-// int main(int argc, char const *argv[])
-// {
-// 	// BoardType myboard;
-// 	GameType game;
+int main(int argc, char const *argv[])
+{
+	// BoardType myboard;
+	GameType game;
 
-// 	game.runGame();
-// 	return 0;
-// }
+	game.runGame();
+	return 0;
+}
