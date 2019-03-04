@@ -1,5 +1,5 @@
 #include "match.hpp"
-#include "match.cpp"
+// #include "match.cpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib> 
