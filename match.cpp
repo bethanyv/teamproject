@@ -32,7 +32,7 @@ void AI::move() {
     return test;
 }
 int AI::random_pick() {
-    test = None;
+    test = 0;
     return test;
 }
 
