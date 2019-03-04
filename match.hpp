@@ -1,14 +1,34 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
 
-#include <fstream>
+#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cstdlib> // Stream declarations
+#include <fstream>
 #include <string>
 #include <vector>
+#include <cassert>
+#include <cstddef>  // For size_t
 
 using namespace std;
 
 class PileType {
+//Kristine 3/1 - added more includes.
+
+class CardType{
+public:
+    CardType();
+    // default destructor
+
+    bool is_flipped;
+    int front; // index into card_type vector
+    int back; // card_type_vector[0]
+    void flip();
+    void check_match();
+    // TODO: add pair
+};
+
+class PileType{
 public:
     PileType();
     // default destructor
@@ -23,6 +43,7 @@ public:
 };
 
 class PlayerType{
+public:
     PlayerType();
     // default destructor
 
@@ -38,26 +59,13 @@ public:
     // default destructor
 
     PileType pile;
-    
-    // memory of last four cards picked
-    vector<CardType> last_four(4); 
+
+    // memory of lastfour cards picked
+    vector<CardType> last_four; 
 
     void move();
     int random_pick();
 
-};
-
-class CardType{
-public:
-    CardType();
-    // default destructor
-
-    bool is_flipped;
-    int front; // index into card_type vector
-    int back; // card_type_vector[0]
-    void flip();
-    void check_match();
-    // TODO: add pair
 };
 
 class BoardType{
@@ -86,11 +94,11 @@ public:
 
     BoardType board();
 
-    PlayerType player1;
-    PlayerType player2;
+    // PlayerType player1;
+    // PlayerType player2;
 
     // need if's in the run_game() to determine what type players are ->
-    void run_game();
+    int runGame();
 };
 
 #endif /* IOUTILS_HPP_ */

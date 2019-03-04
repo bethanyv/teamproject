@@ -11,7 +11,15 @@ But we want to get visualization done first.
 
 TODO:
 
-Code in logic
+Card Array Setup - Kristine
 
+jpeg's - Bethany
 
+Board Set up - Kristine
+
+Pile - Bethany
+
+CardType, Move - Both
+
+By next meeting we want to have some actual working game code written!
 
