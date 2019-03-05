@@ -17,7 +17,7 @@
 
 using namespace std;
 
-GameType::GameType(){};
+GameType::GameType(){}
 
 void CardType::check_match() {
     // return 0;

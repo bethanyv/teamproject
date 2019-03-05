@@ -91,7 +91,7 @@ public:
     // default destructor
     int size;
 
-    BoardType board();
+    BoardType board;
 
     // PlayerType player1;
     // PlayerType player2;
