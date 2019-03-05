@@ -26,8 +26,8 @@ void PileType::add_to_pile(CardType card) {
 
 GameType::GameType(){
 	BoardType board;
-	PlayerType(1) player1;
-	PlayerType(2) player2;
+	this -> player1 = new PlayerType(1);
+	this -> player2 = new PlayerType(2);
 }
 
 BoardType::BoardType() {
