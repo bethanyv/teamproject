@@ -46,9 +46,8 @@ public:
     //TODO Maybe add an init function to fill the board's pile?
 };
 
-class PlayerType{
+class PlayerType {
 public:
-    PlayerType();
     PlayerType(int number);
     // default destructor
 
@@ -95,7 +94,6 @@ class GameType{
 public:
     GameType();
     // default destructor
-    int size;
 
     BoardType board;
 

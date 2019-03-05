@@ -26,8 +26,8 @@ void PileType::add_to_pile(CardType card) {
 
 GameType::GameType(){
 	BoardType board;
-	this -> player1 = new PlayerType(1);
-	this -> player2 = new PlayerType(2);
+	player1 = PlayerType(1);
+	player2 = PlayerType(2);
 }
 
 BoardType::BoardType() {
@@ -41,7 +41,7 @@ PlayerType::PlayerType(int number) {
 	PileType pile;
 }
 
-PileType:PileType() {
+PileType::PileType() {
 	vector<CardType> matches;
 }
 
