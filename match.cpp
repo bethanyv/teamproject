@@ -18,8 +18,10 @@
 using namespace std;
 
 void PileType::add_to_pile(CardType card) {
+	// add to number of cards matched and to the 
+	// vector of which card was matched
 	this->num_matched += 1;
-	// add here the specific card matched!
+	this->matches.push_back(card);
 }
 
 GameType::GameType(){}
