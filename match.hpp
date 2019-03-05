@@ -19,9 +19,9 @@ class CardType{
 public:
     CardType();
     // default destructor
-
+    //TODO constructor to pass in an index into the jpeg vector
     bool is_flipped;
-    int front; // index into card_type vector
+    int front; // index into jpeg vector
     int back; // card_type_vector[0]
     void flip();
     void check_match();
@@ -42,11 +42,13 @@ public:
 
     // Maybe add in later a view for piletype
     void add_to_pile(CardType card);
+    //TODO write a remove_card function
+    //TODO Maybe add an init function to fill the board's pile?
 };
 
 class PlayerType{
 public:
-    PlayerType();
+    PlayerType(int number);
     // default destructor
 
     int number; // number of player (player 1/player 2)
@@ -96,8 +98,8 @@ public:
 
     BoardType board;
 
-    // PlayerType player1;
-    // PlayerType player2;
+    PlayerType player1;
+    PlayerType player2;
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
