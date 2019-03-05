@@ -17,6 +17,10 @@
 
 using namespace std;
 
+void PileType::total_cards_matched() {
+	
+}
+
 GameType::GameType(){}
 
 void CardType::check_match() {

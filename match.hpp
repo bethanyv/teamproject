@@ -12,7 +12,6 @@
 
 using namespace std;
 
-// class PileType {
 //Kristine 3/1 - added more includes.
 
 class CardType{
