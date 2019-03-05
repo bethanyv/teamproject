@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class PileType {
+// class PileType {
 //Kristine 3/1 - added more includes.
 
 class CardType{
@@ -101,4 +101,4 @@ public:
     int runGame();
 };
 
-#endif /* IOUTILS_HPP_ */
+#endif /* MATCH_HPP_ */
