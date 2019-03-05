@@ -17,8 +17,9 @@
 
 using namespace std;
 
-void PileType::total_cards_matched() {
-	
+void PileType::add_to_pile(CardType card) {
+	this->num_matched += 1;
+	// add here the specific card matched!
 }
 
 GameType::GameType(){}

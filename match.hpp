@@ -13,6 +13,7 @@
 using namespace std;
 
 //Kristine 3/1 - added more includes.
+// Bethany 3/5 edited pileType class, added add_to_pile
 
 class CardType{
 public:
@@ -38,7 +39,9 @@ public:
     // in notes we said function call
     // but couldn't it just be an running total
     // with an int? Yes!
-    void total_cards_matched();
+
+    // Maybe add in later a view for piletype
+    void add_to_pile(CardType card);
 };
 
 class PlayerType{
