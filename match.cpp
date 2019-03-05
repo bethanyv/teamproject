@@ -37,7 +37,7 @@ BoardType::BoardType() {
 }
 
 PlayerType::PlayerType(int number) {
-	int number = number;
+	this -> number = number;
 	PileType pile;
 }
 
