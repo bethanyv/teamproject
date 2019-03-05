@@ -12,6 +12,7 @@
 
 using namespace std;
 
+class PileType {
 //Kristine 3/1 - added more includes.
 
 class CardType{
@@ -52,13 +53,13 @@ public:
     virtual void move(); // each player makes a move
 };
 
-class AI : public PlayerType{
+class AI : public PlayerType {
 public:
     AI();
     // default destructor
 
     PileType pile;
-    
+
     // memory of lastfour cards picked
     vector<CardType> last_four; 
 
