@@ -49,12 +49,14 @@ public:
 class PlayerType {
 public:
     PlayerType(int number);
+    PlayerType();
     // default destructor
 
     int number; // number of player (player 1/player 2)
     PileType pile; // each player has a pile
 
     virtual void move(); // each player makes a move
+    virtual void setType(int);
 };
 
 class AI : public PlayerType {
