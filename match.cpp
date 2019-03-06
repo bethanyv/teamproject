@@ -69,9 +69,9 @@ int AI::random_pick() {
     // return 0;
 }
 
-void BoardType::set_card() {
-    // return 0;
-}
+// void BoardType::set_card() {
+//     // return 0;
+// }
 void BoardType::update_board() {
     // return 0;
 }
