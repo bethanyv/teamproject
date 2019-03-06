@@ -34,8 +34,8 @@ PileType::PileType() {
 	vector<CardType> matches;
 }
 
-PlayerType::PlayerType(int number) {
-	this -> number = number;
+PlayerType::PlayerType(int num) {
+	this -> number = num;
 	PileType pile;
 }
 
