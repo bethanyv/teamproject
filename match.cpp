@@ -50,8 +50,8 @@ BoardType::BoardType() {
 
 GameType::GameType(){
 	BoardType board;
-	player1 = PlayerType(1);
-	player2 = PlayerType(2);
+	this -> player1.setType(1);
+	this -> player2.setType(2);
 }
 
 void CardType::check_match() {
