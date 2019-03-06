@@ -155,7 +155,6 @@ int GameType::runGame()
      ******************************************/
 
     sfml_driver();
-	}
     return 0;
 }
 
