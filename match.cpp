@@ -24,13 +24,13 @@ void PileType::add_to_pile(CardType card) {
 	this->matches.push_back(card);
 }
 
-void CardType::CardType() {
+CardType::CardType() {
 	bool is_flipped = false;
 	int front = 0;
 	int back = 0;
 }
 
-void PileType::PileType() {
+PileType::PileType() {
 	vector<CardType> matches;
 }
 
@@ -39,12 +39,12 @@ void PlayerType::setType(int num) {
 	PileType pile;
 }
 
-void BoardType::BoardType() {
+BoardType::BoardType() {
 	vector<CardType> matrix;
 	vector<CardType> placed_cards_array;
 }
 
-void GameType::GameType(){
+GameType::GameType(){
 	BoardType board;
 	player1 = PlayerType(1);
 	player2 = PlayerType(2);
