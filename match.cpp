@@ -88,7 +88,7 @@ void sfml_driver() {
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
-	if(!texture.loadFromFile("ada_lovelace.jpg", sf::IntRect(0, 0, 100, 150))) {
+	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, 100, 150))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
