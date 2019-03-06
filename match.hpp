@@ -94,8 +94,8 @@ public:
     int w_buffer = 10;
     int h_buffer = 10;
 
-    int w_card = 200;
-    int h_card = 300;
+    int card_w = 200;
+    int card_h = 300;
 
     void init();
     int set_card(int x);
