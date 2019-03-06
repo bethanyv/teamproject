@@ -82,13 +82,37 @@ void BoardType::remove_match() {
     // return 0;
 }
 
-//TODO ADD SFML STUFF IN OWN FUNCTION???
-void sfml_driver() {
-	sf::RenderWindow window(sf::VideoMode(800, 650), "A Matching Game");
+void BoardType::set_buffer(int num) {
+	// takes in  # of cards and spot on board and computes
+	// where to place them
+	// hard-coded card size in but we can change that if needed?
+	int leftover_w = this -> width - (this -> card_w*num);
+	this -> w_buffer = leftover_w/5;
+	leftover_h = this -> height - (this -> card_h*num);
+	this -> h_buffer = leftover_h/5;
+}
+
+int BoardType::set_card_h(int x) {
+	// takes in card position in array
+	// returns the x position on the board
+	int pos = this -> buffer_h + (this -> card_h * (x + 1)) + (this->buffer_h * x) + this -> buffer_h;
+	return pos;
+	
+}
+
+int BoardType::set_card_w(int y) {
+	// takes in card position in array
+	// returns the y position on the board
+	int pos = this -> buffer_w + (this -> card_w * (x + 1)) + (this->buffer_w * x) + this -> buffer_w;
+	return pos;
+}
+
+void BoardType::sfml_driver() {
+	sf::RenderWindow window(sf::VideoMode(this -> width, this -> height), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
-	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, 100, 150))) {
+	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, this -> card_w, this -> card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
@@ -126,6 +150,7 @@ void sfml_driver() {
 			//window.draw(shape);
             window.draw(sprite1);
 			//sprite.setTextureRect(sf::IntRect(10,10,32,32));
+			//sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
 			window.draw(sprite2);
 			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
@@ -154,7 +179,7 @@ int GameType::runGame()
      * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
      * ./match-app
      ******************************************/
-
+	set_buffer(4);
     sfml_driver();
     return 0;
 }

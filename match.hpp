@@ -84,12 +84,28 @@ public:
     vector<CardType> matrix;
     vector<CardType> placed_cards_array;
 
+    // I think it's easier to have this represent
+    // The cards per row (aka 4) rather than
+    // the total number of cards on teh board
+    int num_cards = 4
+
+    int height = 650; 
+    int width = 800;
+    int w_buffer = 10;
+    int h_buffer = 10;
+
+    int card_w = 200;
+    int card_h = 300;
+
     void init();
-    void set_card();
+    int set_card(int x);
+    int set_card_w(int y);
+    void set_buffer(int num);
     // in update board, update the screen too
     void update_board();
     void is_full();
     void remove_match();
+    void sfml_driver();
 };
 
 class GameType{
