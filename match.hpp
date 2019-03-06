@@ -87,7 +87,7 @@ public:
     // I think it's easier to have this represent
     // The cards per row (aka 4) rather than
     // the total number of cards on teh board
-    int num_cards = 4
+    int num_cards = 4;
 
     int height = 650; 
     int width = 800;
