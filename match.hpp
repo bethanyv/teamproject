@@ -56,7 +56,7 @@ public:
     PileType pile; // each player has a pile
 
     virtual void move(); // each player makes a move
-    virtual void setType(int);
+    virtual void setType(int num);
 };
 
 class AI : public PlayerType {
