@@ -142,6 +142,7 @@ void sfml_driver() {
 			window.draw(sprite7);
 			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 			window.display();
+	}
 }
 
 int GameType::runGame()
