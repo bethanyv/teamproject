@@ -36,6 +36,10 @@ PileType::PileType() {
 
 void PlayerType::setType(int num) {
 	this -> number = num;
+}
+
+PlayerType::PlayerType() {
+	this -> number = 0;
 	PileType pile;
 }
 
