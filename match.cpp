@@ -82,17 +82,9 @@ void BoardType::remove_match() {
     // return 0;
 }
 
-int GameType::runGame()
-{
-    /*******************************************
-     * SFML Events Here
-     * To Compile:
-     * g++ -c match_main.cpp main.cpp main.ppp
-     * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
-     * ./match-app
-     ******************************************/
-
-    sf::RenderWindow window(sf::VideoMode(800, 650), "A Matching Game");
+//TODO ADD SFML STUFF IN OWN FUNCTION???
+void sfml_driver() {
+	sf::RenderWindow window(sf::VideoMode(800, 650), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
@@ -150,6 +142,19 @@ int GameType::runGame()
 			window.draw(sprite7);
 			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 			window.display();
+}
+
+int GameType::runGame()
+{
+    /*******************************************
+     * SFML Events Here
+     * To Compile:
+     * g++ -c match_main.cpp main.cpp main.ppp
+     * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
+     * ./match-app
+     ******************************************/
+
+    sfml_driver();
 	}
     return 0;
 }
