@@ -204,7 +204,7 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	IOUtils::makeFileList("female_cs.txt", this -> pics);
-    pic = IOUtils::randomWord(this -> pics);
+    pic = IOUtils::randomFileName(this -> pics);
     cout << "In main, word is: " << pic << endl;
 
     this -> board.sfml_driver();
