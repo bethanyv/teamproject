@@ -254,7 +254,7 @@ int GameType::runGame()
 		//this -> board.matrix.push_back()
         this -> board.matrix[i].resize(this -> board.num_cards);
 	// 	// this -> board.placed_cards_array[i].resize(this -> board.num_cards);
-    // };
+    };
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			//cout << "i is: " << i << " and j is:" << j << endl;
