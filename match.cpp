@@ -250,11 +250,11 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	//fill our vector up with picture file names
-	GameType::makeFileList("female_cs.txt", this -> pics);
+	GameType::makeFileList("female_cs.txt", pics);
 	int max = 16;
-	for (int i = 0; i < this -> board.num_cards; i++) {
-		for (int j = 0; j < this -> board.num_cards; j++) {
-			string file_name = this -> randomFileName(this -> pics, max);
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			string file_name = randomFileName(pics, max);
 			board.matrix[i][j] = file_name;
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) != board.placed_cards.end());
 				board.placed_cards.push_back(file_name);
