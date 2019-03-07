@@ -242,7 +242,6 @@ void BoardType::sfml_driver() {
 
 int GameType::runGame()
 {
-
 	//this -> board.set_buffer(4);
 	string pic;
 	//fill our vector up with picture file names
@@ -259,7 +258,7 @@ int GameType::runGame()
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
-			this -> board.matrix[i][j].push_back(file_name.str());
+			this -> board.matrix[i][j] = file_name.str();
 			// this -> board.matrix[i][j] = file_name;
 			// this -> board.placed_cards_array[i][j] = file_name;
 			max--;
