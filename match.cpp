@@ -45,7 +45,7 @@ PlayerType::PlayerType() {
 
 BoardType::BoardType() {
 	matrix.resize(num_cards);
-	for (int i = 0; i < matrix.size; i++) {
+	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
 	}
 	vector<CardType> placed_cards_array;
