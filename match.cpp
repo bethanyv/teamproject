@@ -163,7 +163,8 @@ string GameType::randomFileName(vector<string> &name_vec, int max) {
 
     //cout << "Pic name is: " << pic << " and we have a total of " << name.size() << endl;
     // cout << "Random pic name in file: " << name_vec[num] << endl;
-    pic = name_vec[num];
+    pic = name_vec[num-1];
+	name_vec.erase(name_vec.begin()+ (num -1));
     return pic;
 }
 
@@ -243,12 +244,21 @@ int GameType::runGame()
 
 	//this -> board.set_buffer(4);
 	string pic;
+	//fill our vector up with picture file names
 	GameType::makeFileList("female_cs.txt", this -> pics);
-    pic = GameType::randomFileName(this -> pics, 16);
-    cout << "In main, word is: " << pic << endl;
+    //pic = GameType::randomFileName(this -> pics, 16);
+    // cout << "In main, word is: " << pic << endl;
 
-	for (int i = 0; i < 16; i++) {
-		cout << "Pics vector[" << i << "] is:" << this -> pics[i] << endl;
+	int max = 16;
+	for (int i = 0; i < this -> board -> num_cards; i++) {
+		for (int j = 0; j < this -> board -> num_cards; j++) {
+			string file_name = GameType::randomFileName(this -> pics, max);
+			this -> board -> matrix[i][j] = file_name;
+			this -> board -> placed_cards_array = file_name;
+			max--;
+			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
+			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
+		}
 	}
 
     this -> board.sfml_driver();

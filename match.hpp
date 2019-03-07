@@ -83,13 +83,15 @@ public:
     // for when the user does specify the size
     BoardType(int size); 
 
-    vector<CardType> matrix;
-    vector<CardType> placed_cards_array;
-
-    // I think it's easier to have this represent
+     // I think it's easier to have this represent
     // The cards per row (aka 4) rather than
     // the total number of cards on teh board
     int num_cards = 4;
+
+    // changing both of these vectors to a 2D vector of strings
+    // BUT might need to change back to CardType
+    vector <vector<string> > matrix(num_cards);
+    vector<string> placed_cards_array;
 
     int height = 650; 
     int width = 800;
