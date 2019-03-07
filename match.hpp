@@ -9,6 +9,8 @@
 #include <vector>
 #include <cassert>
 #include <cstddef>  // For size_t
+#include <cstdio>
+#include <ctime>
 
 using namespace std;
 
@@ -109,6 +111,27 @@ public:
     void sfml_driver();
 };
 
+class IOUtils {
+public:
+	IOUtils();
+	virtual ~IOUtils();
+
+	// If no argument given, open standard in
+	void openStream(int argc, const char *argv[]);
+
+	// Close the input stream
+	void closeStream();
+
+	// Read from the open input stream and return the contents as a string
+	string readFromStream();
+
+	// Get the currently open input stream
+	istream getStream();
+private:
+	bool isFile;
+	istream *inputStream;
+};
+
 class GameType{
 public:
     GameType();
@@ -118,6 +141,9 @@ public:
 
     PlayerType player1;
     PlayerType player2;
+
+    vector<CardType> all_cards;
+    vector<string> pics;
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
