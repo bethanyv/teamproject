@@ -255,16 +255,15 @@ int GameType::runGame()
         this -> board.matrix[i].resize(this -> board.num_cards);
 		this -> board.placed_cards_array[i].resize(this -> board.num_cards);
     };
-	strncpy(&this -> board.matrix[0][0], "hello", 9);
-	//this -> board.matrix[0][0] = "hello world";
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
-			this -> board.matrix[i][j] = file_name;
-			this -> board.placed_cards_array[i][j] = file_name;
+			file_name.copy(this -> board.matrix[i][j], 1000, 0);
+			// this -> board.matrix[i][j] = file_name;
+			// this -> board.placed_cards_array[i][j] = file_name;
 			max--;
 			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
-			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
 
