@@ -254,7 +254,7 @@ int GameType::runGame()
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
 			this -> board.matrix[i][j] = file_name;
-			this -> board.placed_cards_array = file_name;
+			this -> board.placed_cards_array[i][j] = file_name;
 			max--;
 			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
 			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
