@@ -165,7 +165,7 @@ string GameType::randomFileName(vector<string> &name_vec, int max) {
 
     cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
     cout << "Random pic name in file: " << name_vec[num] << endl;
-	//name_vec.erase(name_vec.begin()+ (num -1));
+	name_vec.erase(name_vec.begin()+ (num -1));
     return pic;
 }
 
@@ -252,6 +252,7 @@ int GameType::runGame()
 
 	int max = 10;
 	for (int i = 0; i < this -> board.num_cards; i++) {
+		vec[i] = vector<int>(this -> board.num_cards);
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
 			this -> board.matrix[i][j] = file_name;
