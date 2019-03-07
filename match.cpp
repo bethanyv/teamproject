@@ -250,10 +250,12 @@ int GameType::runGame()
     //pic = GameType::randomFileName(this -> pics, 16);
     // cout << "In main, word is: " << pic << endl;
 
-	int max = 10;
+	int max = 16;
+	for (int i = 0; i < matrix.size(); i++) {
+        this -> board.matrix[i].resize(this -> board.num_cards);
+		this -> board.placed_cards_array[i].resize(this -> board.num_cards);
+    };
 	for (int i = 0; i < this -> board.num_cards; i++) {
-		this -> board.matrix[i] = vector<string>;
-		this -> board.placed_cards_array[i] = vector<string>;
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
 			this -> board.matrix[i][j] = file_name;
