@@ -256,8 +256,8 @@ int GameType::runGame()
 			this -> board.matrix[i][j] = file_name;
 			this -> board.placed_cards_array[i][j] = file_name;
 			max--;
-			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
-			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
+			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
 
