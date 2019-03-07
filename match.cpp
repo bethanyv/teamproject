@@ -138,7 +138,7 @@ int GameType::makeFileList(string filepath, vector<string> &name) {
         //getline (myfile,line);
         //cout << line << endl;
             while(getline(myfile, line)){
-                cout << line << endl;
+                //cout << line << endl;
                 name.push_back(line);
             }
         }
@@ -162,7 +162,7 @@ string GameType::randomFileName(vector<string> &name_vec, int max) {
     num = rand() % max + 1;
 
     //cout << "Pic name is: " << pic << " and we have a total of " << name.size() << endl;
-    cout << "Random pic name in file: " << name_vec[num] << endl;
+    // cout << "Random pic name in file: " << name_vec[num] << endl;
     pic = name_vec[num];
     return pic;
 }

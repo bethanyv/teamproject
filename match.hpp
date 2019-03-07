@@ -111,30 +111,6 @@ public:
     void sfml_driver();
 };
 
-// class IOUtils {
-// public:
-// 	IOUtils();
-// 	virtual ~IOUtils();
-
-// 	// If no argument given, open standard in
-// 	void openStream(int argc, const char *argv[]);
-
-// 	// Close the input stream
-// 	void closeStream();
-
-// 	// Read from the open input stream and return the contents as a string
-// 	string readFromStream();
-
-// 	// Get the currently open input stream
-// 	istream getStream();
-
-//     int makeFileList(string filepath, vector<string> &name);
-//     string randomFileName(vector<string> &name);
-// private:
-// 	bool isFile;
-// 	istream *inputStream;
-// };
-
 class GameType{
 public:
     GameType();
