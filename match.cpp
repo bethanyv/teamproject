@@ -178,7 +178,6 @@ void BoardType::sfml_driver() {
 
 			//set_cards();
 
-			sprite.setTextureRect(sf::IntRect(10,10,32,32));
 			//sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
 			window.draw(sprite2);
