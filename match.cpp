@@ -48,13 +48,16 @@ BoardType::BoardType() {
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
 	}
-	vector<CardType> placed_cards_array;
+	placed_cards.resize(num_cards);
+	for (int i = 0; i < placed_cards.size(); i++) {
+		matrix[i].resize(num_cards);
+	}
 }
 
 GameType::GameType(){
 	BoardType board;
-	this -> player1.setType(1);
-	this -> player2.setType(2);
+	player1.setType(1);
+	player2.setType(2);
 
 	//importing 
 }
@@ -251,21 +254,12 @@ int GameType::runGame()
 	string pic;
 	//fill our vector up with picture file names
 	GameType::makeFileList("female_cs.txt", this -> pics);
-    //pic = GameType::randomFileName(this -> pics, 16);
-    // cout << "In main, word is: " << pic << endl;
-
 	int max = 16;
-	// for (int i = 0; i < this -> board.matrix.size(); i++) {
-	// 	//this -> board.matrix.push_back()
-    //     this -> board.matrix[i].resize(this -> board.num_cards);
-	// // 	// this -> board.placed_cards_array[i].resize(this -> board.num_cards);
-    // };
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
-			cout << "i is: " << i << " and j is:" << j << endl;
-			cout << "num cards: " << this -> board.num_cards << endl;
 			string file_name = this -> randomFileName(this -> pics, max);
-			this -> board.matrix[i][j] = file_name;
+			board.matrix[i][j] = file_name;
+			placed_cards
 			max--;
 			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
