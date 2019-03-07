@@ -249,7 +249,7 @@ int GameType::runGame()
     //pic = GameType::randomFileName(this -> pics, 16);
     // cout << "In main, word is: " << pic << endl;
 
-	int max = 16;
+	int max = 10;
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
