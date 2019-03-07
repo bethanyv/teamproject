@@ -203,7 +203,7 @@ int GameType::runGame()
 
 	//this -> board.set_buffer(4);
 	string pic;
-	IOUtils::makeWordList("female_cs.txt", this -> pics);
+	IOUtils::makeFileList("female_cs.txt", this -> pics);
     pic = IOUtils::randomWord(this -> pics);
     cout << "In main, word is: " << pic << endl;
 
