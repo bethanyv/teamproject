@@ -107,6 +107,22 @@ int BoardType::set_card_w(int y) {
 	return pos;
 }
 
+void BoardType::set_cards() {
+	for (int i = 0; i < (this -> num_cards + 1); i++) {
+		for (int j = 0; j < (this -> num_cards + 1); j++) {
+			int x = this -> set_card_w(i);
+			int y = this -> set_card_h(j);
+			//call to sfm with new nums
+			int sprite_num = i + j;
+			string sprite_name = "sprite_" + to_str(i) + "_" + to_str(j);
+			cout << "sprite_name is:" << sprite_name << endl;
+			sf::Sprite sprite_name;
+			window.draw(sprite_name);
+			sprite_name.setPosition(sf::Vector2f(x.f, y.f));
+		}
+	}
+}
+
 void BoardType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(this -> width, this -> height), "A Matching Game");
 
@@ -117,24 +133,24 @@ void BoardType::sfml_driver() {
 	}
 
     //TODO Change to pile of sprites
-    sf::Sprite sprite1;
-	sprite1.setTexture(texture);
+    // sf::Sprite sprite1;
+	// sprite1.setTexture(texture);
 
-	sf::Sprite sprite2;
-	sprite2.setTexture(texture);
-	sf::Sprite sprite3;
-	sprite3.setTexture(texture);
-	sf::Sprite sprite4;
-	sprite4.setTexture(texture);
-	sf::Sprite sprite5;
-	sprite5.setTexture(texture);
+	// sf::Sprite sprite2;
+	// sprite2.setTexture(texture);
+	// sf::Sprite sprite3;
+	// sprite3.setTexture(texture);
+	// sf::Sprite sprite4;
+	// sprite4.setTexture(texture);
+	// sf::Sprite sprite5;
+	// sprite5.setTexture(texture);
 
-	sf::Sprite sprite6;
-	sprite6.setTexture(texture);
-	sf::Sprite sprite7;
-	sprite7.setTexture(texture);
-	sf::Sprite sprite8;
-	sprite8.setTexture(texture);
+	// sf::Sprite sprite6;
+	// sprite6.setTexture(texture);
+	// sf::Sprite sprite7;
+	// sprite7.setTexture(texture);
+	// sf::Sprite sprite8;
+	// sprite8.setTexture(texture);
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
@@ -148,24 +164,27 @@ void BoardType::sfml_driver() {
 
 			window.clear();
 			//window.draw(shape);
-            window.draw(sprite1);
+            // window.draw(sprite1);
+
+			set_cards();
+
 			//sprite.setTextureRect(sf::IntRect(10,10,32,32));
-			sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
-			//sprite1.setPosition(sf::Vector2f(10.f, 10.f));
-			window.draw(sprite2);
-			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
-			window.draw(sprite3);
-			sprite3.setPosition(sf::Vector2f(250.f, 10.f));
-			window.draw(sprite4);
-			sprite4.setPosition(sf::Vector2f(370.f, 10.f));
+			// sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
+			// //sprite1.setPosition(sf::Vector2f(10.f, 10.f));
+			// window.draw(sprite2);
+			// sprite2.setPosition(sf::Vector2f(130.f, 10.f));
+			// window.draw(sprite3);
+			// sprite3.setPosition(sf::Vector2f(250.f, 10.f));
+			// window.draw(sprite4);
+			// sprite4.setPosition(sf::Vector2f(370.f, 10.f));
 			
-			//vertical
-			window.draw(sprite5);
-			sprite5.setPosition(sf::Vector2f(10.f, 170.f));
-			window.draw(sprite6);
-			sprite6.setPosition(sf::Vector2f(10.f, 330.f));
-			window.draw(sprite7);
-			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+			// //vertical
+			// window.draw(sprite5);
+			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
+			// window.draw(sprite6);
+			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
+			// window.draw(sprite7);
+			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 			window.display();
 	}
 }
