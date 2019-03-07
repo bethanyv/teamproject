@@ -101,7 +101,7 @@ public:
     int set_card_h(int x);
     int set_card_w(int y);
     void set_buffer(int num);
-    int set_cards();
+    void set_cards();
     // in update board, update the screen too
     void update_board();
     void is_full();
