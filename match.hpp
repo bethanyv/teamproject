@@ -16,6 +16,7 @@ using namespace std;
 
 //Kristine 3/1 - added more includes.
 // Bethany 3/5 edited pileType class, added add_to_pile
+// Kristine 3/6 added random file call. seg faulting trying to add the string to our matrix vector. not sure why.
 
 class CardType{
 public:
@@ -90,9 +91,9 @@ public:
 
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
-    vector <vector<string> > matrix (num_cards, vector <string>(num_cards, "pics/back.jpg"));
+    vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
 
-    vector <vector <string> > placed_cards_array;
+    vector<vector<string> > placed_cards_array;
 
     int height = 650; 
     int width = 800;
