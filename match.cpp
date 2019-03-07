@@ -203,8 +203,8 @@ int GameType::runGame()
 
 	//this -> board.set_buffer(4);
 	string pic;
-	makeWordList("female_cs.txt", this -> pics);
-    pic = randomWord(this -> pics);
+	IOUtils::makeWordList("female_cs.txt", this -> pics);
+    pic = IOUtils::randomWord(this -> pics);
     cout << "In main, word is: " << pic << endl;
 
     this -> board.sfml_driver();
