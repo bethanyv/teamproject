@@ -47,7 +47,11 @@ PlayerType::PlayerType() {
 BoardType::BoardType() {
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
-		matrix[i].resize(num_cards, CardType);
+		matrix[i].resize(num_cards);
+		for (int j = 0; j < matrix.size(); j++) {
+			//TODO clean up memory aka delete[]
+			matrix[i][j] = new CardType;
+		}
 	}
 	matrix2.resize(num_cards);
 	for (int i = 0; i < matrix2.size(); i++) {
