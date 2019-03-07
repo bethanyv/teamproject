@@ -28,6 +28,7 @@ CardType::CardType() {
 	bool is_flipped = false;
 	int front = 0;
 	int back = 0;
+	string file_name = "pics/back.jpg";
 }
 
 PileType::PileType() {
@@ -46,7 +47,11 @@ PlayerType::PlayerType() {
 BoardType::BoardType() {
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
-		matrix[i].resize(num_cards);
+		matrix[i].resize(num_cards, CardType);
+	}
+	matrix2.resize(num_cards);
+	for (int i = 0; i < matrix2.size(); i++) {
+		matrix2[i].resize(num_cards);
 	}
 	placed_cards.resize(num_cards);
 }
@@ -255,7 +260,7 @@ int GameType::runGame()
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
 			string file_name = randomFileName(pics, max);
-			board.matrix[i][j] = file_name;
+			board.matrix2[i][j] = file_name;
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.placed_cards.push_back(file_name);
 			max--;
@@ -268,7 +273,7 @@ int GameType::runGame()
 	}
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
-			cout << "matrix at [" << i << "][" << j << "is: " << board.matrix[i][j] << endl;
+			cout << "matrix2 at [" << i << "][" << j << "is: " << board.matrix2[i][j] << endl;
 		}
 	}
 

@@ -28,6 +28,7 @@ public:
     int back; // card_type_vector[0]
     void flip();
     void check_match();
+    string file_name;
     // TODO: add pair
 };
 
@@ -92,7 +93,8 @@ public:
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
-    vector<vector<string> > matrix;
+    vector<vector<CardType> > matrix;
+    vector<vector<string> > matrix2;
     vector<string> placed_cards;
 
     int height = 650; 
