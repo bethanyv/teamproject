@@ -160,7 +160,7 @@ string GameType::randomFileName(vector<string> &name) {
 
     //cout << "Num is: " << num << " and we have a total of " << name.size() << endl;
     //cout << "Random word in file: " << name[num] << endl;
-    word = name[num];
+    pic = name[num];
     return pic;
 }
 
