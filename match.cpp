@@ -159,7 +159,7 @@ string GameType::randomFileName(vector<string> &name_vec, int max) {
     int num = 0;
     /* initialize random seed: */
     srand (time(NULL));
-    num = rand() % max + 1;
+    num = (rand() % (max + 1));
 
     cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
     cout << "Random pic name in file: " << name_vec[num] << endl;
