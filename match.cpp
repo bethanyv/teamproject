@@ -44,7 +44,7 @@ PlayerType::PlayerType() {
 }
 
 BoardType::BoardType() {
-	vector<CardType> matrix;
+	vector<CardType> matrix[this -> num_cards][this -> num_cards];
 	vector<CardType> placed_cards_array;
 }
 
