@@ -98,7 +98,7 @@ public:
     int card_h = 300;
 
     void init();
-    int set_card(int x);
+    int set_card_h(int x);
     int set_card_w(int y);
     void set_buffer(int num);
     // in update board, update the screen too
