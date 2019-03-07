@@ -107,7 +107,7 @@ int BoardType::set_card_w(int y) {
 	return pos;
 }
 
-void BoardType::sfml_driver() {
+void GameType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(this -> width, this -> height), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER

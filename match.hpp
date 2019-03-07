@@ -105,7 +105,6 @@ public:
     void update_board();
     void is_full();
     void remove_match();
-    void sfml_driver();
 };
 
 class GameType{
@@ -120,6 +119,7 @@ public:
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
+    void sfml_driver();
 };
 
 #endif /* MATCH_HPP_ */
