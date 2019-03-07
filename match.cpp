@@ -252,7 +252,8 @@ int GameType::runGame()
 
 	int max = 10;
 	for (int i = 0; i < this -> board.num_cards; i++) {
-		vec[i] = vector<int>(this -> board.num_cards);
+		this -> board.matrix[i] = vector<int>(this -> board.num_cards);
+		this -> board.placed_cards_array[i] = vector<int>(this -> board.num_cards);
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
 			this -> board.matrix[i][j] = file_name;
