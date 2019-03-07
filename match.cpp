@@ -251,10 +251,11 @@ int GameType::runGame()
     // cout << "In main, word is: " << pic << endl;
 
 	int max = 16;
-	for (int i = 0; i < this -> board.matrix.size(); i++) {
-        this -> board.matrix[i].resize(this -> board.num_cards);
-		this -> board.placed_cards_array[i].resize(this -> board.num_cards);
-    };
+	// for (int i = 0; i < this -> board.matrix.size(); i++) {
+	// 	this -> board.matrix.push_back()
+    //     // this -> board.matrix[i].resize(this -> board.num_cards);
+	// 	// this -> board.placed_cards_array[i].resize(this -> board.num_cards);
+    // };
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);

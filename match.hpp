@@ -90,7 +90,7 @@ public:
 
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
-    vector <vector<string> > matrix;
+    vector <vector<string> > matrix (4, vector <string>(4, "pics/back.jpg"));
 
     vector <vector <string> > placed_cards_array;
 
