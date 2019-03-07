@@ -182,11 +182,11 @@ void BoardType::sfml_driver() {
      * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
      * ./match-app
      ******************************************/
-	sf::RenderWindow window(sf::VideoMode(this -> width, this -> height), "A Matching Game");
+	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
-	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, this -> card_w, this -> card_h))) {
+	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
@@ -263,8 +263,16 @@ int GameType::runGame()
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
+	for (int i = 0; i < board.num_cards; i++) {
+		cout << "Placed card:" << board.placed_cards[i] << endl;
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "is: " << board.matrix[i][j] << endl;
+		}
+	}
 
-    this -> board.sfml_driver();
+    board.sfml_driver();
 
     return 0;
 }
