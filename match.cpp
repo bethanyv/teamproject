@@ -127,6 +127,43 @@ int BoardType::set_card_w(int y) {
 // 	}
 // }
 
+int GameType::makeFileList(string filepath, vector<string> &name) {
+    // vector<string> one_syl_nouns;
+    string line;
+    ifstream myfile (filepath);
+    if (myfile.is_open())
+    {
+        while ( myfile.good() )
+        {
+        //getline (myfile,line);
+        //cout << line << endl;
+            while(getline(myfile, line)){
+                //cout << line << endl;
+                name.push_back(line);
+            }
+        }
+        myfile.close();
+    }
+    // return 0;
+
+  else cout << "Unable to open file";
+
+  return 0;
+}
+
+string GameType::randomFileName(vector<string> &name) {
+    string pic;
+    int num = 0;
+    /* initialize random seed: */
+    srand (time(NULL));
+    num = rand() % 1000 + 1;
+
+    //cout << "Num is: " << num << " and we have a total of " << name.size() << endl;
+    //cout << "Random word in file: " << name[num] << endl;
+    word = name[num];
+    return pic;
+}
+
 void BoardType::sfml_driver() {
 	/*******************************************
      * SFML Events Here
@@ -211,12 +248,3 @@ int GameType::runGame()
 
     return 0;
 }
-
-// int main(int argc, char const *argv[])
-// {
-// 	// BoardType myboard;
-// 	GameType game;
-
-// 	game.runGame();
-// 	return 0;
-// }

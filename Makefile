@@ -6,7 +6,7 @@ CXXFLAGS = -g -std=c++14
 
 all: match.exe
 
-match.exe: match_main.o match.o random_string.cpp
+match.exe: match_main.o match.o #random_string.cpp
 	$(CXX) -o $@ $^ -lsfml-graphics -lsfml-window -lsfml-system
 
 ## Defie your own test* targets here and then add them to the all: target
