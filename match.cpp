@@ -256,7 +256,7 @@ int GameType::runGame()
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = this -> randomFileName(this -> pics, max);
 			board.matrix[i][j] = file_name;
-			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) != board.placed_cards.end()):
+			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) != board.placed_cards.end());
 				board.placed_cards.push_back(file_name);
 			max--;
 			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
