@@ -90,7 +90,7 @@ public:
 
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
-    vector <vector<string> > matrix(num_cards);
+    vector <vector<string> > matrix;
     vector<string> placed_cards_array;
 
     int height = 650; 
