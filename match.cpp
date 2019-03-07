@@ -179,7 +179,7 @@ int GameType::runGame()
      * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
      * ./match-app
      ******************************************/
-	set_buffer(4);
+	this -> board.set_buffer(4);
     sfml_driver();
     return 0;
 }
