@@ -95,7 +95,7 @@ void BoardType::set_buffer(int num) {
 int BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = this -> buffer_w + (this -> card_w * (x + 2)) + (this->buffer_w * x) + this -> buffer_w;
+	int pos = this -> buffer_w + (this -> card_w * (x + 1)) + (this->buffer_w * x) + this -> buffer_w;
 	return pos;
 	
 }
@@ -103,7 +103,7 @@ int BoardType::set_card_h(int x) {
 int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_h + (this -> card_h * (y + 2)) + (this->buffer_h * y) + this -> buffer_h;
+	int pos = this -> buffer_h + (this -> card_h * (y + 1)) + (this->buffer_h * y) + this -> buffer_h;
 	return pos;
 }
 
@@ -150,8 +150,8 @@ void BoardType::sfml_driver() {
 			//window.draw(shape);
             window.draw(sprite1);
 			//sprite.setTextureRect(sf::IntRect(10,10,32,32));
-			//sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
-			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
+			sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
+			//sprite1.setPosition(sf::Vector2f(10.f, 10.f));
 			window.draw(sprite2);
 			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
 			window.draw(sprite3);
