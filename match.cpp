@@ -54,6 +54,7 @@ BoardType::BoardType() {
 			matrix[i][j] = card;
 		}
 	}
+
 	matrix2.resize(num_cards);
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
@@ -266,6 +267,7 @@ int GameType::runGame()
 		for (int j = 0; j < board.num_cards; j++) {
 			string file_name = randomFileName(pics, max);
 			board.matrix2[i][j] = file_name;
+			board.matrix[i][j].file_name = file_name;
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.placed_cards.push_back(file_name);
 			max--;
