@@ -103,7 +103,7 @@ int BoardType::set_card_h(int x) {
 int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_w + (this -> card_w * (x + 1)) + (this->buffer_w * y) + this -> buffer_w;
+	int pos = this -> buffer_w + (this -> card_w * (y + 1)) + (this->buffer_w * y) + this -> buffer_w;
 	return pos;
 }
 
