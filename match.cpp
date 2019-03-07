@@ -255,7 +255,8 @@ int GameType::runGame()
         this -> board.matrix[i].resize(this -> board.num_cards);
 		this -> board.placed_cards_array[i].resize(this -> board.num_cards);
     };
-	this -> board.matrix[0][0] = "hello world";
+	strncpy(&this -> board.matrix[0][0], "hello", 9);
+	//this -> board.matrix[0][0] = "hello world";
 	for (int i = 0; i < this -> board.num_cards; i++) {
 		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
