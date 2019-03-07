@@ -250,11 +250,11 @@ int GameType::runGame()
     // cout << "In main, word is: " << pic << endl;
 
 	int max = 16;
-	for (int i = 0; i < this -> board -> num_cards; i++) {
-		for (int j = 0; j < this -> board -> num_cards; j++) {
+	for (int i = 0; i < this -> board.num_cards; i++) {
+		for (int j = 0; j < this -> board.num_cards; j++) {
 			string file_name = GameType::randomFileName(this -> pics, max);
-			this -> board -> matrix[i][j] = file_name;
-			this -> board -> placed_cards_array = file_name;
+			this -> board.matrix[i][j] = file_name;
+			this -> board.placed_cards_array = file_name;
 			max--;
 			cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
 			cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> matrix[i][j] << endl;
