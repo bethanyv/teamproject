@@ -247,6 +247,10 @@ int GameType::runGame()
     pic = GameType::randomFileName(this -> pics, 16);
     cout << "In main, word is: " << pic << endl;
 
+	for (int i = 0; i < 16; i++) {
+		cout << "Pics vector[" << i << "] is:" << this -> pics[i] << endl;
+	}
+
     this -> board.sfml_driver();
 
     return 0;
