@@ -148,6 +148,9 @@ public:
     vector<CardType> all_cards;
     vector<string> pics;
 
+    int makeFileList(string filepath, vector<string> &name);
+    string randomFileName(vector<string> &name);
+
     // need if's in the run_game() to determine what type players are ->
     int runGame();
 };
