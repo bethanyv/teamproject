@@ -93,7 +93,7 @@ public:
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
     vector<vector<string> > matrix;
-    vector<vector<string> > placed_cards;
+    vector<string> placed_cards;
 
     int height = 650; 
     int width = 800;

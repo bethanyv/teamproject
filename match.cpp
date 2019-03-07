@@ -49,9 +49,6 @@ BoardType::BoardType() {
 		matrix[i].resize(num_cards);
 	}
 	placed_cards.resize(num_cards);
-	for (int i = 0; i < placed_cards.size(); i++) {
-		matrix[i].resize(num_cards);
-	}
 }
 
 GameType::GameType(){
