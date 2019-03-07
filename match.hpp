@@ -91,8 +91,8 @@ public:
 
     int height = 650; 
     int width = 800;
-    int w_buffer = 10;
-    int h_buffer = 10;
+    int buffer_w = 10;
+    int buffer_h = 10;
 
     int card_w = 200;
     int card_h = 300;

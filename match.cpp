@@ -87,9 +87,9 @@ void BoardType::set_buffer(int num) {
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
 	int leftover_w = this -> width - (this -> card_w*num);
-	this -> w_buffer = leftover_w/5;
+	this -> buffer_w = leftover_w/5;
 	int leftover_h = this -> height - (this -> card_h*num);
-	this -> h_buffer = leftover_h/5;
+	this -> buffer_h = leftover_h/5;
 }
 
 int BoardType::set_card_h(int x) {
