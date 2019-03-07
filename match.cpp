@@ -50,7 +50,8 @@ BoardType::BoardType() {
 		matrix[i].resize(num_cards);
 		for (int j = 0; j < matrix.size(); j++) {
 			//TODO clean up memory aka delete[]
-			matrix[i][j] = new CardType;
+			new CardType card;
+			matrix[i][j] = card;
 		}
 	}
 	matrix2.resize(num_cards);
