@@ -174,7 +174,6 @@ void BoardType::sfml_driver() {
 		}
 
 			window.clear();
-			window.draw(shape);
             window.draw(sprite1);
 
 			//set_cards();
