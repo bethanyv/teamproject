@@ -149,7 +149,7 @@ public:
     vector<string> pics;
 
     int makeFileList(string filepath, vector<string> &name);
-    string randomFileName(vector<string> &name);
+    string randomFileName(vector<string> &name, int max);
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();

@@ -151,12 +151,15 @@ int GameType::makeFileList(string filepath, vector<string> &name) {
   return 0;
 }
 
-string GameType::randomFileName(vector<string> &name_vec) {
+string GameType::randomFileName(vector<string> &name_vec, int max) {
+	// takes in vector of file names and 
+	// upper bound to generate random number
+	// returns string of file name
     string pic;
     int num = 0;
     /* initialize random seed: */
     srand (time(NULL));
-    num = rand() % 15 + 1;
+    num = rand() % max + 1;
 
     //cout << "Pic name is: " << pic << " and we have a total of " << name.size() << endl;
     cout << "Random pic name in file: " << name_vec[num] << endl;
@@ -241,7 +244,7 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	GameType::makeFileList("female_cs.txt", this -> pics);
-    pic = GameType::randomFileName(this -> pics);
+    pic = GameType::randomFileName(this -> pics, 16);
     cout << "In main, word is: " << pic << endl;
 
     this -> board.sfml_driver();
