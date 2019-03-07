@@ -81,7 +81,7 @@ IOUtils::readFromStream() {
 	return theInput;
 }
 
-int makeFileList(string filepath, vector<string> &name) {
+int IOUtils::makeFileList(string filepath, vector<string> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
@@ -106,7 +106,7 @@ int makeFileList(string filepath, vector<string> &name) {
 
 }
 
-string randomFileName(vector<string> &name) {
+string IOUtils::randomFileName(vector<string> &name) {
     string pic;
     int num = 0;
     /* initialize random seed: */

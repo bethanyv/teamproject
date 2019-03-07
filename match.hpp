@@ -127,6 +127,9 @@ public:
 
 	// Get the currently open input stream
 	istream getStream();
+
+    int makeFileList(string filepath, vector<string> &name);
+    string randomFileName(vector<string> &name);
 private:
 	bool isFile;
 	istream *inputStream;
