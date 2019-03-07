@@ -114,7 +114,9 @@ void BoardType::set_cards() {
 			int y = this -> set_card_h(j);
 			//call to sfm with new nums
 			int sprite_num = i + j;
-			string sprite_name = "sprite_" + to_str(i) + "_" + to_str(j);
+			string string_i = to_string(i);
+			string string_j = to_string(j);
+			string sprite_name = "sprite_" + string_i + "_" + string_j;
 			cout << "sprite_name is:" << sprite_name << endl;
 			sf::Sprite sprite_name;
 			window.draw(sprite_name);
