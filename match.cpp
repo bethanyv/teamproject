@@ -261,7 +261,7 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	//fill our vector up with picture file names
-	GameType::makeFileList("female_cs.txt", pics);
+	GameType::makeFileList("female_cs.txt", &pics);
 	int max = 16;
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {

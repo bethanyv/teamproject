@@ -14,3 +14,4 @@ pics/rhodes.jpg
 pics/sammet.jpg
 pics/spence.jpg
 pics/teitelbaum.jpg
+pics/back.jpg
