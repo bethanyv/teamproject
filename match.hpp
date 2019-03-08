@@ -97,8 +97,9 @@ public:
     vector<vector<string> > matrix2;
     vector<string> placed_cards;
 
+    //window height/width
     int height = 650; 
-    int width = 800;
+    int width = 1050;
     int buffer_w = 10;
     int buffer_h = 10;
 

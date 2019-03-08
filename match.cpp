@@ -102,10 +102,10 @@ void BoardType::set_buffer(int num) {
 	// takes in  # of cards and spot on board and computes
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
-	int leftover_w = this -> width - (this -> card_w*num);
-	this -> buffer_w = leftover_w/5;
-	int leftover_h = this -> height - (this -> card_h*num);
-	this -> buffer_h = leftover_h/5;
+	int leftover_w = width - (card_w*num);
+	buffer_w = leftover_w/5;
+	int leftover_h = height - (card_h*num);
+	buffer_h = leftover_h/5;
 }
 
 int BoardType::set_card_h(int x) {
