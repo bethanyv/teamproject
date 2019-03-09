@@ -98,7 +98,7 @@ public:
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
     vector<string> placed_cards;
-    vector<string> pics;
+    vector<string*> pics;
 
     //window height/width
     int height = 1250;
