@@ -139,7 +139,7 @@ void BoardType::set_cards(string path) {
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string file_name = pics[rand_num];
-			//file_name = file_name.c_str();
+			file_name = file_name.c_str();
 			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
 				matrix[i][j] -> file_name = file_name;
 				matrix[i][j] -> sprite.setTexture(file_name);
@@ -328,7 +328,7 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	//fill our vector up with picture file names
-	GameType::makeFileList("female_cs.txt", pics);
+	BoardType::makeFileList("female_cs.txt", pics);
 	int max = 16;
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
