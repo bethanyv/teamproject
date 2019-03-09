@@ -126,12 +126,12 @@ int BoardType::set_card_w(int y) {
 void BoardType::set_cards(string path) {
 	string pic;
 	//fill our vector up with picture file names
-	game.makeFileList(path, pics);
+	makeFileList(path, pics);
 	int max = 16;
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
 			//testing random number instead of strin
-			int rand_num = game.randomNumber(max);
+			int rand_num = randomNumber(max);
 			matrix2[i][j] = rand_num;
 			// use random number to index into pics
 			// check placed_cards and if not there then 
@@ -194,7 +194,7 @@ void BoardType::set_cards(string path) {
 // 	}
 // }
 
-int GameType::makeFileList(string filepath, vector<string> &name) {
+int BoardType::makeFileList(string filepath, vector<string> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
@@ -218,7 +218,7 @@ int GameType::makeFileList(string filepath, vector<string> &name) {
   return 0;
 }
 
-int GameType::randomNumber(int max) {
+int BoardType::randomNumber(int max) {
 	//takes in max number
 	// returns random number between 1 and max
 	int num = 0;

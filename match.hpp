@@ -118,6 +118,10 @@ public:
     void is_full();
     void remove_match();
     void sfml_driver();
+    
+    int makeFileList(string filepath, vector<string> &name);
+    //string randomFileName(vector<string> &name, int max);
+    int randomNumber(int max);
 };
 
 class GameType{
@@ -131,10 +135,6 @@ public:
     PlayerType player2;
 
     vector<CardType> all_cards;
-
-    int makeFileList(string filepath, vector<string> &name);
-    //string randomFileName(vector<string> &name, int max);
-    int randomNumber(int max);
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
