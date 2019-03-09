@@ -333,7 +333,7 @@ void BoardType::sfml_driver() {
 			window.clear();
             window.draw(sprite1);
 
-			//set_cards();
+			oard.set_cards("female_cs.txt");
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
@@ -358,7 +358,7 @@ void BoardType::sfml_driver() {
 int GameType::runGame()
 {
 	//this -> board.set_buffer(4);
-	board.set_cards("female_cs.txt");
+	// board.set_cards("female_cs.txt");
 
 	for (int i = 0; i < board.num_cards; i++) {
 		cout << "Placed card:" << board.placed_cards[i] << endl;
