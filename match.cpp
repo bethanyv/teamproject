@@ -120,7 +120,7 @@ void BoardType::remove_match() {
 }
 
 void BoardType::set_buffer(int num) {
-	// takes in  # of cards and spot on board and computes
+	// takes in  # of cards and computes
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
 	int leftover_w = width - (card_w*num);
@@ -170,6 +170,15 @@ void BoardType::set_cards(string path) {
 				//TODO: figure out why this isn't adding file_name to placed cards
 				placed_cards.push_back(file_name);
 				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+
+			set_buffer(4);
+			int x = set_card_h(i);
+			int y = set_card_w(j);
+
+			matrix[i][j] -> sprite.
+			//original code that worked from sfml driver. trying to imitate this
+			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x.f, y.f));
+			window.draw(matrix[i][j] -> sprite);
 			max --;
 			//NON-WORKING CODE BELOW
 			//Keeping for now, just in case I need syntax or really break something
@@ -191,6 +200,7 @@ void BoardType::set_cards(string path) {
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
+	window.display();
 	// for (int i = 0; i < num_cards; i++) {
 	// 	cout << "Placed card:" << placed_cards[i] << endl;
 	// }
