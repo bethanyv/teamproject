@@ -146,7 +146,7 @@ void BoardType::set_cards(string path) {
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string file_name = pics[rand_num];
-			file_name = file_name.c_str();
+			//file_name = file_name.c_str();
 			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
 				matrix[i][j] -> file_name = file_name;
 				matrix[i][j] -> sprite.setTexture(file_name);
@@ -350,7 +350,7 @@ int GameType::runGame()
 				board.matrix[i][j]->file_name = file_name;
 				//TODO: figure out why this isn't adding file_name to placed cards
 				board.placed_cards.push_back(file_name);
-				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+				board.pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 			max --;
 			//NON-WORKING CODE BELOW
 			//Keeping for now, just in case I need syntax or really break something
