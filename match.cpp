@@ -34,7 +34,7 @@ CardType::CardType() {
 	// sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
 	sf::Texture texture;
-	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, CARD_W, CARD_H))) {
+	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 	back = texture;
@@ -113,23 +113,23 @@ void BoardType::set_buffer(int num) {
 	// takes in  # of cards and spot on board and computes
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
-	int leftover_w = width - (CARD_W*num);
+	int leftover_w = width - (card_w*num);
 	buffer_w = leftover_w/5;
-	int leftover_h = height - (CARD_H*num);
+	int leftover_h = height - (card_h*num);
 	buffer_h = leftover_h/5;
 }
 
 int BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = this -> buffer_w + (this -> CARD_W * x) + (this->buffer_w * x);
+	int pos = this -> buffer_w + (this -> card_w * x) + (this->buffer_w * x);
 	return pos;
 }
 
 int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_h + (this -> CARD_H * y) + (this->buffer_h * y);
+	int pos = this -> buffer_h + (this -> card_h * y) + (this->buffer_h * y);
 	return pos;
 }
 void BoardType::set_cards(string path) {
@@ -270,7 +270,7 @@ void BoardType::sfml_driver() {
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
-	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, CARD_W, CARD_H))) {
+	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 

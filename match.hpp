@@ -1,7 +1,6 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
-#define CARD_W 200
-#define CARD_H 300
+
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -32,6 +31,8 @@ public:
     bool check_match(CardType card);
     string file_name;
     sf::Sprite sprite;
+    int width = 200;
+    int height = 300;
     // TODO: add pair
 };
 
