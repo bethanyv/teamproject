@@ -91,6 +91,7 @@ int AI::random_pick() {
 // void BoardType::set_card() {
 //     // return 0;
 // }
+// do we need this function if we are just removing cards if they are a match?
 void BoardType::update_board() {
     // return 0;
 }
@@ -171,7 +172,7 @@ void BoardType::set_cards(string path) {
 	}
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
-			cout << "matrix at [" << i << "][" << j << "] is: " << matrix[i][j].file_name << endl;
+			cout << "matrix at [" << i << "][" << j << "] is: " << matrix[i][j]->file_name << endl;
 		}
 	}
 
@@ -368,7 +369,7 @@ int GameType::runGame()
 	}
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
-			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j].file_name << endl;
+			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
 		}
 	}
 
