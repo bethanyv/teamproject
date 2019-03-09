@@ -83,8 +83,6 @@ class BoardType{
 public:
     // for when the user doesn't specify a size
     BoardType(); 
-    // for when the user does specify the size
-    BoardType(int size); 
 
      // I think it's easier to have this represent
     // The cards per row (aka 4) rather than
