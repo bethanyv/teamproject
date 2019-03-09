@@ -340,7 +340,7 @@ int GameType::runGame()
 			// set it to this position on the board
 			string file_name = pics[rand_num];
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-				board.matrix[i][j].file_name = file_name;
+				board.matrix[i][j]->file_name = file_name;
 				//TODO: figure out why this isn't adding file_name to placed cards
 				board.placed_cards.push_back(file_name);
 				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
