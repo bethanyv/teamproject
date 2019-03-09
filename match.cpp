@@ -402,7 +402,7 @@ int GameType::runGame()
 	// 	}
 	// }
 
-    board.sfml_driver();
+    board.sfml_driver("female_cs.txt");
 
     return 0;
 }
