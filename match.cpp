@@ -53,7 +53,7 @@ BoardType::BoardType() {// BETHANY HERE - how do we want to intialize cards? set
 			CardType card;
 			matrix[i][j] = card;
 			CardType* card = new CardType();
-			matrix[i][j] = &card;
+			matrix[i][j] = card;
 		}
 	}
 
