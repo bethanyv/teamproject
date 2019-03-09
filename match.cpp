@@ -52,6 +52,8 @@ BoardType::BoardType() {
 			//TODO clean up memory aka delete[]
 			CardType card;
 			matrix[i][j] = card;
+			CardType* card = new CardType();
+			matrix[i][j] = &card;
 		}
 	}
 
