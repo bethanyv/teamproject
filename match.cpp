@@ -175,7 +175,6 @@ void BoardType::set_cards(string path) {
 			float x = set_card_h(i);
 			float y = set_card_w(j);
 
-			matrix[i][j] -> sprite.
 			//original code that worked from sfml driver. trying to imitate this
 			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x.f, y.f));
 			// window.draw(matrix[i][j] -> sprite);
