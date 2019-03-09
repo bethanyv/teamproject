@@ -278,6 +278,17 @@ int GameType::runGame()
 			//testing random number instead of strin
 			int rand_num = randomNumber(max);
 			board.matrix2[i][j] = rand_num;
+			// use random number to index into pics
+			// check placed_cards and if not there then 
+			// set it to this position on the board
+			string file_name = pics[rand_num];
+			//not sure if statement works
+			//if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+			board.matrix[i][j].file_name = file_name;
+			board.placed_cards.push_back(file_name);
+			
+			//
+
 			//board.matrix[i][j].file_name = rand_num;
 			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
 			// 	board.placed_cards.push_back(rand_num);
@@ -298,7 +309,7 @@ int GameType::runGame()
 	}
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
-			cout << "matrix2 at [" << i << "][" << j << "] is: " << board.matrix2[i][j] << endl;
+			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix2[i][j].file_names << endl;
 		}
 	}
 
