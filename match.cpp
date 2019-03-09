@@ -17,6 +17,16 @@
 
 using namespace std;
 
+//TODO: BETHANY!!! READ THIS: It's 3:00am and I finally got my set_cards
+// working! So, our board matrix should have all of our cards and 
+//all of our cards should have sprites with different textures attached to them
+//
+//so the real todo:
+//change the draw sprite functionality in sfml driver to loop over our board's matrix
+//and draw the sprites attached to our cards
+//too tired to decide if that's better to do in sfml driver or in set_cards. right now
+//my tired logic says sfml driver.
+
 //Kristine - added a sprite data member to CardType
 
 void PileType::add_to_pile(CardType card) {
@@ -314,7 +324,6 @@ void BoardType::sfml_driver() {
             window.draw(sprite1);
 
 			//set_cards();
-			//set_cards();
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
@@ -387,7 +396,7 @@ int GameType::runGame()
 		}
 	}
 
-    //board.sfml_driver();
+    board.sfml_driver();
 
     return 0;
 }
