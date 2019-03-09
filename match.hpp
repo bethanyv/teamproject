@@ -98,7 +98,7 @@ public:
     vector<string> pics;
 
     //window height/width
-    int height = 650; 
+    int height = 1250;
     int width = 1050;
     int buffer_w = 10;
     int buffer_h = 10;

@@ -113,14 +113,14 @@ void BoardType::set_buffer(int num) {
 int BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = this -> buffer_w + (this -> card_w * (x + 1)) + (this->buffer_w * x) + this -> buffer_w;
+	int pos = this -> buffer_w + (this -> card_w * (x)) + (this->buffer_w * x);
 	return pos;
 }
 
 int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_h + (this -> card_h * (y + 1)) + (this->buffer_h * y) + this -> buffer_h;
+	int pos = this -> buffer_h + (this -> card_h * (y)) + (this->buffer_h * y);
 	return pos;
 }
 void BoardType::set_cards(string path) {
@@ -298,3 +298,80 @@ void BoardType::sfml_driver() {
             window.draw(sprite1);
 
 			//set_cards();
+			//set_cards();
+
+			//sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
+			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
+			window.draw(sprite2);
+			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
+			window.draw(sprite3);
+			sprite3.setPosition(sf::Vector2f(250.f, 10.f));
+			window.draw(sprite4);
+			sprite4.setPosition(sf::Vector2f(370.f, 10.f));
+			
+			//vertical
+			window.draw(sprite5);
+			sprite5.setPosition(sf::Vector2f(10.f, 170.f));
+			window.draw(sprite6);
+			sprite6.setPosition(sf::Vector2f(10.f, 330.f));
+			window.draw(sprite7);
+			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+			window.display();
+	}
+}
+
+int GameType::runGame()
+{
+	//this -> board.set_buffer(4);
+	string pic;
+	//fill our vector up with picture file names
+	GameType::makeFileList("female_cs.txt", pics);
+	int max = 16;
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			//testing random number instead of strin
+			int rand_num = randomNumber(max);
+			board.matrix2[i][j] = rand_num;
+			// use random number to index into pics
+			// check placed_cards and if not there then 
+			// set it to this position on the board
+			string file_name = pics[rand_num];
+			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+				board.matrix[i][j].file_name = file_name;
+				//TODO: figure out why this isn't adding file_name to placed cards
+				board.placed_cards.push_back(file_name);
+				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+			max --;
+			//NON-WORKING CODE BELOW
+			//Keeping for now, just in case I need syntax or really break something
+			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
+			//
+
+			//board.matrix[i][j].file_name = rand_num;
+			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
+			// 	board.placed_cards.push_back(rand_num);
+			// max--;
+			//below worked (kinda) for strings
+			// string file_name = randomFileName(pics, max);
+			// board.matrix2[i][j] = file_name;
+			// board.matrix[i][j].file_name = file_name;
+			// //if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+			// board.placed_cards.push_back(file_name);
+			// max--;
+			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+		}
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		cout << "Placed card:" << board.placed_cards[i] << endl;
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j].file_name << endl;
+		}
+	}
+
+    board.sfml_driver();
+
+    return 0;
+}
