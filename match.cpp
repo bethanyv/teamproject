@@ -52,8 +52,8 @@ BoardType::BoardType() {// BETHANY HERE - how do we want to intialize cards? set
 			//TODO clean up memory aka delete[]
 			CardType card;
 			matrix[i][j] = card;
-			CardType* card = new CardType();
-			matrix[i][j] = card;
+			// CardType* card = new CardType();
+			// matrix[i][j] = card;
 		}
 	}
 
