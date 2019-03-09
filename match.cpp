@@ -333,7 +333,7 @@ void BoardType::sfml_driver() {
 			window.clear();
             window.draw(sprite1);
 
-			oard.set_cards("female_cs.txt");
+			board.set_cards("female_cs.txt");
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
