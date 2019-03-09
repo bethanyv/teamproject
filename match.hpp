@@ -1,7 +1,7 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
-#define CARD_W = 200
-#define CARD_H = 300
+#define CARD_W 200
+#define CARD_H 300
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
