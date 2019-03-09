@@ -153,11 +153,11 @@ void BoardType::set_cards(string path) {
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string* file_name = pics[rand_num];
-			file_name = file_name.c_str();
+			//file_name = file_name.c_str();
 
 			sf::Texture texture;
-			if(!texture.loadFromFile(file_name, sf::IntRect(0, 0, card_w, card_h))) {
-				cout << "Error! " << file_name << " isn't loading." << endl;
+			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+				cout << "Error! " << *file_name << " isn't loading." << endl;
 			}			
 
 			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
