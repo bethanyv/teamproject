@@ -119,14 +119,14 @@ void BoardType::set_buffer(int num) {
 	buffer_h = leftover_h/5;
 }
 
-int BoardType::set_CARD_H(int x) {
+int BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
 	int pos = this -> buffer_w + (this -> CARD_W * x) + (this->buffer_w * x);
 	return pos;
 }
 
-int BoardType::set_CARD_W(int y) {
+int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
 	int pos = this -> buffer_h + (this -> CARD_H * y) + (this->buffer_h * y);
