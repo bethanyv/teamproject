@@ -106,8 +106,8 @@ public:
     int buffer_w = 10;
     int buffer_h = 10;
 
-    // int card_w = 200;
-    // int card_h = 300;
+    int card_w = 200;
+    int card_h = 300;
 
     void init();
     int set_card_h(int x);

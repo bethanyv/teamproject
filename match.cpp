@@ -122,14 +122,14 @@ void BoardType::set_buffer(int num) {
 int BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = this -> buffer_w + (this -> card_w * x) + (this->buffer_w * x);
+	int pos = buffer_w + (card_w * x) + (buffer_w * x);
 	return pos;
 }
 
 int BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_h + (this -> card_h * y) + (this->buffer_h * y);
+	int pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
 }
 void BoardType::set_cards(string path) {
