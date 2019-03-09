@@ -191,7 +191,7 @@ string GameType::randomFileName(vector<string> &name_vec, int max) {
 
     // cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
     // cout << "Random pic name in file: " << name_vec[num] << endl;
-	name_vec.erase(name_vec.begin()+ (num -1));
+	// name_vec.erase(name_vec.begin()+ (num -1));
     return pic;
 }
 
@@ -284,9 +284,9 @@ int GameType::runGame()
 			string file_name = pics[rand_num];
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.matrix[i][j].file_name = file_name;
+				//TODO: figure out why this isn't adding file_name to placed cards
 				board.placed_cards.push_back(file_name);
-			//TODO: figure out why this isn't adding file_name to placed cards
-			board.placed_cards.push_back(file_name);
+				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 			max --;
 			//NON-WORKING CODE BELOW
 			//Keeping for now, just in case I need syntax or really break something
