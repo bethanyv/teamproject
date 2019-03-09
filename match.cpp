@@ -45,7 +45,7 @@ CardType::CardType() {
 	// sprite = new_sprite;
 	sf::Texture texture;
 	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+		cout << "Error! back.jpg isn't loading." << endl;
 	}
 	back = texture;
 }
@@ -153,6 +153,7 @@ void BoardType::set_cards(string path) {
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string* file_name = pics[rand_num];
+			cout << "File_name is: " << file_name << endl;
 			//file_name = file_name.c_str();
 
 			sf::Texture texture;
