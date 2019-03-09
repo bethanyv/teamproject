@@ -97,6 +97,7 @@ public:
     vector<vector<CardType> > matrix;
     vector<vector<int> > matrix2;
     vector<string> placed_cards;
+    vector<string> pics;
 
     //window height/width
     int height = 650; 
@@ -130,7 +131,6 @@ public:
     PlayerType player2;
 
     vector<CardType> all_cards;
-    vector<string> pics;
 
     int makeFileList(string filepath, vector<string> &name);
     //string randomFileName(vector<string> &name, int max);
