@@ -123,26 +123,26 @@ int BoardType::set_card_w(int y) {
 	int pos = this -> buffer_h + (this -> card_h * (y + 1)) + (this->buffer_h * y) + this -> buffer_h;
 	return pos;
 }
-void BoardType::set_cards() {
-		string pic;
+void BoardType::set_cards(string path) {
+	string pic;
 	//fill our vector up with picture file names
-	GameType::makeFileList("female_cs.txt", pics);
+	GameType::makeFileList(path, pics);
 	int max = 16;
-	for (int i = 0; i < board.num_cards; i++) {
-		for (int j = 0; j < board.num_cards; j++) {
+	for (int i = 0; i < num_cards; i++) {
+		for (int j = 0; j < num_cards; j++) {
 			//testing random number instead of strin
 			int rand_num = randomNumber(max);
-			board.matrix2[i][j] = rand_num;
+			matrix2[i][j] = rand_num;
 			// use random number to index into pics
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string file_name = pics[rand_num];
-			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-				board.matrix[i][j].file_name = file_name;
-				board.sprite.setTexture(file_name);
+			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
+				matrix[i][j].file_name = file_name;
+				sprite.setTexture(file_name);
 
 				//TODO: figure out why this isn't adding file_name to placed cards
-				board.placed_cards.push_back(file_name);
+				placed_cards.push_back(file_name);
 				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 			max --;
 			//NON-WORKING CODE BELOW
@@ -165,12 +165,12 @@ void BoardType::set_cards() {
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
-	for (int i = 0; i < board.num_cards; i++) {
-		cout << "Placed card:" << board.placed_cards[i] << endl;
+	for (int i = 0; i < num_cards; i++) {
+		cout << "Placed card:" << placed_cards[i] << endl;
 	}
-	for (int i = 0; i < board.num_cards; i++) {
-		for (int j = 0; j < board.num_cards; j++) {
-			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j].file_name << endl;
+	for (int i = 0; i < num_cards; i++) {
+		for (int j = 0; j < num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "] is: " << matrix[i][j].file_name << endl;
 		}
 	}
 
