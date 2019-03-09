@@ -73,6 +73,7 @@ GameType::GameType(){
 }
 
 bool CardType::check_match(CardType card) {
+	return card.front == front;
     // return 0;
 }
 
