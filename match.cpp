@@ -139,7 +139,7 @@ void BoardType::set_cards(string path) {
 			string file_name = pics[rand_num];
 			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
 				matrix[i][j].file_name = file_name;
-				sprite.setTexture(file_name);
+				matrix[i][j].sprite.setTexture(file_name);
 
 				//TODO: figure out why this isn't adding file_name to placed cards
 				placed_cards.push_back(file_name);
