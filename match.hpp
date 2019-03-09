@@ -94,7 +94,7 @@ public:
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
     vector<vector<CardType> > matrix;
-    vector<vector<string> > matrix2;
+    vector<vector<int> > matrix2;
     vector<string> placed_cards;
 
     //window height/width
@@ -133,6 +133,7 @@ public:
 
     int makeFileList(string filepath, vector<string> &name);
     string randomFileName(vector<string> &name, int max);
+    int randomNumber(int max);
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();

@@ -165,6 +165,16 @@ int GameType::makeFileList(string filepath, vector<string> &name) {
   return 0;
 }
 
+int GameType::randomNumber(int max) {
+	//takes in max number
+	// returns random number between 1 and max
+	int num = 0;
+	srand (time(NULL));
+    num = (rand() % (max)) + 1;
+	return num;
+
+}
+
 string GameType::randomFileName(vector<string> &name_vec, int max) {
 	// takes in vector of file names and 
 	// upper bound to generate random number
@@ -265,12 +275,20 @@ int GameType::runGame()
 	int max = 16;
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
-			string file_name = randomFileName(pics, max);
-			board.matrix2[i][j] = file_name;
-			board.matrix[i][j].file_name = file_name;
-			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-				board.placed_cards.push_back(file_name);
+			//testing random number instead of strin
+			int rand_num = randomNumber(max);
+			board.matrix2[i][j] = rand_num;
+			//board.matrix[i][j].file_name = rand_num;
+			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
+			// 	board.placed_cards.push_back(rand_num);
 			max--;
+			//below worked (kinda) for strings
+			// string file_name = randomFileName(pics, max);
+			// board.matrix2[i][j] = file_name;
+			// board.matrix[i][j].file_name = file_name;
+			// //if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+			// board.placed_cards.push_back(file_name);
+			// max--;
 			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
@@ -280,7 +298,7 @@ int GameType::runGame()
 	}
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
-			cout << "matrix2 at [" << i << "][" << j << "is: " << board.matrix2[i][j] << endl;
+			cout << "matrix2 at [" << i << "][" << j << "] is: " << board.matrix2[i][j] << endl;
 		}
 	}
 
