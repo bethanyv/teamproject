@@ -190,7 +190,7 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
         //cout << line << endl;
             while(getline(myfile, line)){
                 //cout << line << endl;
-				String* new_line = new String;
+				string* new_line = new string;
 				new_line = line;
                 name.push_back(new_line);
             }
