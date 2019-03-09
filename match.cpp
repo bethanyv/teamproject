@@ -17,8 +17,6 @@
 
 using namespace std;
 
-//Kristine - added a sprite data member to CardType
-
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
 	// vector of which card was matched
@@ -46,14 +44,14 @@ PlayerType::PlayerType() {
 	PileType pile;
 }
 
-BoardType::BoardType() {\// BETHANY HERE - how do we want to intialize cards? set a front every time?
+BoardType::BoardType() {
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
 		for (int j = 0; j < matrix.size(); j++) {
 			//TODO clean up memory aka delete[]
-			new CardType card;
-			matrix[i][j] = &card;
+			CardType card;
+			matrix[i][j] = card;
 		}
 	}
 
@@ -73,8 +71,8 @@ GameType::GameType(){
 }
 
 bool CardType::check_match(CardType card) {
-	// return true if the cards match, false otherwise;
-	return card->front == front;
+	return card.front == front;
+    
 }
 
 void PlayerType::move() {
@@ -116,6 +114,7 @@ int BoardType::set_card_h(int x) {
 	// returns the x position on the board
 	int pos = this -> buffer_w + (this -> card_w * (x + 1)) + (this->buffer_w * x) + this -> buffer_w;
 	return pos;
+	
 }
 
 int BoardType::set_card_w(int y) {
@@ -124,59 +123,7 @@ int BoardType::set_card_w(int y) {
 	int pos = this -> buffer_h + (this -> card_h * (y + 1)) + (this->buffer_h * y) + this -> buffer_h;
 	return pos;
 }
-void BoardType::set_cards(string path) {
-	string pic;
-	//fill our vector up with picture file names
-	makeFileList(path, pics);
-	int max = 16;
-	for (int i = 0; i < num_cards; i++) {
-		for (int j = 0; j < num_cards; j++) {
-			//testing random number instead of strin
-			int rand_num = randomNumber(max);
-			matrix2[i][j] = rand_num;
-			// use random number to index into pics
-			// check placed_cards and if not there then 
-			// set it to this position on the board
-			string file_name = pics[rand_num];
-			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-				matrix[i][j].file_name = file_name;
-				matrix[i][j].sprite.setTexture(file_name);
 
-				//TODO: figure out why this isn't adding file_name to placed cards
-				placed_cards.push_back(file_name);
-				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
-			max --;
-			//NON-WORKING CODE BELOW
-			//Keeping for now, just in case I need syntax or really break something
-			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
-			//
-
-			//board.matrix[i][j].file_name = rand_num;
-			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
-			// 	board.placed_cards.push_back(rand_num);
-			// max--;
-			//below worked (kinda) for strings
-			// string file_name = randomFileName(pics, max);
-			// board.matrix2[i][j] = file_name;
-			// board.matrix[i][j].file_name = file_name;
-			// //if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-			// board.placed_cards.push_back(file_name);
-			// max--;
-			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
-			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
-		}
-	}
-	for (int i = 0; i < num_cards; i++) {
-		cout << "Placed card:" << placed_cards[i] << endl;
-	}
-	for (int i = 0; i < num_cards; i++) {
-		for (int j = 0; j < num_cards; j++) {
-			cout << "matrix at [" << i << "][" << j << "] is: " << matrix[i][j].file_name << endl;
-		}
-	}
-
-
-}
 // void BoardType::set_cards() {
 // 	for (int i = 0; i < (this -> num_cards + 1); i++) {
 // 		for (int j = 0; j < (this -> num_cards + 1); j++) {
@@ -195,7 +142,7 @@ void BoardType::set_cards(string path) {
 // 	}
 // }
 
-int BoardType::makeFileList(string filepath, vector<string> &name) {
+int GameType::makeFileList(string filepath, vector<string> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
@@ -219,7 +166,7 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
   return 0;
 }
 
-int BoardType::randomNumber(int max) {
+int GameType::randomNumber(int max) {
 	//takes in max number
 	// returns random number between 1 and max
 	int num = 0;
@@ -229,25 +176,25 @@ int BoardType::randomNumber(int max) {
 
 }
 
-// string GameType::randomFileName(vector<string> &name_vec, int max) {
-// 	// takes in vector of file names and 
-// 	// upper bound to generate random number
-// 	// returns string of file name
-//     string pic;
-//     int num = 0;
-//     /* initialize random seed: */
-//     srand (time(NULL));
-//     num = (rand() % (max)) + 1;
+string GameType::randomFileName(vector<string> &name_vec, int max) {
+	// takes in vector of file names and 
+	// upper bound to generate random number
+	// returns string of file name
+    string pic;
+    int num = 0;
+    /* initialize random seed: */
+    srand (time(NULL));
+    num = (rand() % (max)) + 1;
 	
-// 	// cout << "random number is:" << num << endl;
+	// cout << "random number is:" << num << endl;
 
-// 	pic = name_vec[num-1];
+	pic = name_vec[num-1];
 
-//     // cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
-//     // cout << "Random pic name in file: " << name_vec[num] << endl;
-// 	// name_vec.erase(name_vec.begin()+ (num -1));
-//     return pic;
-// }
+    // cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
+    // cout << "Random pic name in file: " << name_vec[num] << endl;
+	// name_vec.erase(name_vec.begin()+ (num -1));
+    return pic;
+}
 
 void BoardType::sfml_driver() {
 	/*******************************************
@@ -323,8 +270,53 @@ void BoardType::sfml_driver() {
 int GameType::runGame()
 {
 	//this -> board.set_buffer(4);
-	string path = "female_cs.txt"
-	set_cards(path);
+	string pic;
+	//fill our vector up with picture file names
+	GameType::makeFileList("female_cs.txt", pics);
+	int max = 16;
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			//testing random number instead of strin
+			int rand_num = randomNumber(max);
+			board.matrix2[i][j] = rand_num;
+			// use random number to index into pics
+			// check placed_cards and if not there then 
+			// set it to this position on the board
+			string file_name = pics[rand_num];
+			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+				board.matrix[i][j].file_name = file_name;
+				//TODO: figure out why this isn't adding file_name to placed cards
+				board.placed_cards.push_back(file_name);
+				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+			max --;
+			//NON-WORKING CODE BELOW
+			//Keeping for now, just in case I need syntax or really break something
+			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
+			//
+
+			//board.matrix[i][j].file_name = rand_num;
+			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
+			// 	board.placed_cards.push_back(rand_num);
+			// max--;
+			//below worked (kinda) for strings
+			// string file_name = randomFileName(pics, max);
+			// board.matrix2[i][j] = file_name;
+			// board.matrix[i][j].file_name = file_name;
+			// //if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+			// board.placed_cards.push_back(file_name);
+			// max--;
+			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+		}
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		cout << "Placed card:" << board.placed_cards[i] << endl;
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j].file_name << endl;
+		}
+	}
 
     //board.sfml_driver();
 
