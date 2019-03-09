@@ -295,6 +295,8 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	// board.set_cards("female_cs.txt");
 
+	board.sfml_driver();
+
 	for (int i = 0; i < board.num_cards; i++) {
 		cout << "Placed card:" << board.placed_cards[i] << endl;
 	}
@@ -303,8 +305,6 @@ int GameType::runGame()
 			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
 		}
 	}
-
-    //board.sfml_driver();
 
     return 0;
 }
