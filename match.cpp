@@ -156,18 +156,18 @@ void BoardType::set_cards(string path) {
 			cout << "File_name is: " << file_name << endl;
 			//file_name = file_name.c_str();
 
-			sf::Texture texture;
-			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
-				cout << "Error! " << *file_name << " isn't loading." << endl;
-			}			
+			// sf::Texture texture;
+			// if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+			// 	cout << "Error! " << *file_name << " isn't loading." << endl;
+			// }			
 
-			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-				matrix[i][j] -> file_name = file_name;
-				matrix[i][j] -> sprite.setTexture(texture);
+			// if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
+			// 	matrix[i][j] -> file_name = file_name;
+			// 	matrix[i][j] -> sprite.setTexture(texture);
 
-				//TODO: figure out why this isn't adding file_name to placed cards
-				placed_cards.push_back(file_name);
-				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+			// 	//TODO: figure out why this isn't adding file_name to placed cards
+			// 	placed_cards.push_back(file_name);
+			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
 			set_buffer(4);
 			float x = set_card_h(i);
