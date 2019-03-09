@@ -152,7 +152,7 @@ void BoardType::set_cards(string path) {
 			// use random number to index into pics
 			// check placed_cards and if not there then 
 			// set it to this position on the board
-			string file_name = pics[rand_num];
+			string* file_name = pics[rand_num];
 			file_name = file_name.c_str();
 
 			sf::Texture texture;
