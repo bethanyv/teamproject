@@ -200,7 +200,7 @@ void BoardType::set_cards(string path) {
 			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
 		}
 	}
-	window.display();
+	//window.display();
 	// for (int i = 0; i < num_cards; i++) {
 	// 	cout << "Placed card:" << placed_cards[i] << endl;
 	// }
