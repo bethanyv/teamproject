@@ -304,7 +304,7 @@ int GameType::runGame()
 		}
 	}
 
-    board.sfml_driver();
+    //board.sfml_driver();
 
     return 0;
 }
