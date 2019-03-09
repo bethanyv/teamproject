@@ -178,7 +178,7 @@ void BoardType::set_cards(string path) {
 			matrix[i][j] -> sprite.
 			//original code that worked from sfml driver. trying to imitate this
 			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x.f, y.f));
-			window.draw(matrix[i][j] -> sprite);
+			// window.draw(matrix[i][j] -> sprite);
 			max --;
 			//NON-WORKING CODE BELOW
 			//Keeping for now, just in case I need syntax or really break something
@@ -334,6 +334,11 @@ void BoardType::sfml_driver() {
             window.draw(sprite1);
 
 			set_cards("female_cs.txt");
+			for (int i = 0; i < num_cards; i++) {
+				for (int j = 0; j < num_cards; j++) {
+					window.draw(matrix[i][j] -> sprite);
+				}
+			}
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
