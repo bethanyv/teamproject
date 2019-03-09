@@ -105,9 +105,6 @@ int AI::random_pick() {
     // return 0;
 }
 
-// void BoardType::set_card() {
-//     // return 0;
-// }
 // do we need this function if we are just removing cards if they are a match?
 void BoardType::update_board() {
     // return 0;
@@ -175,58 +172,11 @@ void BoardType::set_cards(string path) {
 			float x = set_card_h(i);
 			float y = set_card_w(j);
 
-			//original code that worked from sfml driver. trying to imitate this
-			// window.draw(matrix[i][j] -> sprite);
 			max --;
-			//NON-WORKING CODE BELOW
-			//Keeping for now, just in case I need syntax or really break something
-			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
-			//
-
-			//board.matrix[i][j].file_name = rand_num;
-			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
-			// 	board.placed_cards.push_back(rand_num);
-			// max--;
-			//below worked (kinda) for strings
-			// string file_name = randomFileName(pics, max);
-			// board.matrix2[i][j] = file_name;
-			// board.matrix[i][j].file_name = file_name;
-			// //if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-			// board.placed_cards.push_back(file_name);
-			// max--;
-			//cout << "Pics matrix[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
-			// cout << "Pics placed_cards[" << i << "][" << j << "] is:" << this -> board.matrix[i][j] << endl;
+			
 		}
 	}
-	//window.display();
-	// for (int i = 0; i < num_cards; i++) {
-	// 	cout << "Placed card:" << placed_cards[i] << endl;
-	// }
-	// for (int i = 0; i < num_cards; i++) {
-	// 	for (int j = 0; j < num_cards; j++) {
-	// 		cout << "matrix at [" << i << "][" << j << "] is: " << matrix[i][j]->file_name << endl;
-	// 	}
-	// }
-
-
 }
-// void BoardType::set_cards() {
-// 	for (int i = 0; i < (this -> num_cards + 1); i++) {
-// 		for (int j = 0; j < (this -> num_cards + 1); j++) {
-// 			int x = this -> set_CARD_W(i);
-// 			int y = this -> set_CARD_H(j);
-// 			//call to sfm with new nums
-// 			int sprite_num = i + j;
-// 			string string_i = to_string(i);
-// 			string string_j = to_string(j);
-// 			string sprite_name = "sprite_" + string_i + "_" + string_j;
-// 			cout << "sprite_name is:" << sprite_name << endl;
-// 			sf::Sprite sprite_name;
-// 			window.draw(sprite_name);
-// 			sprite_name.setPosition(sf::Vector2f(x.f, y.f));
-// 		}
-// 	}
-// }
 
 int BoardType::makeFileList(string filepath, vector<string> &name) {
     // vector<string> one_syl_nouns;
@@ -261,26 +211,6 @@ int BoardType::randomNumber(int max) {
 	return num;
 
 }
-
-// string GameType::randomFileName(vector<string> &name_vec, int max) {
-// 	// takes in vector of file names and 
-// 	// upper bound to generate random number
-// 	// returns string of file name
-//     string pic;
-//     int num = 0;
-//     /* initialize random seed: */
-//     srand (time(NULL));
-//     num = (rand() % (max)) + 1;
-	
-// 	// cout << "random number is:" << num << endl;
-
-// 	pic = name_vec[num-1];
-
-//     // cout << "Pic name is: " << pic << " and we have a total of " << name_vec.size() << endl;
-//     // cout << "Random pic name in file: " << name_vec[num] << endl;
-// 	// name_vec.erase(name_vec.begin()+ (num -1));
-//     return pic;
-// }
 
 void BoardType::sfml_driver() {
 	/*******************************************
