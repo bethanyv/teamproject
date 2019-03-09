@@ -126,7 +126,7 @@ int BoardType::set_card_w(int y) {
 void BoardType::set_cards(string path) {
 	string pic;
 	//fill our vector up with picture file names
-	GameType::makeFileList(path, pics);
+	makeFileList(path, pics);
 	int max = 16;
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
