@@ -259,12 +259,12 @@ void BoardType::sfml_driver() {
 			window.clear();
             window.draw(sprite1);
 
-			//set_cards("female_cs.txt");
-			for (int i = 0; i < num_cards; i++) {
-				for (int j = 0; j < num_cards; j++) {
-					window.draw(matrix[i][j] -> sprite);
-				}
-			}
+			set_cards("female_cs.txt");
+			// for (int i = 0; i < num_cards; i++) {
+			// 	for (int j = 0; j < num_cards; j++) {
+			// 		window.draw(matrix[i][j] -> sprite);
+			// 	}
+			// }
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
