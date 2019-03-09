@@ -156,7 +156,7 @@ void BoardType::set_cards(string path) {
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string file_name = pics[rand_num];
-			//file_name = file_name.c_str();
+			file_name = file_name.c_str();
 
 			sf::Texture texture;
 			if(!texture.loadFromFile("file_name", sf::IntRect(0, 0, card_w, card_h))) {
@@ -176,7 +176,6 @@ void BoardType::set_cards(string path) {
 			float y = set_card_w(j);
 
 			//original code that worked from sfml driver. trying to imitate this
-			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
 			// window.draw(matrix[i][j] -> sprite);
 			max --;
 			//NON-WORKING CODE BELOW
