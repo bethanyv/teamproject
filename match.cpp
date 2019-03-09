@@ -17,15 +17,10 @@
 
 using namespace std;
 
-//TODO: BETHANY!!! READ THIS: It's 3:00am and I finally got my set_cards
-// working! So, our board matrix should have all of our cards and 
-//all of our cards should have sprites with different textures attached to them
-//
-//so the real todo:
-//change the draw sprite functionality in sfml driver to loop over our board's matrix
-//and draw the sprites attached to our cards
-//too tired to decide if that's better to do in sfml driver or in set_cards. right now
-//my tired logic says sfml driver.
+//Note to Bethany: I thought that I converted all of our fiile name strings to string*'s
+//but somewhere along the line I didn't do it right. At least that's what I could
+//gather after googling the seg fault error.
+//feel free to look around and figure it out.
 
 //Kristine - added a sprite data member to CardType
 
@@ -146,7 +141,7 @@ void BoardType::set_cards(string path) {
 	int max = 16;
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
-			//testing random number instead of strin
+			//testing random number instead of string
 			int rand_num = randomNumber(max);
 			matrix2[i][j] = rand_num;
 			// use random number to index into pics
