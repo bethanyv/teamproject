@@ -116,9 +116,10 @@ void BoardType::set_buffer(int num) {
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
 	int leftover_w = width - (card_w*num);
-	buffer_w = leftover_w/5;
+	//buffer_w = leftover_w/5;
 	int leftover_h = height - (card_h*num);
-	buffer_h = leftover_h/5;
+	//buffer_h = leftover_h/5;
+
 }
 
 int BoardType::set_card_h(int x) {
@@ -134,6 +135,7 @@ int BoardType::set_card_w(int y) {
 	int pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
 }
+
 void BoardType::set_cards(string path) {
 	string pic;
 	//fill our vector up with picture file names
@@ -166,6 +168,7 @@ void BoardType::set_cards(string path) {
 			// 	placed_cards.push_back(file_name);
 			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
+			// set buffer only does one row and one column
 			set_buffer(4);
 			float x = set_card_h(i);
 			float y = set_card_w(j);
@@ -189,9 +192,9 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
             while(getline(myfile, line)){
                 // cout << "In makeFileList and saving: " << line << endl;
 				string* new_line = new string;
-				// new_line = &line;
-				// cout << "after mallocing, we get :" << new_line << endl;
-				// cout << "Dereferencing that, we get: " << *new_line << endl;
+				new_line = &line;
+				//cout << "after mallocing, we get :" << new_line << endl;
+				//cout << "Dereferencing that, we get: " << *new_line << endl;
                 name.push_back(new_line);
             }
         }
@@ -260,6 +263,7 @@ void BoardType::sfml_driver() {
             window.draw(sprite1);
 
 			set_cards("female_cs.txt");
+
 			// for (int i = 0; i < num_cards; i++) {
 			// 	for (int j = 0; j < num_cards; j++) {
 			// 		window.draw(matrix[i][j] -> sprite);
@@ -267,13 +271,17 @@ void BoardType::sfml_driver() {
 			// }
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
-			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
+			int x = set_card_w(0);
+			sprite1.setPosition(sf::Vector2f(x, 10.f));
 			window.draw(sprite2);
-			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
+			x = set_card_w(1);
+			sprite2.setPosition(sf::Vector2f(x, 10.f));
 			window.draw(sprite3);
-			sprite3.setPosition(sf::Vector2f(250.f, 10.f));
+			x = set_card_w(2);
+			sprite3.setPosition(sf::Vector2f(x, 10.f));
 			window.draw(sprite4);
-			sprite4.setPosition(sf::Vector2f(370.f, 10.f));
+			x = set_card_w(3);
+			sprite4.setPosition(sf::Vector2f(x, 10.f));
 			
 			//vertical
 			window.draw(sprite5);
