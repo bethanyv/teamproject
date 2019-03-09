@@ -217,10 +217,6 @@ int BoardType::randomNumber(int max) {
 void BoardType::sfml_driver() {
 	/*******************************************
      * SFML Events Here
-     * To Compile:
-     * g++ -c match_main.cpp main.cpp main.ppp
-     * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
-     * ./match-app
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
@@ -263,7 +259,7 @@ void BoardType::sfml_driver() {
 			window.clear();
             window.draw(sprite1);
 
-			set_cards("female_cs.txt");
+			//set_cards("female_cs.txt");
 			for (int i = 0; i < num_cards; i++) {
 				for (int j = 0; j < num_cards; j++) {
 					window.draw(matrix[i][j] -> sprite);
