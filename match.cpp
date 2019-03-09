@@ -309,11 +309,11 @@ int GameType::runGame()
 	for (int i = 0; i < board.num_cards; i++) {
 		cout << "Placed card:" << board.placed_cards[i] << endl;
 	}
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	for (int j = 0; j < board.num_cards; j++) {
-	// 		cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix2[i][j].file_name << endl;
-	// 	}
-	// }
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j].file_name << endl;
+		}
+	}
 
     board.sfml_driver();
 
