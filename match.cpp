@@ -286,8 +286,8 @@ int GameType::runGame()
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.matrix[i][j].file_name = file_name;
 				board.placed_cards.push_back(file_name);
-			cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
-			board.placed_cards.push_back(file_name);
+			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
+			board.placed_cards.inser(board.placed_cards.end(), file_name);
 			
 			//
 
@@ -315,7 +315,7 @@ int GameType::runGame()
 		}
 	}
 
-    board.sfml_driver();
+    //board.sfml_driver();
 
     return 0;
 }
