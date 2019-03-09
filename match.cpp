@@ -172,8 +172,8 @@ void BoardType::set_cards(string path) {
 				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
 			set_buffer(4);
-			int x = set_card_h(i);
-			int y = set_card_w(j);
+			float x = set_card_h(i);
+			float y = set_card_w(j);
 
 			matrix[i][j] -> sprite.
 			//original code that worked from sfml driver. trying to imitate this
