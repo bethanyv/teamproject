@@ -29,7 +29,7 @@ public:
     void flip();
     bool check_match(CardType card);
     string file_name;
-    sf::Sprite sprite;
+    sf::Sprite* sprite;
     // TODO: add pair
 };
 
