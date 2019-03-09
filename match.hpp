@@ -25,11 +25,11 @@ public:
     //TODO constructor to pass in an index into the jpeg vector
     bool is_flipped;
     int front; // index into jpeg vector
-    int back; // card_type_vector[0]
+    sf::Texture back; // card_type_vector[0]
     void flip();
     bool check_match(CardType card);
     string file_name;
-    sf::Sprite* sprite;
+    sf::Sprite sprite;
     // TODO: add pair
 };
 

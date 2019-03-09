@@ -31,8 +31,13 @@ CardType::CardType() {
 	int front = 0;
 	int back = 0;
 	string file_name = "pics/back.jpg";
-	sf::Sprite* new_sprite = new sf::Sprite;
-	sprite = new_sprite;
+	// sf::Sprite* = new new_sprite;
+	// sprite = new_sprite;
+	sf::Texture texture;
+	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+	back = texture;
 }
 
 PileType::PileType() {
@@ -144,7 +149,7 @@ void BoardType::set_cards(string path) {
 			file_name = file_name.c_str();
 			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
 				matrix[i][j] -> file_name = file_name;
-				matrix[i][j] -> sprite -> setTexture(file_name);
+				matrix[i][j] -> sprite.setTexture(file_name);
 
 				//TODO: figure out why this isn't adding file_name to placed cards
 				placed_cards.push_back(file_name);
