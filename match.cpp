@@ -282,19 +282,21 @@ int GameType::runGame()
 			// check placed_cards and if not there then 
 			// set it to this position on the board
 			string file_name = pics[rand_num];
-			//not sure if statement works
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.matrix[i][j].file_name = file_name;
 				board.placed_cards.push_back(file_name);
+			//TODO: figure out why this isn't adding file_name to placed cards
+			board.placed_cards.push_back(file_name);
+			max --;
+			//NON-WORKING CODE BELOW
+			//Keeping for now, just in case I need syntax or really break something
 			//cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
-			board.placed_cards.insert(board.placed_cards.end(), file_name);
-			
 			//
 
 			//board.matrix[i][j].file_name = rand_num;
 			// if (find(board.placed_cards.begin(), board.placed_cards.end(), rand_num) == board.placed_cards.end());
 			// 	board.placed_cards.push_back(rand_num);
-			max--;
+			// max--;
 			//below worked (kinda) for strings
 			// string file_name = randomFileName(pics, max);
 			// board.matrix2[i][j] = file_name;
