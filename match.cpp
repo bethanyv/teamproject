@@ -285,8 +285,9 @@ int GameType::runGame()
 			//not sure if statement works
 			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
 				board.matrix[i][j].file_name = file_name;
+				board.placed_cards.push_back(file_name);
 			cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
-			//board.placed_cards.push_back(file_name);
+			board.placed_cards.push_back(file_name);
 			
 			//
 
