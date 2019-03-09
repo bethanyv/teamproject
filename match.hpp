@@ -120,7 +120,7 @@ public:
     void remove_match();
     void sfml_driver();
 
-    int makeFileList(string filepath, vector<string> &name);
+    int makeFileList(string filepath, vector<string*> &name);
     //string randomFileName(vector<string> &name, int max);
     int randomNumber(int max);
 };
