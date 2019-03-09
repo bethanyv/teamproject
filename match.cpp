@@ -34,7 +34,7 @@ CardType::CardType() {
 	// sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
 	sf::Texture texture;
-	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, CARD_W, CARD_H))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 	back = texture;
@@ -113,23 +113,23 @@ void BoardType::set_buffer(int num) {
 	// takes in  # of cards and spot on board and computes
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
-	int leftover_w = width - (card_w*num);
+	int leftover_w = width - (CARD_W*num);
 	buffer_w = leftover_w/5;
-	int leftover_h = height - (card_h*num);
+	int leftover_h = height - (CARD_H*num);
 	buffer_h = leftover_h/5;
 }
 
-int BoardType::set_card_h(int x) {
+int BoardType::set_CARD_H(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = this -> buffer_w + (this -> card_w * x) + (this->buffer_w * x);
+	int pos = this -> buffer_w + (this -> CARD_W * x) + (this->buffer_w * x);
 	return pos;
 }
 
-int BoardType::set_card_w(int y) {
+int BoardType::set_CARD_W(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = this -> buffer_h + (this -> card_h * y) + (this->buffer_h * y);
+	int pos = this -> buffer_h + (this -> CARD_H * y) + (this->buffer_h * y);
 	return pos;
 }
 void BoardType::set_cards(string path) {
@@ -189,8 +189,8 @@ void BoardType::set_cards(string path) {
 // void BoardType::set_cards() {
 // 	for (int i = 0; i < (this -> num_cards + 1); i++) {
 // 		for (int j = 0; j < (this -> num_cards + 1); j++) {
-// 			int x = this -> set_card_w(i);
-// 			int y = this -> set_card_h(j);
+// 			int x = this -> set_CARD_W(i);
+// 			int y = this -> set_CARD_H(j);
 // 			//call to sfm with new nums
 // 			int sprite_num = i + j;
 // 			string string_i = to_string(i);
@@ -270,7 +270,7 @@ void BoardType::sfml_driver() {
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
-	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, CARD_W, CARD_H))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
@@ -310,7 +310,7 @@ void BoardType::sfml_driver() {
 			//set_cards();
 			//set_cards();
 
-			//sprite1.setPosition(sf::Vector2f(this -> set_card_w.f, 10.f));
+			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
 			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
 			window.draw(sprite2);
 			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
