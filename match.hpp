@@ -29,6 +29,7 @@ public:
     void flip();
     bool check_match(CardType card);
     string file_name;
+    sf::Sprite sprite;
     // TODO: add pair
 };
 
@@ -96,6 +97,7 @@ public:
     vector<vector<CardType> > matrix;
     vector<vector<int> > matrix2;
     vector<string> placed_cards;
+    vector<string> pics;
 
     //window height/width
     int height = 650; 
@@ -110,12 +112,16 @@ public:
     int set_card_h(int x);
     int set_card_w(int y);
     void set_buffer(int num);
-    void set_cards();
+    void set_cards(string path);
     // in update board, update the screen too
     void update_board();
     void is_full();
     void remove_match();
     void sfml_driver();
+
+    int makeFileList(string filepath, vector<string> &name);
+    //string randomFileName(vector<string> &name, int max);
+    int randomNumber(int max);
 };
 
 class GameType{
@@ -129,11 +135,6 @@ public:
     PlayerType player2;
 
     vector<CardType> all_cards;
-    vector<string> pics;
-
-    int makeFileList(string filepath, vector<string> &name);
-    string randomFileName(vector<string> &name, int max);
-    int randomNumber(int max);
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
