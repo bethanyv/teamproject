@@ -322,7 +322,8 @@ void BoardType::sfml_driver() {
 int GameType::runGame()
 {
 	//this -> board.set_buffer(4);
-	set_cards();
+	string path = "female_cs.txt"
+	set_cards(path);
 
     //board.sfml_driver();
 
