@@ -283,8 +283,8 @@ int GameType::runGame()
 			// set it to this position on the board
 			string file_name = pics[rand_num];
 			//not sure if statement works
-			//if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
-			board.matrix[i][j].file_name = file_name;
+			if (find(board.placed_cards.begin(), board.placed_cards.end(), file_name) == board.placed_cards.end());
+				board.matrix[i][j].file_name = file_name;
 			cout << "Stored filename:" << board.matrix[i][j].file_name << endl;
 			//board.placed_cards.push_back(file_name);
 			
