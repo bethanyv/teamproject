@@ -178,7 +178,7 @@ void BoardType::set_cards(string path) {
 	}
 }
 
-int BoardType::makeFileList(string filepath, vector<string> &name) {
+int BoardType::makeFileList(string filepath, vector<string*> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
