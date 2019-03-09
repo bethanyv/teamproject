@@ -27,7 +27,7 @@ public:
     int front; // index into jpeg vector
     int back; // card_type_vector[0]
     void flip();
-    void check_match();
+    bool check_match(CardType card);
     string file_name;
     // TODO: add pair
 };

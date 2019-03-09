@@ -44,7 +44,7 @@ PlayerType::PlayerType() {
 	PileType pile;
 }
 
-BoardType::BoardType() {
+BoardType::BoardType() {\// BETHANY HERE - how do we want to intialize cards? set a front every time?
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
@@ -70,8 +70,9 @@ GameType::GameType(){
 	//importing 
 }
 
-void CardType::check_match() {
-    // return 0;
+bool CardType::check_match(CardType card) {
+	// return true if the cards match, false otherwise;
+	return card->front == front;
 }
 
 void PlayerType::move() {
