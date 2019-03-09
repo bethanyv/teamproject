@@ -328,12 +328,12 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	string pic;
 	//fill our vector up with picture file names
-	BoardType::makeFileList("female_cs.txt", pics);
+	BoardType::makeFileList("female_cs.txt", board.pics);
 	int max = 16;
 	for (int i = 0; i < board.num_cards; i++) {
 		for (int j = 0; j < board.num_cards; j++) {
 			//testing random number instead of strin
-			int rand_num = randomNumber(max);
+			int rand_num = board.randomNumber(max);
 			board.matrix2[i][j] = rand_num;
 			// use random number to index into pics
 			// check placed_cards and if not there then 
