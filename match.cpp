@@ -31,6 +31,8 @@ CardType::CardType() {
 	int front = 0;
 	int back = 0;
 	string file_name = "pics/back.jpg";
+	sf::Sprite new_sprite;
+	sprite = new_sprite;
 }
 
 PileType::PileType() {
