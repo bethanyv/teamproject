@@ -72,7 +72,7 @@ GameType::GameType(){
 	//importing 
 }
 
-void CardType::check_match() {
+bool CardType::check_match() {
     // return 0;
 }
 
