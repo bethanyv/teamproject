@@ -348,7 +348,7 @@ void BoardType::sfml_driver() {
 int GameType::runGame()
 {
 	//this -> board.set_buffer(4);
-	board.set_cards();
+	board.set_cards("female_cs.txt");
 
 
 
@@ -402,7 +402,7 @@ int GameType::runGame()
 	// 	}
 	// }
 
-    board.sfml_driver("female_cs.txt");
+    board.sfml_driver();
 
     return 0;
 }
