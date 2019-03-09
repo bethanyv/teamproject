@@ -53,7 +53,7 @@ BoardType::BoardType() {
 		for (int j = 0; j < matrix.size(); j++) {
 			//TODO clean up memory aka delete[]
 			CardType* card = new CardType;
-			matrix[i][j] = &card;
+			matrix[i][j] = card;
 		}
 	}
 
