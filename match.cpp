@@ -46,7 +46,7 @@ PlayerType::PlayerType() {
 	PileType pile;
 }
 
-BoardType::BoardType() {\// BETHANY HERE - how do we want to intialize cards? set a front every time?
+BoardType::BoardType() {// BETHANY HERE - how do we want to intialize cards? set a front every time?
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
