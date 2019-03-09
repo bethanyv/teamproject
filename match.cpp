@@ -29,7 +29,7 @@ void PileType::add_to_pile(CardType card) {
 CardType::CardType() {
 	bool is_flipped = false;
 	int front = 0;
-	int back = 0;
+	// int back = 0;
 	string file_name = "pics/back.jpg";
 	// sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
