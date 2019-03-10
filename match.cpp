@@ -258,32 +258,14 @@ void BoardType::sfml_driver() {
 				window.close();
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				// //left mouse button is pressed: print found a mouse click!
-				// sf::Font reg_font;
-				// if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
-				// 	cout << "Error loading regular font" << endl;
-				// }
-				// sf::Text text;
+				
+				cout << "Found a mouse click!" << endl;
 
-				// //select the font
-				// text.setFont(reg_font);
+				// get the local mouse position (relative to a window)
+				//Kristine edit: looks like this vector has 2 public attributes: x and y
+				sf::Vector2i localPosition = sf::Mouse::getPosition(window); // window is a sf::Window
 
-				// //set the string to display
-				// text.setString("Found a mouse click!");
-
-				// //set the character size
-				// text.setCharacterSize(24); //in pixels, not points!
-
-				// //set the color
-				// text.setFillColor(sf::Color::Red);
-
-				// //set the text style
-				// text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-
-				// //inside the main loop, betwee window.clear() and window.display()
-				// window.draw(text);
-
-				cout << "Found a mouse click!";
+				cout << "Local position is: " << localPosition << endl;
 			}
 		}
 
