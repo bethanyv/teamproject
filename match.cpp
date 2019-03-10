@@ -173,6 +173,9 @@ void BoardType::set_cards(string path) {
 			float x = set_card_h(i);
 			float y = set_card_w(j);
 
+			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+
+
 			max --;
 			
 		}
@@ -271,25 +274,32 @@ void BoardType::sfml_driver() {
 			// }
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
-			int x = set_card_w(0);
-			sprite1.setPosition(sf::Vector2f(x, 10.f));
-			window.draw(sprite2);
-			x = set_card_w(1);
-			sprite2.setPosition(sf::Vector2f(x, 10.f));
-			window.draw(sprite3);
-			x = set_card_w(2);
-			sprite3.setPosition(sf::Vector2f(x, 10.f));
-			window.draw(sprite4);
-			x = set_card_w(3);
-			sprite4.setPosition(sf::Vector2f(x, 10.f));
+			// int x = set_card_w(0);
+			// sprite1.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite2);
+			// x = set_card_w(1);
+			// sprite2.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite3);
+			// x = set_card_w(2);
+			// sprite3.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite4);
+			// x = set_card_w(3);
+			// sprite4.setPosition(sf::Vector2f(x, 10.f));
 			
-			//vertical
-			window.draw(sprite5);
-			sprite5.setPosition(sf::Vector2f(10.f, 170.f));
-			window.draw(sprite6);
-			sprite6.setPosition(sf::Vector2f(10.f, 330.f));
-			window.draw(sprite7);
-			sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+			// //vertical
+			// window.draw(sprite5);
+			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
+			// window.draw(sprite6);
+			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
+			// window.draw(sprite7);
+			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+
+
+			for (int i = 0; i < num_cards; i ++) {
+				for (int j = 0; j < num_cards; j++) {
+					window.draw(matrix[i][j] -> sprite);
+				}
+			}
 			window.display();
 	}
 }
