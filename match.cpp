@@ -110,11 +110,11 @@ const string CardType::getFile_name() {
 	return this -> file_name;
 } 
 
-sf::Texture getFront() {
+sf::Texture CardType::getFront() {
 	return this -> front;
 }
 
-void CardType::flip(CardType card) {
+void CardType::flip() {
 	if(is_flipped) {
 		is_flipped = false;
 	}
