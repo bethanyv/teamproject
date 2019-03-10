@@ -38,7 +38,7 @@ CardType::CardType() {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
-	const file_name = "pics/back.jpg";
+	const string file_name = "pics/back.jpg";
 	//sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
 	sf::Texture texture;
