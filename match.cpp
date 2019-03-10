@@ -258,30 +258,30 @@ void BoardType::sfml_driver() {
 				window.close();
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				// //left mouse button is pressed: print found a mouse click!
-				// sf::Font reg_font;
-				// if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
-				// 	cout << "Error loading regular font" << endl;
-				// }
-				// sf::Text text;
+				//left mouse button is pressed: print found a mouse click!
+				sf::Font reg_font;
+				if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
+					cout << "Error loading regular font" << endl;
+				}
+				sf::Text text;
 
-				// //select the font
-				// text.setFont(reg_font);
+				//select the font
+				text.setFont(reg_font);
 
-				// //set the string to display
-				// text.setString("Found a mouse click!");
+				//set the string to display
+				text.setString("Found a mouse click!");
 
-				// //set the character size
-				// text.setCharacterSize(24); //in pixels, not points!
+				//set the character size
+				text.setCharacterSize(24); //in pixels, not points!
 
-				// //set the color
-				// text.setFillColor(sf::Color::Red);
+				//set the color
+				text.setFillColor(sf::Color::Red);
 
-				// //set the text style
-				// text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+				//set the text style
+				text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
-				// //inside the main loop, betwee window.clear() and window.display()
-				// window.draw(text);
+				//inside the main loop, betwee window.clear() and window.display()
+				window.draw(text);
 
 				cout << "Found a mouse click!";
 			}
