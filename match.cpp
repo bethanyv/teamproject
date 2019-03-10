@@ -152,7 +152,7 @@ void BoardType::set_cards(string path) {
 			// cout << "pics[rand_num] is: " << pics[rand_num] << endl;
 			// cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
 			string* file_name = pics[rand_num];
-			//cout << "File_name is: " << file_name << endl;
+			cout << "File_name is: " << file_name << endl;
 			//file_name = file_name.c_str();
 
 			// sf::Texture texture;
@@ -194,7 +194,7 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
 				string* new_line = new string;
 				new_line = &line;
 				cout << "after mallocing, we get :" << new_line << endl;
-				cout << "Dereferencing that, we get: " << *new_line << endl;
+				// cout << "Dereferencing that, we get: " << *new_line << endl;
                 name.push_back(new_line);
             }
         }
