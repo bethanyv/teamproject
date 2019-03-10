@@ -305,7 +305,7 @@ void BoardType::sfml_driver() {
 					float x = set_card_h(i);
 					float y = set_card_w(j);
 
-					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+					matrix[i][j] -> sprite.setPosition(sf::Vector2f(const x, const y));
 
 					window.draw(matrix[i][j] -> sprite);
 				}
