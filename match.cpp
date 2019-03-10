@@ -149,20 +149,21 @@ void BoardType::set_cards(string path) {
 			// use random number to index into pics
 			// check placed_cards and if not there then 
 			// set it to this position on the board
-			// cout << "pics[rand_num] is: " << pics[rand_num] << endl;
-			// cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
-			const string* file_name = const_cast<string*>(pics[rand_num]);
-			// cout << "File_name is: " << *file_name << endl;
+
+			cout << "pics[rand_num] is: " << pics[rand_num] << endl;
+			cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
+			string* file_name = pics[rand_num];
+			cout << "File_name is: " << *file_name << endl;
 			//file_name = file_name.c_str();
 
-			sf::Texture texture;
-			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
-				cout << "Error! File isn't loading." << endl;
-			}			
+			// sf::Texture texture;
+			// if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+			// 	cout << "Error! " << *file_name << " isn't loading." << endl;
+			// }			
 
-			//if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-			matrix[i][j] -> file_name = file_name;
-			matrix[i][j] -> sprite.setTexture(texture);
+			// if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
+			// 	matrix[i][j] -> file_name = file_name;
+			// 	matrix[i][j] -> sprite.setTexture(texture);
 
 			// 	//TODO: figure out why this isn't adding file_name to placed cards
 			// 	placed_cards.push_back(file_name);
@@ -195,6 +196,7 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
 				new_line = &line;
 				// cout << "after mallocing, we get :" << new_line << endl;
 				// cout << "Dereferencing that, we get: " << *new_line << endl;
+
                 name.push_back(new_line);
             }
         }
