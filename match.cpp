@@ -152,18 +152,19 @@ void BoardType::set_cards(string path) {
 
 			cout << "pics[rand_num] is: " << pics[rand_num] << endl;
 			cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
+
 			string* file_name = pics[rand_num];
-			cout << "File_name is: " << *file_name << endl;
+			// cout << "File_name is: " << *file_name << endl;
 			//file_name = file_name.c_str();
 
-			// sf::Texture texture;
-			// if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
-			// 	cout << "Error! " << *file_name << " isn't loading." << endl;
-			// }			
+			sf::Texture texture;
+			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+				cout << "Error! File isn't loading." << endl;
+			}			
 
-			// if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-			// 	matrix[i][j] -> file_name = file_name;
-			// 	matrix[i][j] -> sprite.setTexture(texture);
+			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
+				matrix[i][j] -> file_name = file_name;
+				matrix[i][j] -> sprite.setTexture(texture);
 
 			// 	//TODO: figure out why this isn't adding file_name to placed cards
 			// 	placed_cards.push_back(file_name);
