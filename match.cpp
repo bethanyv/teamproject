@@ -225,46 +225,11 @@ void BoardType::sfml_driver() {
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
-	//Adding temporary textures array so we can have diff pictures displaying
-    sf::Texture textures[16];
-	sf::Texture texture0;
-    textures[0] = texture0;
-	if(!texture0.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! Texture isn't loading." << endl;
-	}
-	sf::Texture texture1;
-	textures[1] = texture1;
-	if(!texture1.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! Texture isn't loading." << endl;
-	}
-	sf::Texture texture2;
-	textures[2] = texture2;
-	if(!texture2.loadFromFile("pics/borg.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+    //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
+    sf::Texture texture;
+	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
-	sf::Texture texture3;
-	textures[3] = texture3;
-	if(!texture3.loadFromFile("pics/haibt.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! Texture isn't loading." << endl;
-	}
-	sf::Texture texture4;
-	textures[4] = texture4;
-	if(!texture3.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! Texture isn't loading." << endl;
-	}
-	//not used yet:
-	// pics/hamilton.jpg
-	// pics/holberton.jpg
-	// pics/hopper.jpg
-	// pics/keller.jpg
-	// pics/liskov.jpg
-	// pics/lovelace.jpg
-	// pics/meltzer.jpg
-	// pics/perlman.jpg
-	// pics/rhodes.jpg
-	// pics/sammet.jpg
-	// pics/spence.jpg
-	// pics/teitelbaum.jpg
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
@@ -334,7 +299,7 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					matrix[i][j] -> sprite.setTexture(texture1);
+					matrix[i][j] -> sprite.setTexture(texture);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
