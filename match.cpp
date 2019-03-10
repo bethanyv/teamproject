@@ -21,6 +21,12 @@ using namespace std;
 // I'm going to bed and probably won't touch this project at all tomorrow unless you ask me to
 //or unless something crazy happens.
 
+//ALSO: I remembered wnhy there is a black space to the right!
+//
+//I wanted to make sure that we had a place to display the Player Piles (with the matches they found)
+//We originally had those piles on the bottom but we do not have very much vertical real estate
+//so I thought we could change it to displaying that info on the right hand side
+
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
 	// vector of which card was matched
