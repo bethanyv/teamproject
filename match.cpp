@@ -17,12 +17,7 @@
 
 using namespace std;
 
-//Note to Bethany: I thought that I converted all of our fiile name strings to string*'s
-//but somewhere along the line I didn't do it right. At least that's what I could
-//gather after googling the seg fault error.
-//feel free to look around and figure it out.
-
-//Kristine - added a sprite data member to CardType
+//GO TEAM. PERLMAN FOR LIFE
 
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
