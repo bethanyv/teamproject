@@ -236,21 +236,21 @@ void BoardType::sfml_driver() {
 	}
 	
 	
-	pics/borg.jpg
-	pics/haibt.jpg
-	pics/hamilton.jpg
-	pics/holberton.jpg
-	pics/hopper.jpg
-	pics/keller.jpg
-	pics/liskov.jpg
-	pics/lovelace.jpg
-	pics/meltzer.jpg
-	pics/perlman.jpg
-	pics/rhodes.jpg
-	pics/sammet.jpg
-	pics/spence.jpg
-	pics/teitelbaum.jpg
-	pics/back.jpg
+	// pics/borg.jpg
+	// pics/haibt.jpg
+	// pics/hamilton.jpg
+	// pics/holberton.jpg
+	// pics/hopper.jpg
+	// pics/keller.jpg
+	// pics/liskov.jpg
+	// pics/lovelace.jpg
+	// pics/meltzer.jpg
+	// pics/perlman.jpg
+	// pics/rhodes.jpg
+	// pics/sammet.jpg
+	// pics/spence.jpg
+	// pics/teitelbaum.jpg
+	// pics/back.jpg
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
