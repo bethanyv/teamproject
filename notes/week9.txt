@@ -1,0 +1,20 @@
+We just decided:
+- to place cards on board in correct areas ( one jpg now)
+- ai later (possibly not at all if running out of time)
+
+KRISTINE IN CHARGE OF:
+Handle click event in right area - returns card in correct place of the matrix.
+Each card should have an x and y coordinate when constructed. (see todo)
+Resize on SFML? - whoever gets done first
+
+
+BETHANY IN CHARGE OF:
+Move function - logic for clicking an image, check match, if match, then add to pile. etc. flip again
+Handle turn swapping
+Rest of the logic stuff
+Reiseze on SFML? - whoever gets done first
+
+Will have lots of meetings in class and work office hours this week. Plan on ironing out the details of our presentation on Thursday.
+
+ASK IN OFFICE HOURS:
+How to get file names set as textures. So close and yet so far.
