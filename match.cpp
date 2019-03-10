@@ -155,7 +155,7 @@ void BoardType::set_cards(string path) {
 			// cout << "File_name is: " << *file_name << endl;
 			//file_name = file_name.c_str();
 
-			// sf::Texture texture;
+			sf::Texture texture;
 			if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 				cout << "Error! File isn't loading." << endl;
 			}			
