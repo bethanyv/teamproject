@@ -262,9 +262,20 @@ void BoardType::sfml_driver() {
 				cout << "Found a mouse click!" << endl;
 
 				// get the local mouse position (relative to a window)
-				//Kristine edit: looks like this vector has 2 public attributes: x and y
+				//looks like this vector has 2 public attributes: x and y
+				//think of it as a point
 				//tried printing it though and I got an error
+				//have not tried printing just x or y
 				sf::Vector2i localPosition = sf::Mouse::getPosition(window); // window is a sf::Window
+				for (int i = 0; i < num_cards; i ++) {
+					for (int j = 0; j < num_cards; j++) {
+						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
+						if (boundingBox.contains(point))
+						{
+							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+						}
+					}
+				}
 
 			}
 		}
