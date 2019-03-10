@@ -225,20 +225,29 @@ void BoardType::sfml_driver() {
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
-    sf::Texture textures[16];
+    sf::Texture textures[4];
+	sf::Texture texture0;
+    textures[0] = texture0;
+	if(!texture0.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! Texture isn't loading." << endl;
+	}
+	textures[1] = texture1;
 	sf::Texture texture1;
-    textures[0] = texture1;
-	if(!texture1.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	if(!texture1.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! Texture isn't loading." << endl;
 	}
+	
+	textures[2] = texture2;
 	sf::Texture texture2;
-	if(!texture2.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	if(!texture2.loadFromFile("pics/borg.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
+	textures[3] = texture3;
+	sf::Texture texture3;
+	if(!texture3.loadFromFile("pics/haibt.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! Texture isn't loading." << endl;
+	}
 	
-	
-	// pics/borg.jpg
-	// pics/haibt.jpg
 	// pics/hamilton.jpg
 	// pics/holberton.jpg
 	// pics/hopper.jpg
@@ -321,7 +330,7 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					matrix[i][j] -> sprite.setTexture(texture);
+					matrix[i][j] -> sprite.setTexture(texture1);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
