@@ -101,6 +101,15 @@ const string CardType::getFile_name(CardType card) {
 	return file_name;
 } 
 
+void CardType::flip() {
+	if(is_flipped) {
+		is_flipped = false;
+	}
+	else {
+		is_flipped = true;
+	}
+}
+
 void PlayerType::move() {
     // return 0;
 }
