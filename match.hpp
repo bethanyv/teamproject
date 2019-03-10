@@ -25,10 +25,11 @@ public:
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
     sf::Sprite getSprite();
-    const string getFile_name();
+    string getFile_name();
     void flip();
     int get_w();
     int get_h();
+    void set_file(string file);
     sf::Texture getFront();
     bool check_match(CardType card);
 
@@ -38,7 +39,7 @@ private:
     sf::Texture front; // index into jpeg vector
     sf::Texture back; // card_type_vector[0]
 
-    const string file_name;
+    string file_name;
     sf::Sprite sprite;
     int width = 200;
     int height = 300;
@@ -104,7 +105,9 @@ public:
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
-    CardType empty;
+    
+
+    // CardType* empty;
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;

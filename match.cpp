@@ -38,7 +38,7 @@ CardType::CardType() {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
-	const string file_name = "pics/back.jpg";
+	string file_name = "pics/back.jpg";
 	//sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
 	sf::Texture texture;
@@ -76,8 +76,10 @@ BoardType::BoardType() {
 			matrix[i][j] = card;
 		}
 	}
-	empty.set front = "pics/empty.png"
-    empty.flip();
+	// empty = new CardType;
+	// CardType empty_set = *empty;
+	// empty_set.set_file("pics/empty.png");
+ //    empty_set.flip();
 	matrix2.resize(num_cards);
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
@@ -107,7 +109,12 @@ bool CardType::check_match(CardType card) {
     // return 0;
 }
 
-const string CardType::getFile_name() {
+void CardType::set_file(string file) {
+	this -> file_name = file;
+}
+
+
+string CardType::getFile_name() {
 	return this -> file_name;
 } 
 
@@ -140,25 +147,27 @@ void BoardType::update_board() {
     // return 0;
 }
 bool BoardType::is_empty() {
-	for(int i = 0; i < num_cards; i++) {
-		for(int j = 0; j < num_cards; j++) {
-			if(!(matrix[i][j]->front == empty.front)) {
-				return false;
-			}
-		}
-	}
+	// for(int i = 0; i < num_cards; i++) {
+	// 	for(int j = 0; j < num_cards; j++) {
+	// 		CardType card = *(matrix[i][j]);
+	// 		if(!(card.getFile_name() == empty.getFile_name())) {
+	// 			return false;
+	// 		}
+	// 	}
+	// }
     return true;
 }
 
 // if remove match is found, we want to get rid of the card types
 void BoardType::remove_match(CardType card) {
-	for(int i = 0; i < num_cards; i++) {
-		for(int j = 0; j < num_cards; j++) {
-			if(matrix[i][j]->front == card.front) {
-				matrix[i][j] = empty;
-			}
-		}
-	}
+	// for(int i = 0; i < num_cards; i++) {
+	// 	for(int j = 0; j < num_cards; j++) {
+	// 		CardType card_at_ij = *(matrix[i][j]);
+	// 		if(card_at_ij.getFile_name() == card.getFile_name()) {
+	// 			matrix[i][j] = empty;
+	// 		}
+	// 	}
+	// }
 
     // return 0;
 }
@@ -302,7 +311,8 @@ void BoardType::sfml_driver() {
     			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 				for (int i = 0; i < num_cards; i ++) {
 					for (int j = 0; j < num_cards; j++) {
-						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
+						CardType card_at_ij = *(matrix[i][j]);
+						sf::FloatRect boundingBox = card_at_ij.getSprite().getGlobalBounds();
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
@@ -352,16 +362,17 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					matrix[i][j] -> sprite.setTexture(texture);
+					CardType card_at_ij = *(matrix[i][j]);
+					card_at_ij.getSprite().setTexture(texture);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
 
 					//KRISTINE TODO: save x and y into that specific card
 
-					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+					card_at_ij.getSprite().setPosition(sf::Vector2f(x, y));
 
-					window.draw(matrix[i][j] -> sprite);
+					window.draw(card_at_ij.getSprite());
 				}
 			}
 			window.display();
