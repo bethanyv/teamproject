@@ -1,6 +1,7 @@
 #ifndef MATCH_HPP_
 #define MATCH_HPP_
 
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib> // Stream declarations
@@ -23,12 +24,20 @@ public:
     CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
-    bool is_flipped;
-    int front; // index into jpeg vector
-    int back; // card_type_vector[0]
+    sf::Sprite getSprite();
+    const string getFile_name();
     void flip();
-    void check_match();
-    string file_name;
+
+private:
+    bool is_flipped;
+    sf::Texture front; // index into jpeg vector
+    sf::Texture back; // card_type_vector[0]
+
+    bool check_match(CardType card);
+    const string file_name;
+    sf::Sprite sprite;
+    int width = 200;
+    int height = 300;
     // TODO: add pair
 };
 
@@ -82,8 +91,6 @@ class BoardType{
 public:
     // for when the user doesn't specify a size
     BoardType(); 
-    // for when the user does specify the size
-    BoardType(int size); 
 
      // I think it's easier to have this represent
     // The cards per row (aka 4) rather than
@@ -93,12 +100,14 @@ public:
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
-    vector<vector<CardType> > matrix;
-    vector<vector<string> > matrix2;
-    vector<string> placed_cards;
+    vector<vector<CardType*> > matrix;
+    vector<vector<int> > matrix2;
+    vector<string*> placed_cards;
+    vector<string*> pics;
 
-    int height = 650; 
-    int width = 800;
+    //window height/width
+    int height = 1250;
+    int width = 1050;
     int buffer_w = 10;
     int buffer_h = 10;
 
@@ -109,12 +118,16 @@ public:
     int set_card_h(int x);
     int set_card_w(int y);
     void set_buffer(int num);
-    void set_cards();
+    void set_cards(string path);
     // in update board, update the screen too
     void update_board();
     void is_full();
     void remove_match();
     void sfml_driver();
+
+    int makeFileList(string filepath, vector<string*> &name);
+    //string randomFileName(vector<string> &name, int max);
+    int randomNumber(int max);
 };
 
 class GameType{
@@ -128,10 +141,6 @@ public:
     PlayerType player2;
 
     vector<CardType> all_cards;
-    vector<string> pics;
-
-    int makeFileList(string filepath, vector<string> &name);
-    string randomFileName(vector<string> &name, int max);
 
     // need if's in the run_game() to determine what type players are ->
     int runGame();
