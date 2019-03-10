@@ -158,7 +158,7 @@ void BoardType::set_cards(string path) {
 			sf::Texture texture;
 			//cout << "file_name: " << file_name << endl;
 			//cout << "*file_name: " << *file_name << endl;
-			string new_name = file_name;
+			string new_name = file_name.c_str();
 			if(!texture.loadFromFile(new_name, sf::IntRect(0, 0, card_w, card_h))) {
 				cout << "Error! File isn't loading." << endl;
 			}			
@@ -194,11 +194,9 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
         //cout << line << endl;
             while(getline(myfile, line)){
                 //cout << "In makeFileList and saving: " << line << endl;
-				const char* new_line = new char;
-				new_line = line.c_str();
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
-				string* new_line = new string;
+				string* new_line;
 				new_line = &line;
 				// cout << "after mallocing, we get :" << new_line << endl;
 				// cout << "Dereferencing that, we get: " << *new_line << endl;
