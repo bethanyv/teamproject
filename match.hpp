@@ -105,8 +105,7 @@ public:
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
     CardType empty;
-    empty->front = "pics/empty.png"
-    empty.flip();
+
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
     vector<string*> placed_cards;

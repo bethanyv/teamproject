@@ -76,7 +76,8 @@ BoardType::BoardType() {
 			matrix[i][j] = card;
 		}
 	}
-
+	empty.set front = "pics/empty.png"
+    empty.flip();
 	matrix2.resize(num_cards);
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
