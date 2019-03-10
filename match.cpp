@@ -93,7 +93,7 @@ GameType::GameType(){
 }
 
 bool CardType::check_match(CardType card) {
-	return card.front == front;
+	return file_name == card -> file_name;
     // return 0;
 }
 
