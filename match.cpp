@@ -152,7 +152,7 @@ void BoardType::set_cards(string path) {
 			// cout << "pics[rand_num] is: " << pics[rand_num] << endl;
 			// cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
 			string* file_name = pics[rand_num];
-			cout << "File_name is: " << *file_name << endl;
+			cout << "File_name is: " << file_name << endl;
 			//file_name = file_name.c_str();
 
 			// sf::Texture texture;
