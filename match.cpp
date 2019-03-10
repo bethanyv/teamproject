@@ -263,9 +263,9 @@ void BoardType::sfml_driver() {
 
 				// get the local mouse position (relative to a window)
 				//Kristine edit: looks like this vector has 2 public attributes: x and y
+				//tried printing it though and I got an error
 				sf::Vector2i localPosition = sf::Mouse::getPosition(window); // window is a sf::Window
 
-				cout << "Local position is: " << localPosition << endl;
 			}
 		}
 
