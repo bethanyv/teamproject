@@ -257,7 +257,7 @@ void BoardType::sfml_driver() {
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
-			if (sf:Mouse::isButtonPressed(sf::Mouse::Left)) {
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 				// //left mouse button is pressed: print found a mouse click!
 				// sf::Font reg_font;
 				// if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
