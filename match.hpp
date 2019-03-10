@@ -95,6 +95,8 @@ public:
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
+    CardType empty;
+    empty->front = "pics/empty.png"
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
     vector<string*> placed_cards;
@@ -116,8 +118,8 @@ public:
     void set_cards(string path);
     // in update board, update the screen too
     void update_board();
-    void is_full();
-    void remove_match();
+    bool is_empty();
+    void remove_match(CardType card);
     void sfml_driver();
 
     int makeFileList(string filepath, vector<string*> &name);

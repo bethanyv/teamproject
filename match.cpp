@@ -109,10 +109,29 @@ int AI::random_pick() {
 void BoardType::update_board() {
     // return 0;
 }
-void BoardType::is_full() {
+bool BoardType::is_empty() {
+	// for(int i = 0; i < num_cards; i++) {
+	// 	for(int j = 0; j < num_cards; j++) {
+	// 		if(matrix[i][j]->front == card.front) {
+	// 
+	// 			matrix[i][j] = NULL;
+	// 		}
+	// 	}
+	// }
     // return 0;
 }
-void BoardType::remove_match() {
+
+// if remove match is found, we want to get rid of the card types
+void BoardType::remove_match(CardType card) {
+	for(int i = 0; i < num_cards; i++) {
+		for(int j = 0; j < num_cards; j++) {
+			if(matrix[i][j]->front == card.front) {
+				// HERE do we want to get rid of the card? Will that cause printing issues?
+				matrix[i][j] = empty;
+			}
+		}
+	}
+
     // return 0;
 }
 
