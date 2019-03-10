@@ -24,7 +24,7 @@ public:
     CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
-    Sprite getSprite();
+    sf::Sprite getSprite();
     void flip();
 
 private:

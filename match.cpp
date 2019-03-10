@@ -49,7 +49,7 @@ CardType::CardType() {
 	front = texture;
 }
 
-Sprite CardType::getSprite() {
+sf::Sprite CardType::getSprite() {
 	return sprite;
 }
 
