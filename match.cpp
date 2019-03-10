@@ -49,6 +49,10 @@ CardType::CardType() {
 	front = texture;
 }
 
+Sprite CardType::getSprite() {
+	return sprite;
+}
+
 PileType::PileType() {
 	vector<CardType> matches;
 }
