@@ -26,9 +26,9 @@ public:
     //TODO constructor to pass in an index into the jpeg vector
     sf::Sprite getSprite();
     const string getFile_name(CardType card);
-    void flip();
-    int get_w();
-    int get_h();
+    void flip(CardType card);
+    int get_w(CardType card);
+    int get_h(CardType card);
 
 private:
     bool is_flipped;

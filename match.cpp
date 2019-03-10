@@ -96,12 +96,12 @@ int CardType::get_w(CardType card) {
 	return this -> width;
 }
 
-nt CardType::get_h(CardType card) {
+int CardType::get_h(CardType card) {
 	return this -> height;
 }
 
 bool CardType::check_match(CardType card) {
-	return this -> file_name == card.getFile_name();
+	return this -> file_name == card.getFile_name(card);
     // return 0;
 }
 
