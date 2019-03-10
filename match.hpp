@@ -28,7 +28,7 @@ public:
     const string getFile_name();
     void flip();
     int get_w();
-    int get_h(C);
+    int get_h();
     sf::Texture getFront();
     bool check_match(CardType card);
 
