@@ -29,7 +29,7 @@ public:
     sf::Texture back; // card_type_vector[0]
     void flip();
     bool check_match(CardType card);
-    string* file_name;
+     file_name;
     sf::Sprite sprite;
     int width = 200;
     int height = 300;
