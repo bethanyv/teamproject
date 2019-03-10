@@ -169,11 +169,11 @@ void BoardType::set_cards(string path) {
 			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
 			// set buffer only does one row and one column
-			set_buffer(4);
-			float x = set_card_h(i);
-			float y = set_card_w(j);
+			// set_buffer(4);
+			// float x = set_card_h(i);
+			// float y = set_card_w(j);
 
-			matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+			// matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
 
 
 			max --;
@@ -233,24 +233,24 @@ void BoardType::sfml_driver() {
 	}
 
     //TODO Change to pile of sprites
-    sf::Sprite sprite1;
-	sprite1.setTexture(texture);
+ //    sf::Sprite sprite1;
+	// sprite1.setTexture(texture);
 
-	sf::Sprite sprite2;
-	sprite2.setTexture(texture);
-	sf::Sprite sprite3;
-	sprite3.setTexture(texture);
-	sf::Sprite sprite4;
-	sprite4.setTexture(texture);
-	sf::Sprite sprite5;
-	sprite5.setTexture(texture);
+	// sf::Sprite sprite2;
+	// sprite2.setTexture(texture);
+	// sf::Sprite sprite3;
+	// sprite3.setTexture(texture);
+	// sf::Sprite sprite4;
+	// sprite4.setTexture(texture);
+	// sf::Sprite sprite5;
+	// sprite5.setTexture(texture);
 
-	sf::Sprite sprite6;
-	sprite6.setTexture(texture);
-	sf::Sprite sprite7;
-	sprite7.setTexture(texture);
-	sf::Sprite sprite8;
-	sprite8.setTexture(texture);
+	// sf::Sprite sprite6;
+	// sprite6.setTexture(texture);
+	// sf::Sprite sprite7;
+	// sprite7.setTexture(texture);
+	// sf::Sprite sprite8;
+	// sprite8.setTexture(texture);
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
@@ -263,7 +263,7 @@ void BoardType::sfml_driver() {
 		}
 
 			window.clear();
-            window.draw(sprite1);
+            //window.draw(sprite1);
 
 			set_cards("female_cs.txt");
 
@@ -297,6 +297,12 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
+					set_buffer(4);
+					float x = set_card_h(i);
+					float y = set_card_w(j);
+
+					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+
 					window.draw(matrix[i][j] -> sprite);
 				}
 			}
