@@ -17,7 +17,9 @@
 
 using namespace std;
 
-//GO TEAM. PERLMAN FOR LIFE
+//Bethany: We are now able to tell which sprite we clicked on. Search for the TODO in sfml driver
+// I'm going to bed and probably won't touch this project at all tomorrow unless you ask me to
+//or unless something crazy happens.
 
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
@@ -229,26 +231,6 @@ void BoardType::sfml_driver() {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
-    //TODO Change to pile of sprites
- //    sf::Sprite sprite1;
-	// sprite1.setTexture(texture);
-
-	// sf::Sprite sprite2;
-	// sprite2.setTexture(texture);
-	// sf::Sprite sprite3;
-	// sprite3.setTexture(texture);
-	// sf::Sprite sprite4;
-	// sprite4.setTexture(texture);
-	// sf::Sprite sprite5;
-	// sprite5.setTexture(texture);
-
-	// sf::Sprite sprite6;
-	// sprite6.setTexture(texture);
-	// sf::Sprite sprite7;
-	// sprite7.setTexture(texture);
-	// sf::Sprite sprite8;
-	// sprite8.setTexture(texture);
-
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
 		sf::Event event;
@@ -261,11 +243,6 @@ void BoardType::sfml_driver() {
 				
 				cout << "Found a mouse click!" << endl;
 
-				// get the local mouse position (relative to a window)
-				//looks like this vector has 2 public attributes: x and y
-				//think of it as a point
-				//tried printing it though and I got an error
-				//have not tried printing just x or y
 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
 
 				// transform the mouse position from window coordinates to world coordinates
@@ -276,7 +253,10 @@ void BoardType::sfml_driver() {
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
+							//TODO: BETHANY! We need to add logic here for what to do when we click 
+							//on a specific card. YOu can find the card at matrix[i][j]
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+
 						}
 					}
 				}
