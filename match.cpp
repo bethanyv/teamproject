@@ -179,7 +179,7 @@ void BoardType::set_cards(string path) {
 	}
 }
 
-int BoardType::makeFileList(string filepath, vector<string*> &name) {
+int BoardType::makeFileList(string filepath, vector<const char*> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
@@ -191,7 +191,7 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
         //cout << line << endl;
             while(getline(myfile, line)){
                 //cout << "In makeFileList and saving: " << line << endl;
-				string* new_line = new string;
+				const char* new_line = new string;
 				new_line = &line;
 				// cout << "after mallocing, we get :" << new_line << endl;
 				// cout << "Dereferencing that, we get: " << *new_line << endl;
