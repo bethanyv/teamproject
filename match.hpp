@@ -29,7 +29,7 @@ public:
     sf::Texture back; // card_type_vector[0]
     void flip();
     bool check_match(CardType card);
-    const char* file_name;
+    string* file_name;
     sf::Sprite sprite;
     int width = 200;
     int height = 300;
@@ -97,8 +97,8 @@ public:
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
-    vector<const char*> placed_cards;
-    vector<const char*> pics;
+    vector<string*> placed_cards;
+    vector<string*> pics;
 
     //window height/width
     int height = 1250;
@@ -120,7 +120,7 @@ public:
     void remove_match();
     void sfml_driver();
 
-    int makeFileList(string filepath, vector<const char*> &name);
+    int makeFileList(string filepath, vector<string*> &name);
     //string randomFileName(vector<string> &name, int max);
     int randomNumber(int max);
 };
