@@ -302,10 +302,10 @@ void BoardType::sfml_driver() {
 						cout << "Error! File isn't loading." << endl;
 					}
 					set_buffer(4);
-					float x = set_card_h(i);
-					float y = set_card_w(j);
+					const float x = set_card_h(i);
+					const float y = set_card_w(j);
 
-					matrix[i][j] -> sprite.setPosition(sf::Vector2f(const x, const y));
+					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
 
 					window.draw(matrix[i][j] -> sprite);
 				}
