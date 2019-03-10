@@ -96,7 +96,7 @@ int CardType::get_w(CardType card) {
 	return this -> width;
 }
 
-nt CardType::get_h(CardType card) {
+int CardType::get_h(CardType card) {
 	return this -> height;
 }
 
