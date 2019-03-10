@@ -270,7 +270,7 @@ void BoardType::sfml_driver() {
 				for (int i = 0; i < num_cards; i ++) {
 					for (int j = 0; j < num_cards; j++) {
 						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
-						if (boundingBox.contains(point))
+						if (boundingBox.contains(localPosition))
 						{
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 						}
