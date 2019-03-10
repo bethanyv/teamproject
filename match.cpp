@@ -93,9 +93,13 @@ GameType::GameType(){
 }
 
 bool CardType::check_match(CardType card) {
-	return file_name == card -> file_name;
+	return file_name == card.getFile_name;
     // return 0;
 }
+
+const string CardType::getFile_name(CardType card) {
+	return file_name;
+} 
 
 void PlayerType::move() {
     // return 0;
