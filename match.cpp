@@ -227,10 +227,10 @@ void BoardType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
- //    sf::Texture texture;
-	// if(!texture.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	// }
+    sf::Texture texture;
+	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
 
     //TODO Change to pile of sprites
  //    sf::Sprite sprite1;
@@ -297,10 +297,7 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					sf::Texture texture;
-					if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-						cout << "Error! File isn't loading." << endl;
-					}
+					matrix[i][j] -> sprite.setTexture(texture);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
