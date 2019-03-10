@@ -266,7 +266,7 @@ void BoardType::sfml_driver() {
 				//think of it as a point
 				//tried printing it though and I got an error
 				//have not tried printing just x or y
-				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
+				sf::Vector2f mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
 				for (int i = 0; i < num_cards; i ++) {
 					for (int j = 0; j < num_cards; j++) {
 						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
