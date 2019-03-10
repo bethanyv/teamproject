@@ -164,7 +164,7 @@ void BoardType::set_cards(string path) {
 			}			
 
 			//if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-			matrix[i][j] -> file_name = file_name;
+			matrix[i][j] -> file_name = *file_name;
 			matrix[i][j] -> sprite.setTexture(texture);
 
 			// 	//TODO: figure out why this isn't adding file_name to placed cards
@@ -182,7 +182,7 @@ void BoardType::set_cards(string path) {
 	}
 }
 
-int BoardType::makeFileList(string filepath, vector<const char*> &name) {
+int BoardType::makeFileList(string filepath, vector<string*> &name) {
     // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
@@ -198,6 +198,10 @@ int BoardType::makeFileList(string filepath, vector<const char*> &name) {
 				new_line = line.c_str();
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
+				string* new_line = new string;
+				new_line = &line;
+				// cout << "after mallocing, we get :" << new_line << endl;
+				// cout << "Dereferencing that, we get: " << *new_line << endl;
                 name.push_back(new_line);
             }
         }
