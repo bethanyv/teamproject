@@ -27,6 +27,8 @@ public:
     sf::Sprite getSprite();
     const string getFile_name(CardType card);
     void flip();
+    int get_w();
+    int get_h();
 
 private:
     bool is_flipped;
