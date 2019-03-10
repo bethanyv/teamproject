@@ -101,7 +101,7 @@ int CardType::get_h(CardType card) {
 }
 
 bool CardType::check_match(CardType card) {
-	return this -> file_name == card.getFile_name();
+	return this -> file_name == card.getFile_name(card);
     // return 0;
 }
 
