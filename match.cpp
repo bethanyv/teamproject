@@ -234,25 +234,21 @@ void BoardType::sfml_driver() {
 	}
 	sf::Texture texture1;
 	textures[1] = texture1;
-	sf::Texture texture1;
 	if(!texture1.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! Texture isn't loading." << endl;
 	}
 	sf::Texture texture2;
 	textures[2] = texture2;
-	sf::Texture texture2;
 	if(!texture2.loadFromFile("pics/borg.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 	sf::Texture texture3;
 	textures[3] = texture3;
-	sf::Texture texture3;
 	if(!texture3.loadFromFile("pics/haibt.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! Texture isn't loading." << endl;
 	}
 	sf::Texture texture4;
 	textures[4] = texture4;
-	sf::Texture texture4;
 	if(!texture3.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! Texture isn't loading." << endl;
 	}
