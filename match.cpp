@@ -126,15 +126,14 @@ void BoardType::update_board() {
     // return 0;
 }
 bool BoardType::is_empty() {
-	// for(int i = 0; i < num_cards; i++) {
-	// 	for(int j = 0; j < num_cards; j++) {
-	// 		if(matrix[i][j]->front == card.front) {
-	// 
-	// 			matrix[i][j] = NULL;
-	// 		}
-	// 	}
-	// }
-    // return 0;
+	for(int i = 0; i < num_cards; i++) {
+		for(int j = 0; j < num_cards; j++) {
+			if(!(matrix[i][j]->front == empty.front)) {
+				return false;
+			}
+		}
+	}
+    return true;
 }
 
 // if remove match is found, we want to get rid of the card types
