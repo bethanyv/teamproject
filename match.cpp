@@ -92,12 +92,12 @@ GameType::GameType(){
 	//importing 
 }
 
-int CardType::get_w(CardType card) {
-	return this -> width;
+int CardType::get_w() {
+	return width;
 }
 
-int CardType::get_h(CardType card) {
-	return this -> height;
+int CardType::get_h() {
+	return height;
 }
 
 bool CardType::check_match(CardType card) {
@@ -105,11 +105,15 @@ bool CardType::check_match(CardType card) {
     // return 0;
 }
 
-const string CardType::getFile_name(CardType card) {
-	return this -> file_name;
+const string CardType::getFile_name() {
+	return file_name;
 } 
 
-void CardType::flip() {
+sf::Texture getFront() {
+	return front;
+}
+
+void CardType::flip(CardType card) {
 	if(is_flipped) {
 		is_flipped = false;
 	}
