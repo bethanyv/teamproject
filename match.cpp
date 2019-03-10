@@ -226,7 +226,7 @@ void BoardType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
 	//Adding temporary textures array so we can have diff pictures displaying
-    sf::Texture textures[4];
+    sf::Texture textures[16];
 	sf::Texture texture0;
     textures[0] = texture0;
 	if(!texture0.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
