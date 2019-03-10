@@ -38,16 +38,19 @@ CardType::CardType() {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
-	int front = 0;
-	// int back = 0;
-	string file_name = "pics/back.jpg";
-	// sf::Sprite* = new new_sprite;
+	const string file_name = "pics/back.jpg";
+	//sf::Sprite* = new new_sprite;
 	// sprite = new_sprite;
 	sf::Texture texture;
 	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
 		cout << "Error! back.jpg isn't loading." << endl;
 	}
 	back = texture;
+	front = texture;
+}
+
+sf::Sprite CardType::getSprite() {
+	return sprite;
 }
 
 PileType::PileType() {
@@ -90,9 +93,13 @@ GameType::GameType(){
 }
 
 bool CardType::check_match(CardType card) {
-	return card.front == front;
+	return this -> file_name == card.getFile_name;
     // return 0;
 }
+
+const string CardType::getFile_name(CardType card) {
+	return file_name;
+} 
 
 void PlayerType::move() {
     // return 0;
