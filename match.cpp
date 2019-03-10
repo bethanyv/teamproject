@@ -93,24 +93,24 @@ GameType::GameType(){
 }
 
 int CardType::get_w() {
-	return width;
+	return this -> width;
 }
 
 int CardType::get_h() {
-	return height;
+	return this -> height;
 }
 
 bool CardType::check_match(CardType card) {
-	return this -> file_name == card.getFile_name(card);
+	return this -> file_name == card.getFile_name();
     // return 0;
 }
 
 const string CardType::getFile_name() {
-	return file_name;
+	return this -> file_name;
 } 
 
 sf::Texture getFront() {
-	return front;
+	return this -> front;
 }
 
 void CardType::flip(CardType card) {
