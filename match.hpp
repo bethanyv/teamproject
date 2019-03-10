@@ -141,6 +141,7 @@ public:
     // default destructor
 
     BoardType board;
+    PlayerType current_turn;
 
     PlayerType player1;
     PlayerType player2;

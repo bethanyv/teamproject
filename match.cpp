@@ -88,6 +88,7 @@ GameType::GameType(){
 	BoardType board;
 	player1.setType(1);
 	player2.setType(2);
+	current_turn = player1;
 
 	//importing 
 }
