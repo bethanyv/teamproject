@@ -153,7 +153,6 @@ void BoardType::remove_match(CardType card) {
 	for(int i = 0; i < num_cards; i++) {
 		for(int j = 0; j < num_cards; j++) {
 			if(matrix[i][j]->front == card.front) {
-				// HERE do we want to get rid of the card? Will that cause printing issues?
 				matrix[i][j] = empty;
 			}
 		}
