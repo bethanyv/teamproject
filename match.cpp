@@ -27,6 +27,8 @@ void PileType::add_to_pile(CardType card) {
 }
 
 CardType::CardType() {
+	//is flipped - false: back.jpg
+	//is flipped - true: face
 	bool is_flipped = false;
 	int front = 0;
 	// int back = 0;
@@ -255,6 +257,34 @@ void BoardType::sfml_driver() {
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
+			if (sf:Mouse::isButtonPressed(sf::Mouse::Left)) {
+				// //left mouse button is pressed: print found a mouse click!
+				// sf::Font reg_font;
+				// if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
+				// 	cout << "Error loading regular font" << endl;
+				// }
+				// sf::Text text;
+
+				// //select the font
+				// text.setFont(reg_font);
+
+				// //set the string to display
+				// text.setString("Found a mouse click!");
+
+				// //set the character size
+				// text.setCharacterSize(24); //in pixels, not points!
+
+				// //set the color
+				// text.setFillColor(sf::Color::Red);
+
+				// //set the text style
+				// text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
+				// //inside the main loop, betwee window.clear() and window.display()
+				// window.draw(text);
+
+				cout << "Found a mouse click!";
+			}
 		}
 
 			window.clear();
@@ -296,6 +326,8 @@ void BoardType::sfml_driver() {
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
+
+					//KRISTINE TODO: save x and y into that specific card
 
 					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
 
