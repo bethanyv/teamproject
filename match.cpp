@@ -225,11 +225,32 @@ void BoardType::sfml_driver() {
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
-    //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
-    sf::Texture texture;
-	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+    sf::Texture textures[16];
+    textures[0] = sf::Texture texture1;
+	if(!texture1.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
+	sf::Texture texture2;
+	if(!texture2.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+	
+	
+	pics/borg.jpg
+	pics/haibt.jpg
+	pics/hamilton.jpg
+	pics/holberton.jpg
+	pics/hopper.jpg
+	pics/keller.jpg
+	pics/liskov.jpg
+	pics/lovelace.jpg
+	pics/meltzer.jpg
+	pics/perlman.jpg
+	pics/rhodes.jpg
+	pics/sammet.jpg
+	pics/spence.jpg
+	pics/teitelbaum.jpg
+	pics/back.jpg
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
