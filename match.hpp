@@ -25,7 +25,7 @@ public:
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
     sf::Sprite getSprite();
-    const string getFile_name();
+    const string getFile_name(CardType card);
     void flip();
 
 private:
