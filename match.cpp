@@ -156,7 +156,7 @@ void BoardType::set_cards(string path) {
 			//file_name = file_name.c_str();
 
 			sf::Texture texture;
-			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+			if(!texture.loadFromFile(file_name, sf::IntRect(0, 0, card_w, card_h))) {
 				cout << "Error! File isn't loading." << endl;
 			}			
 
