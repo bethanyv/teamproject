@@ -17,10 +17,15 @@
 
 using namespace std;
 
-//Note to Bethany: I thought that I converted all of our fiile name strings to string*'s
-//but somewhere along the line I didn't do it right. At least that's what I could
-//gather after googling the seg fault error.
-//feel free to look around and figure it out.
+//TODO: BETHANY!!! READ THIS: It's 3:00am and I finally got my set_cards
+// working! So, our board matrix should have all of our cards and 
+//all of our cards should have sprites with different textures attached to them
+//
+//so the real todo:
+//change the draw sprite functionality in sfml driver to loop over our board's matrix
+//and draw the sprites attached to our cards
+//too tired to decide if that's better to do in sfml driver or in set_cards. right now
+//my tired logic says sfml driver.
 
 //Kristine - added a sprite data member to CardType
 
@@ -40,7 +45,7 @@ CardType::CardType() {
 	// sprite = new_sprite;
 	sf::Texture texture;
 	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
-		cout << "Error! back.jpg isn't loading." << endl;
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 	back = texture;
 }
@@ -116,10 +121,9 @@ void BoardType::set_buffer(int num) {
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
 	int leftover_w = width - (card_w*num);
-	//buffer_w = leftover_w/5;
+	buffer_w = leftover_w/5;
 	int leftover_h = height - (card_h*num);
-	//buffer_h = leftover_h/5;
-
+	buffer_h = leftover_h/5;
 }
 
 int BoardType::set_card_h(int x) {
@@ -135,7 +139,6 @@ int BoardType::set_card_w(int y) {
 	int pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
 }
-
 void BoardType::set_cards(string path) {
 	string pic;
 	//fill our vector up with picture file names
@@ -143,39 +146,28 @@ void BoardType::set_cards(string path) {
 	int max = 16;
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
-			//testing random number instead of string
+			//testing random number instead of strin
 			int rand_num = randomNumber(max);
 			matrix2[i][j] = rand_num;
 			// use random number to index into pics
 			// check placed_cards and if not there then 
 			// set it to this position on the board
-			// cout << "pics[rand_num] is: " << pics[rand_num] << endl;
-			// cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
 			string* file_name = pics[rand_num];
-			cout << "File_name is: " << *file_name << endl;
 			//file_name = file_name.c_str();
 
 			sf::Texture texture;
-			//cout << "file_name: " << file_name << endl;
-			//cout << "*file_name: " << *file_name << endl;
-			string new_name = file_name.c_str();
-			if(!texture.loadFromFile(new_name, sf::IntRect(0, 0, card_w, card_h))) {
-				cout << "Error! File isn't loading." << endl;
+			if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
+				cout << "Error! " << *file_name << " isn't loading." << endl;
 			}			
-			// sf::Texture texture;
-			// if(!texture.loadFromFile(*file_name, sf::IntRect(0, 0, card_w, card_h))) {
-			// 	cout << "Error! " << *file_name << " isn't loading." << endl;
-			// }			
 
-			// if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-			// 	matrix[i][j] -> file_name = file_name;
-			// 	matrix[i][j] -> sprite.setTexture(texture);
+			if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
+				matrix[i][j] -> file_name = file_name;
+				matrix[i][j] -> sprite.setTexture(texture);
 
-			// 	//TODO: figure out why this isn't adding file_name to placed cards
-			// 	placed_cards.push_back(file_name);
-			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
+				//TODO: figure out why this isn't adding file_name to placed cards
+				placed_cards.push_back(file_name);
+				pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
-			// set buffer only does one row and one column
 			set_buffer(4);
 			float x = set_card_h(i);
 			float y = set_card_w(j);
@@ -194,17 +186,12 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
     {
         while ( myfile.good() )
         {
-        getline (myfile,line);
+        //getline (myfile,line);
         //cout << line << endl;
             while(getline(myfile, line)){
-                //cout << "In makeFileList and saving: " << line << endl;
-				//cout << "after mallocing, we get :" << new_line << endl;
-				//cout << "Dereferencing that, we get: " << *new_line << endl;
+                //cout << line << endl;
 				string* new_line = new string;
-
 				new_line = &line;
-				// cout << "after mallocing, we get :" << new_line << endl;
-				// cout << "Dereferencing that, we get: " << *new_line << endl;
                 name.push_back(new_line);
             }
         }
@@ -230,6 +217,10 @@ int BoardType::randomNumber(int max) {
 void BoardType::sfml_driver() {
 	/*******************************************
      * SFML Events Here
+     * To Compile:
+     * g++ -c match_main.cpp main.cpp main.ppp
+     * g++ main.o -o match-app -lsfml-graphics -lsfml-window -lsfml-system
+     * ./match-app
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
@@ -273,25 +264,20 @@ void BoardType::sfml_driver() {
             window.draw(sprite1);
 
 			set_cards("female_cs.txt");
-
-			// for (int i = 0; i < num_cards; i++) {
-			// 	for (int j = 0; j < num_cards; j++) {
-			// 		window.draw(matrix[i][j] -> sprite);
-			// 	}
-			// }
+			for (int i = 0; i < num_cards; i++) {
+				for (int j = 0; j < num_cards; j++) {
+					window.draw(matrix[i][j] -> sprite);
+				}
+			}
 
 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
-			int x = set_card_w(0);
-			sprite1.setPosition(sf::Vector2f(x, 10.f));
+			sprite1.setPosition(sf::Vector2f(10.f, 10.f));
 			window.draw(sprite2);
-			x = set_card_w(1);
-			sprite2.setPosition(sf::Vector2f(x, 10.f));
+			sprite2.setPosition(sf::Vector2f(130.f, 10.f));
 			window.draw(sprite3);
-			x = set_card_w(2);
-			sprite3.setPosition(sf::Vector2f(x, 10.f));
+			sprite3.setPosition(sf::Vector2f(250.f, 10.f));
 			window.draw(sprite4);
-			x = set_card_w(3);
-			sprite4.setPosition(sf::Vector2f(x, 10.f));
+			sprite4.setPosition(sf::Vector2f(370.f, 10.f));
 			
 			//vertical
 			window.draw(sprite5);
@@ -309,17 +295,16 @@ int GameType::runGame()
 	//this -> board.set_buffer(4);
 	// board.set_cards("female_cs.txt");
 
-	board.sfml_driver();
+	for (int i = 0; i < board.num_cards; i++) {
+		cout << "Placed card:" << board.placed_cards[i] << endl;
+	}
+	for (int i = 0; i < board.num_cards; i++) {
+		for (int j = 0; j < board.num_cards; j++) {
+			cout << "matrix at [" << i << "][" << j << "] is: " << *board.matrix[i][j]->file_name << endl;
+		}
+	}
 
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	cout << "Placed card:" << board.placed_cards[i] << endl;
-	// }
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	for (int j = 0; j < board.num_cards; j++) {
-	// 		cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
-	// 	}
-	// }
+    board.sfml_driver();
 
     return 0;
 }
-
