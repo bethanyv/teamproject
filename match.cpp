@@ -266,11 +266,15 @@ void BoardType::sfml_driver() {
 				//think of it as a point
 				//tried printing it though and I got an error
 				//have not tried printing just x or y
-				sf::Vector2f mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
+				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
+
+				// transform the mouse position from window coordinates to world coordinates
+    			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 				for (int i = 0; i < num_cards; i ++) {
 					for (int j = 0; j < num_cards; j++) {
 						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
-						if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
+						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
+						if (bounds.contains(mouse))
 						{
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 						}
