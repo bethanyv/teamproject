@@ -226,7 +226,8 @@ void BoardType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 
     sf::Texture textures[16];
-    textures[0] = sf::Texture texture1;
+	sf::Texture texture1;
+    textures[0] = texture1;
 	if(!texture1.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
