@@ -92,13 +92,21 @@ GameType::GameType(){
 	//importing 
 }
 
+int CardType::get_w(CardType card) {
+	return this -> width;
+}
+
+nt CardType::get_h(CardType card) {
+	return this -> height;
+}
+
 bool CardType::check_match(CardType card) {
 	return this -> file_name == card.getFile_name();
     // return 0;
 }
 
 const string CardType::getFile_name(CardType card) {
-	return file_name;
+	return this -> file_name;
 } 
 
 void CardType::flip() {
