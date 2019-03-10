@@ -24,12 +24,16 @@ public:
     CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
-    bool is_flipped;
-    int front; // index into jpeg vector
-    sf::Texture back; // card_type_vector[0]
+    sprite getSprite();
     void flip();
+
+private:
+    bool is_flipped;
+    sf::Texture front; // index into jpeg vector
+    sf::Texture back; // card_type_vector[0]
+
     bool check_match(CardType card);
-    string* file_name;
+    const string file_name;
     sf::Sprite sprite;
     int width = 200;
     int height = 300;
