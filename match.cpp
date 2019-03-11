@@ -51,6 +51,22 @@ sf::Sprite CardType::getSprite() {
 	return sprite;
 }
 
+// need x and y coordinate coded in! Uncomment TODO when done
+// this function compares coordinates. If two cards selected have the same 
+// x and y, then it can't be selected again in sfml_driver where it's called
+bool CardType::is_same_card(CardType card) {
+	// if(card.get_x() == x && card.get_y() == y) {
+	// 	return true;
+	// }
+	return false;
+}
+
+// call this function when setting the x and y coordinates of a card when it's placed
+void CardType::set_coords(int x, int y) {
+	x_coord = x;
+	y_coord = y;
+}
+
 PileType::PileType() {
 	vector<CardType> matches;
 }
@@ -506,8 +522,8 @@ void BoardType::sfml_driver() {
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
-
-					//KRISTINE TODO: save x and y into that specific card
+					matrix[i][j]->set_coords(x, y);
+					//TODO: MAKE SURE THIS WORKS ^
 
 					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
 

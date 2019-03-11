@@ -25,7 +25,8 @@ public:
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
 
-    //TEMP MOVE OF SPRITE TO HOPEFULLY MAKE WORK
+    // Added is_same_card to compare the two cards with x & y positions,
+    // just don't have the x & y built in yet
     sf::Sprite getSprite();
     string getFile_name();
     void flip();
@@ -34,9 +35,11 @@ public:
     void set_file(string file);
     sf::Texture getFront();
     bool check_match(CardType card);
+    bool is_same_card(CardType card);
     sf::Sprite sprite;
     bool is_flipped;
-
+    // call set_coords when placing a card so we know where it is
+    void set_coords(int x, int y);
 
 private:
     sf::Texture front; // index into jpeg vector
@@ -47,6 +50,8 @@ private:
     int width = 200;
     int height = 300;
     // TODO: add pair
+    int x_coord;
+    int y_coord;
 };
 
 class PileType{
