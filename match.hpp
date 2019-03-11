@@ -117,6 +117,8 @@ public:
     vector<string*> placed_cards;
     vector<string*> pics;
 
+    //int player_turn;
+
     //window height/width
     int height = 1250;
     int width = 1050;

@@ -69,6 +69,7 @@ PlayerType::PlayerType() {
 }
 
 BoardType::BoardType() {
+	//player_turn = 1;
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
@@ -104,7 +105,7 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
-	return this -> file_name == card.getFile_name();
+	return file_name == card.getFile_name();
     // return 0;
 }
 
@@ -114,7 +115,7 @@ void CardType::set_file(string file) {
 
 
 string CardType::getFile_name() {
-	return this -> file_name;
+	return file_name;
 } 
 
 sf::Texture CardType::getFront() {
@@ -381,7 +382,8 @@ void BoardType::sfml_driver() {
      * SFML Events Here
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
-
+	int player_turn = 1;
+	int cards_clicked = 0;
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
 	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
@@ -391,6 +393,8 @@ void BoardType::sfml_driver() {
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
 		sf::Event event;
+		std::vector<CardType> cards_selected;
+
 		while (window.pollEvent(event)) {
 
 			if (event.type == sf::Event::Closed) {
@@ -412,7 +416,11 @@ void BoardType::sfml_driver() {
 						{
 							//TODO: BETHANY! We need to add logic here for what to do when we click 
 							//on a specific card. YOu can find the card at matrix[i][j]
+
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+							//cards_selected.push_back(*matrix[i][j]);
+							cards_clicked = cards_clicked + 1;
+							cout << "Cards clicked: " << cards_clicked << endl;
 
 						}
 					}
@@ -452,7 +460,24 @@ void BoardType::sfml_driver() {
 			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
 			// window.draw(sprite7);
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
-
+			if(cards_clicked == 2) {
+				cout << "Cards clicked is 2" << endl;
+				cards_clicked = 0;
+				if(!(cards_selected[0]).check_match(cards_selected[1])) {
+					cout << "Cards don't match" << endl;
+					if(player_turn == 1) {
+						player_turn = 2;
+						cout << "Changing to player 2" << endl;
+					}
+					else {
+						player_turn = 1;
+						cout << "Changing to player 1" << endl;
+					}
+				}
+				else {
+					cout << "Cards match!" << endl;
+				}
+			}
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
