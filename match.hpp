@@ -120,7 +120,8 @@ public:
     //PlayerType player1;
     //PlayerType player2;
 
-    // CardType* empty;
+    // TODO: keep getting seg faults when uncommenting this?
+    //CardType* empty;
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;

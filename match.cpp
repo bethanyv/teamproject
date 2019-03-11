@@ -99,13 +99,16 @@ BoardType::BoardType() {
 			matrix[i][j] = card;
 		}
 	}
-	// empty.set_file("pics/empty.png");
- //    empty.flip();
+
 	matrix2.resize(num_cards);
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
 	}
 	placed_cards.resize(num_cards);
+	// empty = new CardType;
+	// empty->set_file("pics/empty.png");
+	// empty.set_file("pics/empty.png");
+ //    empty.flip();
 }
 
 // GameType::GameType(){
@@ -185,12 +188,10 @@ void BoardType::remove_match(CardType card) {
 	// for(int i = 0; i < num_cards; i++) {
 	// 	for(int j = 0; j < num_cards; j++) {
 	// 		if(matrix[i][j]->getFile_name() == card.getFile_name()) {
-	// 			matrix[i][j] = &empty;
+	// 			matrix[i][j] = empty;
 	// 		}
 	// 	}
 	// }
-
-    // return 0;
 }
 
 void BoardType::set_buffer(int num) {
@@ -493,6 +494,7 @@ void BoardType::sfml_driver() {
 				cards_clicked = 0;
 				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
 					cout << "Same card! Pick again" << endl;
+					cards_selected[0]->flip();
 					cards_selected.clear();
 					continue;
 				}
