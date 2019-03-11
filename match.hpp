@@ -32,6 +32,8 @@ public:
     void flip();
     int get_w();
     int get_h();
+    int get_x();
+    int get_y();
     void set_file(string file);
     sf::Texture getFront();
     bool check_match(CardType card);

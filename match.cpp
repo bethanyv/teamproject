@@ -51,14 +51,21 @@ sf::Sprite CardType::getSprite() {
 	return sprite;
 }
 
-// need x and y coordinate coded in! Uncomment TODO when done
 // this function compares coordinates. If two cards selected have the same 
 // x and y, then it can't be selected again in sfml_driver where it's called
 bool CardType::is_same_card(CardType card) {
-	// if(card.get_x() == x && card.get_y() == y) {
-	// 	return true;
-	// }
+	if(card.get_x() == x_coord && card.get_y() == y_coord) {
+		return true;
+	}
 	return false;
+}
+
+int CardType::get_x() {
+	return x_coord;
+}
+
+int CardType::get_y() {
+	return y_coord;
 }
 
 // call this function when setting the x and y coordinates of a card when it's placed
@@ -484,6 +491,11 @@ void BoardType::sfml_driver() {
 			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
+				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
+					cout << "Same card! Pick again" << endl;
+					cards_selected.clear();
+					continue;
+				}
 				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
 					cout << "Cards don't match" << endl;
 					// if the cards don't match, flip them back over
