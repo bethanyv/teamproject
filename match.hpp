@@ -24,6 +24,8 @@ public:
     CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
+
+    //TEMP MOVE OF SPRITE TO HOPEFULLY MAKE WORK
     sf::Sprite getSprite();
     string getFile_name();
     void flip();
@@ -32,6 +34,7 @@ public:
     void set_file(string file);
     sf::Texture getFront();
     bool check_match(CardType card);
+    sf::Sprite sprite;
 
 
 private:
@@ -40,7 +43,7 @@ private:
     sf::Texture back; // card_type_vector[0]
 
     string file_name;
-    sf::Sprite sprite;
+    //sf::Sprite sprite;
     int width = 200;
     int height = 300;
     // TODO: add pair
