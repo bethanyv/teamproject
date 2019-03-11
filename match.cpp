@@ -88,13 +88,13 @@ BoardType::BoardType() {
 	placed_cards.resize(num_cards);
 }
 
-GameType::GameType(){
-	BoardType board;
-	player1.setType(1);
-	player2.setType(2);
+// GameType::GameType(){
+// 	BoardType board;
+// 	player1.setType(1);
+// 	player2.setType(2);
 
-	//importing 
-}
+// 	//importing 
+// }
 
 int CardType::get_w() {
 	return this -> width;
@@ -421,10 +421,8 @@ void BoardType::sfml_driver() {
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 
 							matrix[i][j]->flip();
-							if(matrix[i][j]->is_flipped) {
-								// TODO: HERE CHANGE CARD TO PRINT FRONT
-								cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
-							}
+							// TODO: HERE CHANGE CARD TO PRINT FRONT
+							cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
 							cards_selected.push_back(matrix[i][j]);
 							cards_clicked = cards_clicked + 1;
 							cout << "Cards clicked: " << cards_clicked << endl;
@@ -517,12 +515,13 @@ void BoardType::sfml_driver() {
 	}
 }
 
-int GameType::runGame()
+//int GameType::runGame()
+int BoardType::runGame()
 {
 	//this -> board.set_buffer(4);
 	// board.set_cards("female_cs.txt");
 
-	board.sfml_driver();
+	sfml_driver();
 
 	// for (int i = 0; i < board.num_cards; i++) {
 	// 	cout << "Placed card:" << board.placed_cards[i] << endl;

@@ -142,22 +142,23 @@ public:
     int makeFileList(string filepath, vector<string*> &name);
     //string randomFileName(vector<string> &name, int max);
     int randomNumber(int max);
-};
-
-class GameType{
-public:
-    GameType();
-    // default destructor
-
-    BoardType board;
-
-    PlayerType player1;
-    PlayerType player2;
-
-    vector<CardType> all_cards;
-
-    // need if's in the run_game() to determine what type players are ->
     int runGame();
 };
+
+// class GameType{
+// public:
+//     GameType();
+//     // default destructor
+
+//     BoardType board;
+
+//     PlayerType player1;
+//     PlayerType player2;
+
+//     vector<CardType> all_cards;
+
+//     // need if's in the run_game() to determine what type players are ->
+//     int runGame();
+// };
 
 #endif /* MATCH_HPP_ */
