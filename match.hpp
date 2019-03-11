@@ -108,7 +108,10 @@ public:
     // changing both of these vectors to a 2D vector of strings
     // BUT might need to change back to CardType
     //vector<vector<string> > matrix(num_cards, vector<string> matrix_r(num_cards, "pics/back.jpg"));
-    
+
+    // TODO: can't get playertypes to work??????
+    //PlayerType player1;
+    //PlayerType player2;
 
     // CardType* empty;
 

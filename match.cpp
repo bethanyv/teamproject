@@ -17,10 +17,6 @@
 
 using namespace std;
 
-//Bethany: We are now able to tell which sprite we clicked on. Search for the TODO in sfml driver
-// I'm going to bed and probably won't touch this project at all tomorrow unless you ask me to
-//or unless something crazy happens.
-
 //ALSO: I remembered wnhy there is a black space to the right!
 //
 //I wanted to make sure that we had a place to display the Player Piles (with the matches they found)
@@ -30,8 +26,8 @@ using namespace std;
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
 	// vector of which card was matched
-	this->num_matched += 1;
-	this->matches.push_back(card);
+	num_matched += 1;
+	matches.push_back(card);
 }
 
 CardType::CardType() {
@@ -69,12 +65,13 @@ PlayerType::PlayerType() {
 }
 
 BoardType::BoardType() {
-	//player_turn = 1;
+	//
+	// player1.setType(1);
+ // 	player2.setType(2);
 	matrix.resize(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
 		matrix[i].resize(num_cards);
 		for (int j = 0; j < matrix.size(); j++) {
-			//TODO clean up memory aka delete[]
 			CardType* card = new CardType;
 			matrix[i][j] = card;
 		}
@@ -421,7 +418,8 @@ void BoardType::sfml_driver() {
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 
 							matrix[i][j]->flip();
-							// TODO: HERE CHANGE CARD TO PRINT FRONT
+							// TODO: HERE CHANGE CARD TO PRINT FRONT?
+							// now have flip(), so it should update automatically?
 							cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
 							cards_selected.push_back(matrix[i][j]);
 							cards_clicked = cards_clicked + 1;
@@ -472,6 +470,7 @@ void BoardType::sfml_driver() {
 				cards_clicked = 0;
 				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
 					cout << "Cards don't match" << endl;
+					// if the cards don't match, flip them back over
 					cards_selected[0]->flip();
 					cards_selected[1]->flip();
 					if(player_turn == 1) {
@@ -485,13 +484,17 @@ void BoardType::sfml_driver() {
 				}
 				else {
 					cout << "Cards match!" << endl;
+					// TODO: Can't initialize player for some reason??? Uncomment out when can
 					if(player_turn == 1) {
-						// TODO: CANT ACCESS PLAYERS BECAUSE THEY ARE IN GAME SCOPE NOT BOARD
-						//player1.add_to_pile(*cards_selected[0]);
+						//(player1.pile).add_to_pile(*cards_selected[0]);
+						cout << "Added to player 1's pile" << endl;
 					}
 					else {
-						//player2.add_to_pile(*cards_selected[0]);
+						//(player2.pile).add_to_pile(*cards_selected[0]);
+						cout << "Added to player 2's pile" << endl;
 					}
+					// TODO: make sure this moves the cards
+					//remove_match(cards_selected[0]);
 
 				}
 				cards_selected.clear();

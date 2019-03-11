@@ -21,10 +21,10 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	// BoardType myboard;
-	GameType game;
+	BoardType myboard;
+	//GameType game;
 
-	game.runGame();
+	myboard.runGame();
 	return 0;
 }
 
