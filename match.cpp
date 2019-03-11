@@ -125,9 +125,11 @@ sf::Texture CardType::getFront() {
 void CardType::flip() {
 	if(is_flipped) {
 		is_flipped = false;
+		return;
 	}
 	else {
 		is_flipped = true;
+		return;
 	}
 }
 
@@ -418,6 +420,10 @@ void BoardType::sfml_driver() {
 							//on a specific card. YOu can find the card at matrix[i][j]
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+							matrix[i][j]->flip();
+							if(matrix[i][j]->is_flipped) {
+								cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
+							}
 							cards_selected.push_back(matrix[i][j]);
 							cards_clicked = cards_clicked + 1;
 							cout << "Cards clicked: " << cards_clicked << endl;
@@ -460,11 +466,15 @@ void BoardType::sfml_driver() {
 			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
 			// window.draw(sprite7);
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
-			if(cards_clicked == 2) {
+
+			// >= because it seems inconsistent?
+			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
 				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
 					cout << "Cards don't match" << endl;
+					cards_selected[0]->flip();
+					cards_selected[1]->flip();
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
@@ -477,6 +487,7 @@ void BoardType::sfml_driver() {
 				else {
 					cout << "Cards match!" << endl;
 				}
+				cards_selected.clear();
 			}
 
 			for (int i = 0; i < num_cards; i ++) {

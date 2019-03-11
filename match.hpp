@@ -35,10 +35,10 @@ public:
     sf::Texture getFront();
     bool check_match(CardType card);
     sf::Sprite sprite;
+    bool is_flipped;
 
 
 private:
-    bool is_flipped;
     sf::Texture front; // index into jpeg vector
     sf::Texture back; // card_type_vector[0]
 
