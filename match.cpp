@@ -384,6 +384,7 @@ void BoardType::sfml_driver() {
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
 	int player_turn = 1;
 	int cards_clicked = 0;
+	std::vector<CardType*> cards_selected;
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
 	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
@@ -393,7 +394,6 @@ void BoardType::sfml_driver() {
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
 		sf::Event event;
-		std::vector<CardType> cards_selected;
 
 		while (window.pollEvent(event)) {
 
@@ -418,7 +418,7 @@ void BoardType::sfml_driver() {
 							//on a specific card. YOu can find the card at matrix[i][j]
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
-							//cards_selected.push_back(*matrix[i][j]);
+							cards_selected.push_back(matrix[i][j]);
 							cards_clicked = cards_clicked + 1;
 							cout << "Cards clicked: " << cards_clicked << endl;
 
@@ -463,7 +463,7 @@ void BoardType::sfml_driver() {
 			if(cards_clicked == 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
-				if(!(cards_selected[0]).check_match(cards_selected[1])) {
+				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
 					cout << "Cards don't match" << endl;
 					if(player_turn == 1) {
 						player_turn = 2;
