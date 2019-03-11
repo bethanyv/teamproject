@@ -160,6 +160,7 @@ bool BoardType::is_empty() {
 }
 
 // if remove match is found, we want to get rid of the card types
+// remove comments once we get pics working
 void BoardType::remove_match(CardType card) {
 	// for(int i = 0; i < num_cards; i++) {
 	// 	for(int j = 0; j < num_cards; j++) {
@@ -416,12 +417,12 @@ void BoardType::sfml_driver() {
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
-							//TODO: BETHANY! We need to add logic here for what to do when we click 
-							//on a specific card. YOu can find the card at matrix[i][j]
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+
 							matrix[i][j]->flip();
 							if(matrix[i][j]->is_flipped) {
+								// TODO: HERE CHANGE CARD TO PRINT FRONT
 								cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
 							}
 							cards_selected.push_back(matrix[i][j]);
@@ -467,7 +468,7 @@ void BoardType::sfml_driver() {
 			// window.draw(sprite7);
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 
-			// >= because it seems inconsistent?
+			// >= because it clicks seem inconsistent?
 			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
@@ -486,6 +487,14 @@ void BoardType::sfml_driver() {
 				}
 				else {
 					cout << "Cards match!" << endl;
+					if(player_turn == 1) {
+						// TODO: CANT ACCESS PLAYERS BECAUSE THEY ARE IN GAME SCOPE NOT BOARD
+						//player1.add_to_pile(*cards_selected[0]);
+					}
+					else {
+						//player2.add_to_pile(*cards_selected[0]);
+					}
+
 				}
 				cards_selected.clear();
 			}
