@@ -103,7 +103,6 @@ BoardType::BoardType() {
 		for (int j = 0; j < num_cards; j++) {
 			//try {
 			CardType* card = new CardType;
-			// TODO: Call random here to pick a random card
 			//}
 			//catch (exception& e)
 			//{
@@ -140,17 +139,13 @@ int CardType::get_h() {
 	return this -> height;
 }
 
-void CardType::setFront(string* f) {
-	front = f;
-}
-
 bool CardType::check_match(CardType card) {
 	return file_name == card.getFile_name();
     // return 0;
 }
 
 void CardType::set_file(string file) {
-	file_name = file;
+	this -> file_name = file;
 }
 
 
@@ -158,7 +153,7 @@ string CardType::getFile_name() {
 	return file_name;
 } 
 
-string CardType::getFront() {
+sf::Texture CardType::getFront() {
 	return this -> front;
 }
 
@@ -234,10 +229,6 @@ int BoardType::set_card_w(int y) {
 	// returns the y position on the board
 	int pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
-}
-
-void BoardType::make_random_picks(vector<string*> pics) {
-	// TODO
 }
 
 void BoardType::set_cards(string path) {
@@ -448,18 +439,6 @@ void BoardType::sfml_driver() {
 	if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
-
-	// TEST
-	// sf::RenderWindow window2(sf::VideoMode(200, 300), "A Matching Game");
-	// window2.setActive(true);
-	// sf::Sprite sp(texture3);
-	// sp.setTextureRect(sf::IntRect(10,10,50,30));
-	// sp.setPosition(0,0);
-	// // sp.setTexture(texture3);
-	// window.draw(sp);
-	// while(window2.isOpen()) {
-
-	// }
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {

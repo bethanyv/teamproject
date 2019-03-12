@@ -35,8 +35,7 @@ public:
     int get_x();
     int get_y();
     void set_file(string file);
-    string getFront();
-    void setFront(string* f);
+    sf::Texture getFront();
     bool check_match(CardType card);
     bool is_same_card(CardType card);
     sf::Sprite* sprite;
@@ -45,8 +44,8 @@ public:
     void set_coords(int x, int y);
 
 private:
-    string* front; // index into jpeg vector
-    string* back; // card_type_vector[0]
+    sf::Texture front; // index into jpeg vector
+    sf::Texture back; // card_type_vector[0]
 
     string file_name;
     //sf::Sprite sprite;
@@ -129,8 +128,6 @@ public:
     vector<string*> placed_cards;
     vector<string*> pics;
 
-    vector<string*> random_picks;
-
     //int player_turn;
 
     //window height/width
@@ -153,8 +150,7 @@ public:
     void remove_match(CardType card);
     void sfml_driver();
 
-    // creates a vector of pictures in the amount we want (with two copies as well)
-    void make_random_picks(vector<string>* pics);
+    
 
     int makeFileList(string filepath, vector<string*> &name);
     //string randomFileName(vector<string> &name, int max);
