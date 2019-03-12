@@ -518,6 +518,7 @@ void BoardType::sfml_driver() {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
 				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
+					// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
 					cout << "Same card! Pick again" << endl;
 					cards_selected[0]->flip();
 					cards_selected.clear();
