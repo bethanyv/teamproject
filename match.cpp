@@ -36,8 +36,14 @@ CardType::CardType() {
 	bool is_flipped = false;
 	string file_name = "pics/back.jpg";
 
-	// sf::Sprite* = new new_sprite;
-	// sprite = new_sprite;
+	//try {
+	sf::Sprite* new_sprite = new sf::Sprite;
+	//}
+	//catch (exception& e) {
+	//	cout << "Standard exception: " << e.what() << endl;
+	//}
+	
+	sprite = new_sprite;
 
 	sf::Texture texture;
 	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
@@ -48,7 +54,7 @@ CardType::CardType() {
 }
 
 sf::Sprite CardType::getSprite() {
-	return sprite;
+	return *sprite;
 }
 
 // this function compares coordinates. If two cards selected have the same 
@@ -91,11 +97,17 @@ BoardType::BoardType() {
 	//
 	// player1.setType(1);
  // 	player2.setType(2);
-	matrix.resize(num_cards);
+	matrix.reserve(num_cards);
 	for (int i = 0; i < matrix.size(); i++) {
-		matrix[i].resize(num_cards);
-		for (int j = 0; j < matrix.size(); j++) {
+		matrix[i].reserve(num_cards);
+		for (int j = 0; j < matrix[i].size(); j++) {
+			//try {
 			CardType* card = new CardType;
+			//}
+			//catch (exception& e)
+			//{
+			//	cout << "Standard exception: " << e.what() << endl;
+			//}
 			matrix[i][j] = card;
 		}
 	}
@@ -406,12 +418,25 @@ void BoardType::sfml_driver() {
      * SFML Events Here
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
+	window.setFramerateLimit(60);
 	int player_turn = 1;
 	int cards_clicked = 0;
 	std::vector<CardType*> cards_selected;
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
     sf::Texture texture;
 	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+    sf::Texture texture2;
+	if(!texture2.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+    sf::Texture texture3;
+	if(!texture3.loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+    sf::Texture texture4;
+	if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
@@ -434,7 +459,7 @@ void BoardType::sfml_driver() {
     			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 				for (int i = 0; i < num_cards; i ++) {
 					for (int j = 0; j < num_cards; j++) {
-						sf::FloatRect boundingBox = matrix[i][j] -> sprite.getGlobalBounds();
+						sf::FloatRect boundingBox = matrix[i][j] -> getSprite().getGlobalBounds();
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
@@ -532,17 +557,27 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					matrix[i][j] -> sprite.setTexture(texture);
+					matrix[i][j] -> getSprite().setTexture(texture);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
 					//TODO: MAKE SURE THIS WORKS ^
 
-					matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
+					matrix[i][j] -> getSprite().setPosition(sf::Vector2f(x, y));
 
-					window.draw(matrix[i][j] -> sprite);
+					window.draw(matrix[i][j] -> getSprite());
 				}
+			}
+			for (int j = 0; j < num_cards; j++) {
+				matrix[1][j] -> getSprite().setTexture(texture2);
+				matrix[2][j] -> getSprite().setTexture(texture3);
+				matrix[3][j] -> getSprite().setTexture(texture4);
+				
+				window.draw(matrix[0][j] -> getSprite());
+				window.draw(matrix[1][j] -> getSprite());
+				window.draw(matrix[2][j] -> getSprite());
+				window.draw(matrix[3][j] -> getSprite());
 			}
 			window.display();
 	}

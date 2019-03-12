@@ -38,7 +38,7 @@ public:
     sf::Texture getFront();
     bool check_match(CardType card);
     bool is_same_card(CardType card);
-    sf::Sprite sprite;
+    sf::Sprite* sprite;
     bool is_flipped;
     // call set_coords when placing a card so we know where it is
     void set_coords(int x, int y);
