@@ -103,6 +103,7 @@ BoardType::BoardType() {
 		for (int j = 0; j < num_cards; j++) {
 			//try {
 			CardType* card = new CardType;
+			// TODO: Call random here to pick a random card
 			//}
 			//catch (exception& e)
 			//{
@@ -139,13 +140,17 @@ int CardType::get_h() {
 	return this -> height;
 }
 
+void CardType::setFront(string* f) {
+	front = f;
+}
+
 bool CardType::check_match(CardType card) {
 	return file_name == card.getFile_name();
     // return 0;
 }
 
 void CardType::set_file(string file) {
-	this -> file_name = file;
+	file_name = file;
 }
 
 
@@ -153,7 +158,7 @@ string CardType::getFile_name() {
 	return file_name;
 } 
 
-sf::Texture CardType::getFront() {
+string CardType::getFront() {
 	return this -> front;
 }
 
@@ -229,6 +234,10 @@ int BoardType::set_card_w(int y) {
 	// returns the y position on the board
 	int pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
+}
+
+void BoardType::make_random_picks(vector<string*> pics) {
+	// TODO
 }
 
 void BoardType::set_cards(string path) {
