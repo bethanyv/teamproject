@@ -27,7 +27,7 @@ public:
 
     // Added is_same_card to compare the two cards with x & y positions,
     // just don't have the x & y built in yet
-    sf::Sprite getSprite();
+    sf::Sprite& getSprite();
     string getFile_name();
     void flip();
     int get_w();

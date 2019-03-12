@@ -53,7 +53,7 @@ CardType::CardType() {
 	front = texture;
 }
 
-sf::Sprite CardType::getSprite() {
+sf::Sprite& CardType::getSprite() {
 	return *sprite;
 }
 
@@ -116,7 +116,7 @@ BoardType::BoardType() {
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
 	}
-	placed_cards.resize(num_cards);
+	placed_cards.reserve(num_cards);
 	// empty = new CardType;
 	// empty->set_file("pics/empty.png");
 	// empty.set_file("pics/empty.png");
@@ -418,7 +418,7 @@ void BoardType::sfml_driver() {
      * SFML Events Here
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
-	window.setFramerateLimit(60);
+	//window.setFramerateLimit(60);
 	int player_turn = 1;
 	int cards_clicked = 0;
 	std::vector<CardType*> cards_selected;
@@ -440,6 +440,18 @@ void BoardType::sfml_driver() {
 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	}
 
+	// TEST
+	// sf::RenderWindow window2(sf::VideoMode(200, 300), "A Matching Game");
+	// window2.setActive(true);
+	// sf::Sprite sp(texture3);
+	// sp.setTextureRect(sf::IntRect(10,10,50,30));
+	// sp.setPosition(0,0);
+	// // sp.setTexture(texture3);
+	// window.draw(sp);
+	// while(window2.isOpen()) {
+
+	// }
+
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
 		sf::Event event;
@@ -449,8 +461,10 @@ void BoardType::sfml_driver() {
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
+			
+
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				
+
 				cout << "Found a mouse click!" << endl;
 
 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
