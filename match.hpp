@@ -35,7 +35,7 @@ public:
     int get_x();
     int get_y();
     void set_file(string file);
-    sf::Texture getFront();
+    string getFront();
     bool check_match(CardType card);
     bool is_same_card(CardType card);
     sf::Sprite* sprite;
@@ -44,8 +44,8 @@ public:
     void set_coords(int x, int y);
 
 private:
-    sf::Texture front; // index into jpeg vector
-    sf::Texture back; // card_type_vector[0]
+    string front; // index into jpeg vector
+    string back; // card_type_vector[0]
 
     string file_name;
     //sf::Sprite sprite;
@@ -150,7 +150,7 @@ public:
     void remove_match(CardType card);
     void sfml_driver();
 
-    
+
 
     int makeFileList(string filepath, vector<string*> &name);
     //string randomFileName(vector<string> &name, int max);

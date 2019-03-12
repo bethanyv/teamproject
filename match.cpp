@@ -34,7 +34,8 @@ CardType::CardType() {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
-	string file_name = "pics/back.jpg";
+	string back = "pics/back.jpg";
+	string front = "pics/back.jpg";
 
 	//try {
 	sf::Sprite* new_sprite = new sf::Sprite;
@@ -49,8 +50,8 @@ CardType::CardType() {
 	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
 		cout << "Error! back.jpg isn't loading." << endl;
 	}
-	back = texture;
-	front = texture;
+	// back = texture;
+	// front = texture;
 }
 
 sf::Sprite& CardType::getSprite() {
@@ -153,8 +154,8 @@ string CardType::getFile_name() {
 	return file_name;
 } 
 
-sf::Texture CardType::getFront() {
-	return this -> front;
+string CardType::getFront() {
+	return front;
 }
 
 void CardType::flip() {
