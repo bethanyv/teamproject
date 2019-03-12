@@ -98,9 +98,9 @@ BoardType::BoardType() {
 	// player1.setType(1);
  // 	player2.setType(2);
 	matrix.reserve(num_cards);
-	for (int i = 0; i < matrix.size(); i++) {
+	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
-		for (int j = 0; j < matrix[i].size(); j++) {
+		for (int j = 0; j < num_cards; j++) {
 			//try {
 			CardType* card = new CardType;
 			//}
