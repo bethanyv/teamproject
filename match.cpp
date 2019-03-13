@@ -184,13 +184,13 @@ void CardType::flip() {
 	// Kristine TODO: add in set textures
 	if(is_flipped) {
 		sprite->setTexture(*back_texture);
-		window.draw(matrix[i][j] -> getSprite());
+		//window.draw(matrix[i][j] -> getSprite());
 		is_flipped = false;
 		return;
 	}
 	else {
 		sprite->setTexture(*front_texture);
-		window.draw(matrix[i][j] -> getSprite());
+		//window.draw(matrix[i][j] -> getSprite());
 		is_flipped = true;
 		return;
 	}
@@ -554,6 +554,7 @@ void BoardType::sfml_driver() {
 					// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
 					cout << "Same card! Pick again" << endl;
 					cards_selected[0]->flip();
+					window.draw(cards_selected[0] -> getSprite());
 					cards_selected.clear();
 					continue;
 				}
@@ -561,7 +562,9 @@ void BoardType::sfml_driver() {
 					cout << "Cards don't match" << endl;
 					// if the cards don't match, flip them back over
 					cards_selected[0]->flip();
+					window.draw(cards_selected[0] -> getSprite());
 					cards_selected[1]->flip();
+					window.draw(cards_selected[1] -> getSprite());
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
