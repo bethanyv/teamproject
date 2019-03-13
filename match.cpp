@@ -95,7 +95,6 @@ PlayerType::PlayerType() {
 }
 
 BoardType::BoardType() {
-	//
 	// player1.setType(1);
  // 	player2.setType(2);
 	matrix.reserve(num_cards);
@@ -104,6 +103,7 @@ BoardType::BoardType() {
 		for (int j = 0; j < num_cards; j++) {
 			//try {
 			CardType* card = new CardType;
+			// TODO set front
 			//}
 			//catch (exception& e)
 			//{
