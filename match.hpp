@@ -74,7 +74,7 @@ public:
     //TODO Maybe add an init function to fill the board's pile?
 };
 
-class PlayerType {
+/*class PlayerType {
 public:
     PlayerType(int num);
     PlayerType();
@@ -85,7 +85,7 @@ public:
 
     virtual void move(); // each player makes a move
     void setType(int num);
-};
+};*/
 
 class AI : public PlayerType {
 public:
