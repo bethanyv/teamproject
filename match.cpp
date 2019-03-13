@@ -94,8 +94,8 @@ PlayerType::PlayerType() {
 	PileType pile;
 }
 
-PlayerType::PlayerType(int numbe) {
-	num = numbe;
+PlayerType::PlayerType(int num) {
+	number = num;
 	PileType pile;
 }
 
