@@ -127,6 +127,8 @@ public:
     vector<vector<int> > matrix2;
     vector<string*> placed_cards;
     vector<string*> pics;
+    PileType pile1;
+    PileType pile2;
 
     //int player_turn;
 
