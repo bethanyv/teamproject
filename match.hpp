@@ -34,26 +34,31 @@ public:
     int get_h();
     int get_x();
     int get_y();
+    // TODO Bethany
+    bool is_empty();
     void set_file(string file);
     string getFront();
     bool check_match(CardType card);
     bool is_same_card(CardType card);
     sf::Sprite* sprite;
+    sf::Texture* back_texture;
+    sf::Texture* front_texture;
     bool is_flipped;
     // call set_coords when placing a card so we know where it is
     void set_coords(int x, int y);
 
 private:
     string front; // index into jpeg vector
-    string back; // card_type_vector[0]
+    const string back; // card_type_vector[0]
 
     string file_name;
     //sf::Sprite sprite;
     int width = 200;
     int height = 300;
     // TODO: add pair
-    int x_coord;
-    int y_coord;
+    int x_coord = 0;
+    int y_coord = 0;
+
 };
 
 class PileType{
@@ -149,7 +154,7 @@ public:
     bool is_empty();
     void remove_match(CardType card);
     void sfml_driver();
-
+    vector<string*> populate_random_vector();
 
 
     int makeFileList(string filepath, vector<string*> &name);

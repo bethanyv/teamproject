@@ -30,12 +30,14 @@ void PileType::add_to_pile(CardType card) {
 	matches.push_back(card);
 }
 
+//CardType::CardType(string* fr) {
 CardType::CardType() {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
-	string back = "pics/back.jpg";
+	const string back = "pics/back.jpg";
 	string front = "pics/back.jpg";
+	//string* front = fr;
 
 	//try {
 	sf::Sprite* new_sprite = new sf::Sprite;
@@ -46,10 +48,15 @@ CardType::CardType() {
 	
 	sprite = new_sprite;
 
-	sf::Texture texture;
-	if(!texture.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
+	sf::Texture* back_texture = new sf::Texture;
+	if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
 		cout << "Error! back.jpg isn't loading." << endl;
 	}
+	sf::Texture* front_texture = new sf::Texture;
+	if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
+		cout << "Error! back.jpg isn't loading." << endl;
+	}
+	new_sprite->setTexture(*back_texture);
 	// back = texture;
 	// front = texture;
 }
@@ -109,8 +116,11 @@ BoardType::BoardType() {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
 			//try {
+			// BETHANY call random here to find index into doubles of cards array
+			// REMOVE that card from the vector of doubles cards
 			CardType* card = new CardType;
-			// TODO set front
+			
+			// TODO Bethany set front
 			//}
 			//catch (exception& e)
 			//{
@@ -139,6 +149,11 @@ BoardType::BoardType() {
 // 	//importing 
 // }
 
+bool CardType::is_empty() {
+	//if(front ==)
+	return false;
+}
+
 int CardType::get_w() {
 	return this -> width;
 }
@@ -148,7 +163,7 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
-	return file_name == card.getFile_name();
+	return front == card.getFront();
     // return 0;
 }
 
@@ -166,11 +181,14 @@ string CardType::getFront() {
 }
 
 void CardType::flip() {
+	// Kristine TODO: add in set textures
 	if(is_flipped) {
+		sprite->setTexture(*back_texture);
 		is_flipped = false;
 		return;
 	}
 	else {
+		sprite->setTexture(*front_texture);
 		is_flipped = true;
 		return;
 	}
@@ -194,7 +212,7 @@ void BoardType::update_board() {
 bool BoardType::is_empty() {
 	// for(int i = 0; i < num_cards; i++) {
 	// 	for(int j = 0; j < num_cards; j++) {
-	// 		if(!(matrix[i][j]->getFile_name() == empty->getFile_name())) {
+	// 		if(!(matrix[i][j]->getFront() == empty->getFront())) {
 	// 			return false;
 	// 		}
 	// 	}
@@ -207,7 +225,7 @@ bool BoardType::is_empty() {
 void BoardType::remove_match(CardType card) {
 	// for(int i = 0; i < num_cards; i++) {
 	// 	for(int j = 0; j < num_cards; j++) {
-	// 		if(matrix[i][j]->getFile_name() == card.getFile_name()) {
+	// 		if(matrix[i][j]->getFront() == card.getFront()) {
 	// 			matrix[i][j] = empty;
 	// 		}
 	// 	}
@@ -313,12 +331,16 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
   return 0;
 }
 
+vector<string*> BoardType::populate_random_vector() {
+
+}
+
 int BoardType::randomNumber(int max) {
 	//takes in max number
 	// returns random number between 1 and max
 	int num = 0;
 	srand (time(NULL));
-    num = (rand() % (max)) + 1;
+    num = (rand() % (max)); // + 1 here if it doesn't work
 	return num;
 
 }
@@ -431,22 +453,22 @@ void BoardType::sfml_driver() {
 	int cards_clicked = 0;
 	std::vector<CardType*> cards_selected;
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
-    sf::Texture texture;
-	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	}
-    sf::Texture texture2;
-	if(!texture2.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	}
-    sf::Texture texture3;
-	if(!texture3.loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	}
-    sf::Texture texture4;
-	if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	}
+ //    sf::Texture texture;
+	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	// }
+ //    sf::Texture texture2;
+	// if(!texture2.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	// }
+ //    sf::Texture texture3;
+	// if(!texture3.loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	// }
+ //    sf::Texture texture4;
+	// if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	// }
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
@@ -476,8 +498,7 @@ void BoardType::sfml_driver() {
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 
-							matrix[i][j]->flip();
-							// TODO: HERE CHANGE CARD TO PRINT FRONT?
+							// matrix[i][j]->flip();
 							// now have flip(), so it should update automatically?
 							cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
 							cards_selected.push_back(matrix[i][j]);
@@ -568,28 +589,27 @@ void BoardType::sfml_driver() {
 
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
-					matrix[i][j] -> getSprite().setTexture(texture);
 					set_buffer(4);
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
 					//TODO: MAKE SURE THIS WORKS ^
 
-					matrix[i][j] -> getSprite().setPosition(sf::Vector2f(x, y));
-
+					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
+				
 					window.draw(matrix[i][j] -> getSprite());
 				}
 			}
-			for (int j = 0; j < num_cards; j++) {
-				matrix[1][j] -> getSprite().setTexture(texture2);
-				matrix[2][j] -> getSprite().setTexture(texture3);
-				matrix[3][j] -> getSprite().setTexture(texture4);
+			// for (int j = 0; j < num_cards; j++) {
+			// 	// matrix[1][j] -> getSprite().setTexture(texture2);
+			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
+			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
 				
-				window.draw(matrix[0][j] -> getSprite());
-				window.draw(matrix[1][j] -> getSprite());
-				window.draw(matrix[2][j] -> getSprite());
-				window.draw(matrix[3][j] -> getSprite());
-			}
+			// 	window.draw(matrix[0][j] -> getSprite());
+			// 	window.draw(matrix[1][j] -> getSprite());
+			// 	window.draw(matrix[2][j] -> getSprite());
+			// 	window.draw(matrix[3][j] -> getSprite());
+			// }
 			window.display();
 	}
 }
