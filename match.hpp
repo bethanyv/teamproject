@@ -76,7 +76,7 @@ public:
 
 class PlayerType {
 public:
-    //PlayerType(int number);
+    PlayerType(int num);
     PlayerType();
     // default destructor
 
