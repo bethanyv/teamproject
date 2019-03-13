@@ -30,6 +30,24 @@ int main() {
 	sprite7.setTexture(texture);
 	sf::Sprite sprite8;
 	sprite8.setTexture(texture);
+	sf::Font font;
+	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
+		cout << "Error loading font" << endl;
+	}
+	sf::Text text;
+	//select the font
+	text.setFont(font);
+	//set the string to display
+	text.setString("Hello World");
+	//set the character size
+	text.setCharacterSize(24); //in pixels, not points
+	//set the color
+	text.setFillColor(sf::Color::Red);
+	//set the text style
+	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	//setting location
+	text.setPosition(150, 150);	
+
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -42,6 +60,7 @@ int main() {
 		}
 
 			window.clear();
+			window.draw(text);
 			//window.draw(shape);
 			window.draw(sprite1);
 			//sprite.setTextureRect(sf::IntRect(10,10,32,32));
