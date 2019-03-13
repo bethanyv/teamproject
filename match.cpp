@@ -100,10 +100,12 @@ PlayerType::PlayerType(int num) {
 }
 
 BoardType::BoardType() {
-	PlayerType player1;
-	PlayerType player2;
-	player1.setType(1);
- 	player2.setType(2);
+	// PlayerType player1;
+	// PlayerType player2;
+	// player1.setType(1);
+ // 	player2.setType(2);
+	pile1 = new PileType;
+	pile2 = new PileType;
 	matrix.reserve(num_cards);
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
@@ -552,11 +554,11 @@ void BoardType::sfml_driver() {
 					cout << "Cards match!" << endl;
 					// TODO: Can't initialize player for some reason??? Uncomment out when can
 					if(player_turn == 1) {
-						(player1.pile).add_to_pile(*cards_selected[0]);
+						//(player1.pile).add_to_pile(*cards_selected[0]);
 						cout << "Added to player 1's pile" << endl;
 					}
 					else {
-						(player2.pile).add_to_pile(*cards_selected[0]);
+						//(player2.pile).add_to_pile(*cards_selected[0]);
 						cout << "Added to player 2's pile" << endl;
 					}
 					// TODO: make sure this moves the cards
