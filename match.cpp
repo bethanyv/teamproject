@@ -40,13 +40,13 @@ CardType::CardType() {
 	//string* front = fr;
 
 	//try {
-	sf::Sprite* new_sprite = new sf::Sprite;
+	sprite = new sf::Sprite;
 	//}
 	//catch (exception& e) {
 	//	cout << "Standard exception: " << e.what() << endl;
 	//}
 	
-	sprite = new_sprite;
+	//sprite = new_sprite;
 
 	sf::Texture* back_texture = new sf::Texture;
 	if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
@@ -56,7 +56,7 @@ CardType::CardType() {
 	if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
 		cout << "Error! back.jpg isn't loading." << endl;
 	}
-	new_sprite->setTexture(*back_texture);
+	sprite->setTexture(*back_texture);
 	// back = texture;
 	// front = texture;
 }
@@ -184,11 +184,13 @@ void CardType::flip() {
 	// Kristine TODO: add in set textures
 	if(is_flipped) {
 		sprite->setTexture(*back_texture);
+		window.draw(matrix[i][j] -> getSprite());
 		is_flipped = false;
 		return;
 	}
 	else {
 		sprite->setTexture(*front_texture);
+		window.draw(matrix[i][j] -> getSprite());
 		is_flipped = true;
 		return;
 	}
