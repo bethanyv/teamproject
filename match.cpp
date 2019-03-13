@@ -94,6 +94,11 @@ PlayerType::PlayerType() {
 	PileType pile;
 }
 
+PlayerType::PlayerType(int num) {
+	number = num;
+	PileType pile;
+}
+
 BoardType::BoardType() {
 	PlayerType player1;
 	PlayerType player2;
