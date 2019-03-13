@@ -547,11 +547,11 @@ void BoardType::sfml_driver() {
 					cout << "Cards match!" << endl;
 					// TODO: Can't initialize player for some reason??? Uncomment out when can
 					if(player_turn == 1) {
-						//(player1.pile).add_to_pile(*cards_selected[0]);
+						(player1.pile).add_to_pile(*cards_selected[0]);
 						cout << "Added to player 1's pile" << endl;
 					}
 					else {
-						//(player2.pile).add_to_pile(*cards_selected[0]);
+						(player2.pile).add_to_pile(*cards_selected[0]);
 						cout << "Added to player 2's pile" << endl;
 					}
 					// TODO: make sure this moves the cards
