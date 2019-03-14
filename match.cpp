@@ -136,8 +136,9 @@ BoardType::BoardType() {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
 			//try {
-			
+		
 			//cout << *cards_to_place.back() << endl;
+		//	cout << *cards_to_place.back() << endl;
 			
 			//CardType* card = new CardType(cards_to_place.back());
 			CardType* card = new CardType();
@@ -767,11 +768,11 @@ void BoardType::sfml_driver() {
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
-			// 	// matrix[1][j] -> getSprite().setTexture(texture2);
+			 matrix[1][2] -> getSprite().setTexture(textures[2]);
 			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
 			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
 				
-			// 	window.draw(matrix[0][j] -> getSprite());
+			window.draw(matrix[1][2] -> getSprite());
 			// 	window.draw(matrix[1][j] -> getSprite());
 			// 	window.draw(matrix[2][j] -> getSprite());
 			// 	window.draw(matrix[3][j] -> getSprite());
