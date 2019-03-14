@@ -21,8 +21,8 @@ using namespace std;
 
 class CardType{
 public:
-    //CardType(string* file);
-    CardType();
+    CardType(string* file);
+    //CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
 
