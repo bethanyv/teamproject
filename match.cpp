@@ -106,18 +106,18 @@ PlayerType::PlayerType(int num) {
 }
 
 void BoardType::make_cards_to_place(const int amt) {
-	// auto size = cards_to_place.size();
-	// while(size < (amt*2)) {
-	// 	int index = randomNumber(amt*2);
-	// 	if(!(find(cards_to_place.begin(), cards_to_place.end(), &pics[index]) != cards_to_place.end())) {
-	// 		cards_to_place.push_back(&pics[index]);
-	// 		cards_to_place.push_back(&pics[index]);
-	// 		size = cards_to_place.size();
-	// 		//cout << "Size of cards_to_place: " << *cards_to_place[0] << endl;
-	// 		//cout << "Size of cards_to_place: " << size << endl;
-	// 	}
+	auto size = cards_to_place.size();
+	while(size < (amt*2)) {
+		int index = randomNumber(amt*2);
+		if(!(find(cards_to_place.begin(), cards_to_place.end(), index) != cards_to_place.end())) {
+			cards_to_place.push_back(index);
+			cards_to_place.push_back(index);
+			size = cards_to_place.size();
+			//cout << "Index: " << index << endl;
+			//cout << "Size of cards_to_place: " << size << endl;
+		}
 
-	// }
+	}
 }
 
 BoardType::BoardType() {

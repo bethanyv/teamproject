@@ -131,7 +131,7 @@ public:
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
-    vector<string*> cards_to_place;
+    vector<int> cards_to_place;
     vector<string> pics;
 
     //int player_turn;
