@@ -30,8 +30,8 @@ void PileType::add_to_pile(CardType card) {
 	matches.push_back(card);
 }
 
-//CardType::CardType() {
-CardType::CardType(string* file) : front(file) {
+CardType::CardType() {
+//CardType::CardType(string* file) : front(file) {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
@@ -125,24 +125,24 @@ BoardType::BoardType() {
 	// PlayerType player2;
 	// player1.setType(1);
  // 	player2.setType(2);
-	makeFileList("female_cs.txt", pics);
+	//makeFileList("female_cs.txt", pics);
 	//cout << "Holding: " << pics[16] << endl;
-	make_cards_to_place(8);
+	//make_cards_to_place(8);
 	//cout << cards_to_place[0] << endl;
 	matrix.reserve(num_cards);
-	random_shuffle(cards_to_place.begin(), cards_to_place.end());
+	//random_shuffle(cards_to_place.begin(), cards_to_place.end());
 	//cout << "Holding: " << *cards_to_place[0] << endl;
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
 			//try {
 			
-			cout << *cards_to_place.back() << endl;
+		//	cout << *cards_to_place.back() << endl;
 			
-			CardType* card = new CardType(cards_to_place.back());
-			//CardType* card = new CardType();
-			cards_to_place.pop_back();
-			cout << card->getFront() << endl;
+			//CardType* card = new CardType(cards_to_place.back());
+			CardType* card = new CardType();
+			//cards_to_place.pop_back();
+			//cout << card->getFront() << endl;
 			// TODO Bethany set front
 			//}
 			//catch (exception& e)
@@ -767,11 +767,11 @@ void BoardType::sfml_driver() {
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
-			// 	// matrix[1][j] -> getSprite().setTexture(texture2);
+			 matrix[1][2] -> getSprite().setTexture(textures[2]);
 			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
 			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
 				
-			// 	window.draw(matrix[0][j] -> getSprite());
+			window.draw(matrix[1][2] -> getSprite());
 			// 	window.draw(matrix[1][j] -> getSprite());
 			// 	window.draw(matrix[2][j] -> getSprite());
 			// 	window.draw(matrix[3][j] -> getSprite());
