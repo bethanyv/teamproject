@@ -493,8 +493,10 @@ void BoardType::sfml_driver() {
 	// if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	// }
-    
-    /****** TEXT STUFF HERE ************/
+	/****** TRANSFORM STUFF HERE *******/
+	sf::Transform half;
+	half.scale(0.5f, 0.5f); 
+	/****** TEXT STUFF HERE ************/
 	sf::Font font;
 	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
 		cout << "Error loading font" << endl;
@@ -660,7 +662,7 @@ void BoardType::sfml_driver() {
 
 					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
 				
-					window.draw(matrix[i][j] -> getSprite());
+					window.draw(matrix[i][j] -> getSprite(), half);
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
