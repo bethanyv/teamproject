@@ -21,7 +21,7 @@ using namespace std;
 
 class CardType{
 public:
-    CardType(string* file);
+    CardType(int index);
     //CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
@@ -38,18 +38,18 @@ public:
     // TODO Bethany
     bool is_empty();
     void set_file(string file);
-    string getFront();
+    int getFront();
     bool check_match(CardType card);
     bool is_same_card(CardType card);
     sf::Sprite* sprite;
-    sf::Texture* back_texture;
-    sf::Texture* front_texture;
+    //sf::Texture* back_texture;
+    //sf::Texture* front_texture;
     bool is_flipped;
     // call set_coords when placing a card so we know where it is
     void set_coords(int x, int y);
 
 private:
-    string* front; // index into jpeg vector
+    int front; // index into jpeg vector
     const string back; // card_type_vector[0]
 
     string file_name;
@@ -131,7 +131,7 @@ public:
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
-    vector<string*> cards_to_place;
+    vector<int> cards_to_place;
     vector<string> pics;
 
     //int player_turn;
