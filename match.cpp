@@ -576,14 +576,6 @@ void BoardType::sfml_driver() {
 	}
 	textures.push_back(teitelbaum);
 
-
-
-	
-	
-	
-	
-	
-	
 	
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
  //    sf::Texture texture;
