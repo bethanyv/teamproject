@@ -478,6 +478,69 @@ void BoardType::sfml_driver() {
 	int player_turn = 1;
 	int cards_clicked = 0;
 	std::vector<CardType*> cards_selected;
+	vector<sf::Texture> textures;
+
+	sf::Texture allen
+	if(!texture.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+	textures.push_back(allen);
+	sf::Texture bartik
+	if(!texture.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! bartik.jpg isn't loading." << endl;
+	}
+	textures.push_back(bartik);
+	
+	sf::Texture borg
+	if(!texture.loadFromFile("pics/borg.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! borg.jpg isn't loading." << endl;
+	}
+	textures.push_back(borg);
+	
+	sf::Texture haibt
+	if(!texture.loadFromFile("pics/haibt.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! haibt.jpg isn't loading." << endl;
+	}
+	textures.push_back(haibt);
+
+	sf::Texture hamilton
+	if(!texture.loadFromFile("pics/hamilton.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! hamilton.jpg isn't loading." << endl;
+	}
+	textures.push_back(hamilton);
+
+	sf::Texture holberton
+	if(!texture.loadFromFile("pics/holberton.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! holberton.jpg isn't loading." << endl;
+	}
+	textures.push_back(holberton);
+
+	sf::Texture hopper
+	if(!texture.loadFromFile("pics/hopper.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! hopper.jpg isn't loading." << endl;
+	}
+	textures.push_back(hopper);
+
+	sf::Texture keller
+	if(!texture.loadFromFile("pics/keller.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! bartik.jpg isn't loading." << endl;
+	}
+	textures.push_back(keller);
+
+	sf::Texture liskov
+	if(!texture.loadFromFile("pics/liskov.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! liskov.jpg isn't loading." << endl;
+	}
+	textures.push_back(liskov);
+
+	
+	
+	
+	
+	
+	
+	
+	
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
  //    sf::Texture texture;
 	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
