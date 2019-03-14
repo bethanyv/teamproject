@@ -576,7 +576,7 @@ void BoardType::sfml_driver() {
 	}
 	textures.push_back(teitelbaum);
 
-	
+
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
  //    sf::Texture texture;
 	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
@@ -771,7 +771,8 @@ void BoardType::sfml_driver() {
 			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
 			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
 				
-			// 	window.draw(matrix[0][j] -> getSprite());
+			window.draw(matrix[0][0] -> getSprite().getTexture().swap(textures[2]));
+
 			// 	window.draw(matrix[1][j] -> getSprite());
 			// 	window.draw(matrix[2][j] -> getSprite());
 			// 	window.draw(matrix[3][j] -> getSprite());
