@@ -478,6 +478,105 @@ void BoardType::sfml_driver() {
 	int player_turn = 1;
 	int cards_clicked = 0;
 	std::vector<CardType*> cards_selected;
+	vector<sf::Texture> textures;
+
+	sf::Texture allen;
+	if(!allen.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+	}
+	textures.push_back(allen);
+
+	sf::Texture bartik;
+	if(!bartik.loadFromFile("pics/bartik.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! bartik.jpg isn't loading." << endl;
+	}
+	textures.push_back(bartik);
+	
+	sf::Texture borg;
+	if(!borg.loadFromFile("pics/borg.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! borg.jpg isn't loading." << endl;
+	}
+	textures.push_back(borg);
+	
+	sf::Texture haibt;
+	if(!haibt.loadFromFile("pics/haibt.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! haibt.jpg isn't loading." << endl;
+	}
+	textures.push_back(haibt);
+
+	sf::Texture hamilton;
+	if(!hamilton.loadFromFile("pics/hamilton.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! hamilton.jpg isn't loading." << endl;
+	}
+	textures.push_back(hamilton);
+
+	sf::Texture holberton;
+	if(!holberton.loadFromFile("pics/holberton.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! holberton.jpg isn't loading." << endl;
+	}
+	textures.push_back(holberton);
+
+	sf::Texture hopper;
+	if(!hopper.loadFromFile("pics/hopper.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! hopper.jpg isn't loading." << endl;
+	}
+	textures.push_back(hopper);
+
+	sf::Texture keller;
+	if(!keller.loadFromFile("pics/keller.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! bartik.jpg isn't loading." << endl;
+	}
+	textures.push_back(keller);
+
+	sf::Texture liskov;
+	if(!liskov.loadFromFile("pics/liskov.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! liskov.jpg isn't loading." << endl;
+	}
+	textures.push_back(liskov);
+
+	sf::Texture lovelace;
+	if(!lovelace.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! lovelace.jpg isn't loading." << endl;
+	}
+	textures.push_back(lovelace);
+
+	sf::Texture meltzer;
+	if(!liskov.loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! meltzer.jpg isn't loading." << endl;
+	}
+	textures.push_back(meltzer);
+
+	sf::Texture perlman;
+	if(!liskov.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! perlman.jpg isn't loading." << endl;
+	}
+	textures.push_back(perlman);
+
+	sf::Texture rhodes;
+	if(!rhodes.loadFromFile("pics/rhodes.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! rhodes.jpg isn't loading." << endl;
+	}
+	textures.push_back(rhodes);
+
+	sf::Texture sammet;
+	if(!sammet.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! sammet.jpg isn't loading." << endl;
+	}
+	textures.push_back(sammet);
+
+	sf::Texture spence;
+	if(!spence.loadFromFile("pics/spence.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! spence.jpg isn't loading." << endl;
+	}
+	textures.push_back(spence);
+
+	sf::Texture teitelbaum;
+	if(!teitelbaum.loadFromFile("pics/teitelbaum.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! teitelbaum.jpg isn't loading." << endl;
+	}
+	textures.push_back(teitelbaum);
+
+	
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
  //    sf::Texture texture;
 	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
