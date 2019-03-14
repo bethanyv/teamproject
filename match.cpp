@@ -493,6 +493,40 @@ void BoardType::sfml_driver() {
 	// if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
 	// }
+    
+    /****** TEXT STUFF HERE ************/
+	sf::Font font;
+	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
+		cout << "Error loading font" << endl;
+	}
+	sf::Text p1_txt;
+	//select the font
+	p1_txt.setFont(font);
+	//set the string to display 
+	p1_txt.setString("Player 1");
+	//set the character size
+	p1_txt.setCharacterSize(24); //in pixels, not points
+	//set color
+	p1_txt.setFillColor(sf::Color::Magenta);
+	//set the text style
+	p1_txt.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	//setting location
+	p1_txt.setPosition(1000, 0);
+
+	sf::Text p2_txt;
+	//select the font
+	p2_txt.setFont(font);
+	//set the string to display 
+	p2_txt.setString("Player 2");
+	//set the character size
+	p2_txt.setCharacterSize(24); //in pixels, not points
+	//set color
+	p2_txt.setFillColor(sf::Color::Magenta);
+	//set the text style
+	p1_txt.setStyle(sf::Text::Bold);
+	//setting location
+	p1_txt.setPosition(900, 0);
+
 
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
@@ -536,9 +570,10 @@ void BoardType::sfml_driver() {
 			}
 		}
 
-			window.clear();
+			window.clear(sf::Color::White);
             //window.draw(sprite1);
-
+			window.draw(p1_txt);
+			window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
 			// for (int i = 0; i < num_cards; i++) {
