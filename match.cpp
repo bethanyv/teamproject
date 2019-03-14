@@ -45,7 +45,6 @@ CardType::CardType() {
 	//	cout << "Standard exception: " << e.what() << endl;
 	//}
 	
-	//sprite = new_sprite;
 
 	sf::Texture* back_texture = new sf::Texture;
 	if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
@@ -66,8 +65,9 @@ sf::Sprite& CardType::getSprite() {
 
 // this function compares coordinates. If two cards selected have the same 
 // x and y, then it can't be selected again in sfml_driver where it's called
+//  && card.getFront() == *front
 bool CardType::is_same_card(CardType card) {
-	if(card.get_x() == x_coord && card.get_y() == y_coord && card.getFront() == *front) {
+	if(card.get_x() == x_coord && card.get_y() == y_coord) {
 		return true;
 	}
 	return false;
@@ -107,13 +107,16 @@ PlayerType::PlayerType(int num) {
 
 void BoardType::make_cards_to_place(const int amt) {
 	// auto size = cards_to_place.size();
-	// while(size <= (amt*2)) {
+	// while(size < (amt*2)) {
 	// 	int index = randomNumber(amt*2);
-	// 	if(!(find(cards_to_place.begin(), cards_to_place.end(), pics[index]) != cards_to_place.end())) {
-	// 		cards_to_place.push_back(pics[index]);
-	// 		cards_to_place.push_back(pics[index]);
+	// 	if(!(find(cards_to_place.begin(), cards_to_place.end(), &pics[index]) != cards_to_place.end())) {
+	// 		cards_to_place.push_back(&pics[index]);
+	// 		cards_to_place.push_back(&pics[index]);
+	// 		size = cards_to_place.size();
+	// 		cout << "Size of cards_to_place: " << *cards_to_place[0] << endl;
+	// 		cout << "Size of cards_to_place: " << size << endl;
 	// 	}
-	// 	size = cards_to_place.size();
+
 	// }
 }
 
@@ -123,17 +126,19 @@ BoardType::BoardType() {
 	// player1.setType(1);
  // 	player2.setType(2);
 	//makeFileList("female_cs.txt", pics);
-	//cout << "Holding: " << *pics[0] << endl;
+	//cout << "Holding: " << pics[16] << endl;
+	//make_cards_to_place(8);
 	matrix.reserve(num_cards);
+	//random_shuffle(cards_to_place.begin(), cards_to_place.end());
+	//cout << "Holding: " << *cards_to_place[0] << endl;
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
 			//try {
-			//make_cards_to_place(8);
-			//cout << *pics[1] << endl;
-			//random_shuffle(cards_to_place.begin(), cards_to_place.end());
-			//TODO HERE: CARDS DONT EVEN EXIST RIGHT NOW?
-			//CardType* card = new CardType(pics[0]);
+			
+			//cout << pics[1] << endl;
+			
+			//CardType* card = new CardType(cards_to_place[0]);
 			CardType* card = new CardType();
 			//cards_to_place.erase(cards_to_place.begin());
 			// TODO Bethany set front
@@ -146,10 +151,11 @@ BoardType::BoardType() {
 		}
 	}
 
-	matrix2.resize(num_cards);
-	for (int i = 0; i < matrix2.size(); i++) {
-		matrix2[i].resize(num_cards);
-	}
+	// matrix2.resize(num_cards);
+	// for (int i = 0; i < matrix2.size(); i++) {
+	// 	matrix2[i].resize(num_cards);
+	// }
+
 	//placed_cards.reserve(num_cards);
 	// empty = new CardType;
 	// empty->set_file("pics/empty.png");
@@ -321,7 +327,7 @@ void BoardType::set_cards(string path) {
 	}
 }
 
-int BoardType::makeFileList(string filepath, vector<string*> &name) {
+int BoardType::makeFileList(string filepath, vector<string> &name) {
     string line;
     ifstream myfile (filepath);
     if (myfile.is_open())
@@ -336,7 +342,7 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
 				new_line = &line;
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
-                name.push_back(new_line);
+                name.push_back(*new_line);
                 // cout << "Pushed back: " << name.size() << endl;
             }
         }

@@ -131,8 +131,8 @@ public:
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
-    //vector<string*> cards_to_place;
-    vector<string*> pics;
+    vector<string*> cards_to_place;
+    vector<string> pics;
 
     //int player_turn;
 
@@ -159,7 +159,7 @@ public:
     vector<string*> populate_random_vector();
 
 
-    int makeFileList(string filepath, vector<string*> &name);
+    int makeFileList(string filepath, vector<string> &name);
     //string randomFileName(vector<string> &name, int max);
     int randomNumber(int max);
     int runGame();
