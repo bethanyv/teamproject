@@ -46,15 +46,15 @@ CardType::CardType(string* file) : front(file) {
 	//}
 	
 
-	sf::Texture* back_texture = new sf::Texture;
-	if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
-		cout << "Error! back.jpg isn't loading." << endl;
-	}
-	sf::Texture* front_texture = new sf::Texture;
-	if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
-		cout << "Error! back.jpg isn't loading." << endl;
-	}
-	sprite->setTexture(*back_texture);
+	// sf::Texture* back_texture = new sf::Texture;
+	// if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
+	// 	cout << "Error! back.jpg isn't loading." << endl;
+	// }
+	// sf::Texture* front_texture = new sf::Texture;
+	// if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
+	// 	cout << "Error! back.jpg isn't loading." << endl;
+	// }
+	// sprite->setTexture(*back_texture);
 	// back = texture;
 	// front = texture;
 }
