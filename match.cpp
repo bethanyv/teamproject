@@ -30,8 +30,8 @@ void PileType::add_to_pile(CardType card) {
 	matches.push_back(card);
 }
 
-CardType::CardType() {
-//CardType::CardType(string* file) : front(file) {
+//CardType::CardType() {
+CardType::CardType(int index) : front(index) {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
@@ -127,11 +127,11 @@ BoardType::BoardType() {
  // 	player2.setType(2);
 	//makeFileList("female_cs.txt", pics);
 	//cout << "Holding: " << pics[16] << endl;
-	//make_cards_to_place(8);
+	make_cards_to_place(8);
 	//cout << cards_to_place[0] << endl;
 	matrix.reserve(num_cards);
-	//random_shuffle(cards_to_place.begin(), cards_to_place.end());
-	//cout << "Holding: " << *cards_to_place[0] << endl;
+	random_shuffle(cards_to_place.begin(), cards_to_place.end());
+	//cout << "Holding: " << cards_to_place[0] << endl;
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
@@ -140,9 +140,9 @@ BoardType::BoardType() {
 			//cout << *cards_to_place.back() << endl;
 		//	cout << *cards_to_place.back() << endl;
 			
-			//CardType* card = new CardType(cards_to_place.back());
-			CardType* card = new CardType();
-			//cards_to_place.pop_back();
+			CardType* card = new CardType(cards_to_place.back());
+			//CardType* card = new CardType();
+			cards_to_place.pop_back();
 			//cout << card->getFront() << endl;
 			// TODO Bethany set front
 			//}
@@ -188,7 +188,7 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
-	return *front == card.getFront();
+	return front == card.getFront();
     // return 0;
 }
 
@@ -201,8 +201,8 @@ bool CardType::check_match(CardType card) {
 // 	return *file_name;
 // } 
 
-string CardType::getFront() {
-	return *front;
+int CardType::getFront() {
+	return front;
 }
 
 void CardType::flip() {
@@ -754,6 +754,7 @@ void BoardType::sfml_driver() {
 				cards_selected.clear();
 			}
 
+			int ctr = 0;
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
 					set_buffer(4);
@@ -761,18 +762,21 @@ void BoardType::sfml_driver() {
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
 					//TODO: MAKE SURE THIS WORKS ^
-
+					matrix[i][j] -> getSprite().setTexture(textures[cards_to_place[ctr]]);
 					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
-				
+					ctr += 1;
 					window.draw(matrix[i][j] -> getSprite(), half);
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
-			 matrix[1][2] -> getSprite().setTexture(textures[2]);
+
+			//matrix[1][2] -> getSprite().setTexture(textures[2]);
 			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
 			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
 				
-			window.draw(matrix[1][2] -> getSprite());
+			//window.draw(matrix[1][2] -> getSprite());
+
+
 			// 	window.draw(matrix[1][j] -> getSprite());
 			// 	window.draw(matrix[2][j] -> getSprite());
 			// 	window.draw(matrix[3][j] -> getSprite());
