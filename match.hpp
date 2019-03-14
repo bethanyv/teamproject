@@ -21,6 +21,7 @@ using namespace std;
 
 class CardType{
 public:
+    //CardType(string* file);
     CardType();
     // default destructor
     //TODO constructor to pass in an index into the jpeg vector
@@ -48,7 +49,7 @@ public:
     void set_coords(int x, int y);
 
 private:
-    string front; // index into jpeg vector
+    string* front; // index into jpeg vector
     const string back; // card_type_vector[0]
 
     string file_name;
@@ -130,7 +131,7 @@ public:
 
     vector<vector<CardType*> > matrix;
     vector<vector<int> > matrix2;
-    vector<string*> placed_cards;
+    //vector<string*> cards_to_place;
     vector<string*> pics;
 
     //int player_turn;
@@ -152,6 +153,7 @@ public:
     // in update board, update the screen too
     void update_board();
     bool is_empty();
+    void make_cards_to_place(const int amt);
     void remove_match(CardType card);
     void sfml_driver();
     vector<string*> populate_random_vector();

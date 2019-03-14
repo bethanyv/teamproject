@@ -30,13 +30,12 @@ void PileType::add_to_pile(CardType card) {
 	matches.push_back(card);
 }
 
-//CardType::CardType(string* fr) {
 CardType::CardType() {
+//CardType::CardType(string* file) : front(file) {
 	//is flipped - false: back.jpg
 	//is flipped - true: face
 	bool is_flipped = false;
 	const string back = "pics/back.jpg";
-	string front = "pics/back.jpg";
 	//string* front = fr;
 
 	//try {
@@ -68,7 +67,7 @@ sf::Sprite& CardType::getSprite() {
 // this function compares coordinates. If two cards selected have the same 
 // x and y, then it can't be selected again in sfml_driver where it's called
 bool CardType::is_same_card(CardType card) {
-	if(card.get_x() == x_coord && card.get_y() == y_coord && card.getFront() == front) {
+	if(card.get_x() == x_coord && card.get_y() == y_coord && card.getFront() == *front) {
 		return true;
 	}
 	return false;
@@ -106,20 +105,37 @@ PlayerType::PlayerType(int num) {
 	PileType pile;
 }
 
+void BoardType::make_cards_to_place(const int amt) {
+	// auto size = cards_to_place.size();
+	// while(size <= (amt*2)) {
+	// 	int index = randomNumber(amt*2);
+	// 	if(!(find(cards_to_place.begin(), cards_to_place.end(), pics[index]) != cards_to_place.end())) {
+	// 		cards_to_place.push_back(pics[index]);
+	// 		cards_to_place.push_back(pics[index]);
+	// 	}
+	// 	size = cards_to_place.size();
+	// }
+}
+
 BoardType::BoardType() {
-	PlayerType player1;
-	PlayerType player2;
-	player1.setType(1);
- 	player2.setType(2);
+	// PlayerType player1;
+	// PlayerType player2;
+	// player1.setType(1);
+ // 	player2.setType(2);
+	//makeFileList("female_cs.txt", pics);
+	//cout << "Holding: " << *pics[0] << endl;
 	matrix.reserve(num_cards);
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
 			//try {
-			// BETHANY call random here to find index into doubles of cards array
-			// REMOVE that card from the vector of doubles cards
-			CardType* card = new CardType;
-			
+			//make_cards_to_place(8);
+			//cout << *pics[1] << endl;
+			//random_shuffle(cards_to_place.begin(), cards_to_place.end());
+			//TODO HERE: CARDS DONT EVEN EXIST RIGHT NOW?
+			//CardType* card = new CardType(pics[0]);
+			CardType* card = new CardType();
+			//cards_to_place.erase(cards_to_place.begin());
 			// TODO Bethany set front
 			//}
 			//catch (exception& e)
@@ -134,7 +150,7 @@ BoardType::BoardType() {
 	for (int i = 0; i < matrix2.size(); i++) {
 		matrix2[i].resize(num_cards);
 	}
-	placed_cards.reserve(num_cards);
+	//placed_cards.reserve(num_cards);
 	// empty = new CardType;
 	// empty->set_file("pics/empty.png");
 	// empty.set_file("pics/empty.png");
@@ -163,21 +179,21 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
-	return front == card.getFront();
+	return *front == card.getFront();
     // return 0;
 }
 
-void CardType::set_file(string file) {
-	this -> file_name = file;
-}
+// void CardType::set_file(string file) {
+// 	this -> file_name = file;
+// }
 
 
-string CardType::getFile_name() {
-	return file_name;
-} 
+// string CardType::getFile_name() {
+// 	return *file_name;
+// } 
 
 string CardType::getFront() {
-	return front;
+	return *front;
 }
 
 void CardType::flip() {
@@ -263,6 +279,7 @@ void BoardType::set_cards(string path) {
 	string pic;
 	//fill our vector up with picture file names
 	makeFileList(path, pics);
+
 	int max = 16;
 	for (int i = 0; i < num_cards; i++) {
 		for (int j = 0; j < num_cards; j++) {
@@ -314,12 +331,13 @@ int BoardType::makeFileList(string filepath, vector<string*> &name) {
         //getline (myfile,line);
         //cout << line << endl;
             while(getline(myfile, line)){
-                // cout << "In makeFileList and saving: " << line << endl;
+                //cout << "In makeFileList and saving: " << line << endl;
 				string* new_line = new string;
 				new_line = &line;
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
                 name.push_back(new_line);
+                // cout << "Pushed back: " << name.size() << endl;
             }
         }
         myfile.close();
@@ -625,6 +643,16 @@ int BoardType::runGame()
 	// board.set_cards("female_cs.txt");
 
 	sfml_driver();
+
+	// TODO HERE FIX: cout not even working?
+	// cout << 5 << endl;
+	// int num = randomNumber(15);
+
+	// int size = 0;
+	// while(size < 5) {
+	// 	cout << randomNumber(15);
+	// 	size++;
+	// }
 
 	// for (int i = 0; i < board.num_cards; i++) {
 	// 	cout << "Placed card:" << board.placed_cards[i] << endl;
