@@ -68,7 +68,7 @@ sf::Sprite& CardType::getSprite() {
 // this function compares coordinates. If two cards selected have the same 
 // x and y, then it can't be selected again in sfml_driver where it's called
 bool CardType::is_same_card(CardType card) {
-	if(card.get_x() == x_coord && card.get_y() == y_coord) {
+	if(card.get_x() == x_coord && card.get_y() == y_coord && card.getFront() == front) {
 		return true;
 	}
 	return false;
@@ -288,7 +288,6 @@ void BoardType::set_cards(string path) {
 			// 	matrix[i][j] -> sprite.setTexture(texture);
 
 			// 	//TODO: figure out why this isn't adding file_name to placed cards
-			// 	placed_cards.push_back(file_name);
 			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
 
 			// set buffer only does one row and one column
@@ -306,7 +305,6 @@ void BoardType::set_cards(string path) {
 }
 
 int BoardType::makeFileList(string filepath, vector<string*> &name) {
-    // vector<string> one_syl_nouns;
     string line;
     ifstream myfile (filepath);
     if (myfile.is_open())
@@ -552,12 +550,13 @@ void BoardType::sfml_driver() {
 				cards_clicked = 0;
 				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
 					// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
-					cout << "Same card! Pick again" << endl;
-					cards_selected[0]->flip();
-					window.draw(cards_selected[0] -> getSprite());
-					cards_selected.clear();
-					continue;
-				}
+						cout << "Same card! Pick again" << endl;
+						//cards_selected[0]->flip();
+						cards_selected.erase(cards_selected.begin() + 1, cards_selected.end());
+						cards_clicked -= 1;
+					}
+					
+				
 				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
 					cout << "Cards don't match" << endl;
 					// if the cards don't match, flip them back over
