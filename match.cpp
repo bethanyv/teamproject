@@ -675,8 +675,8 @@ void BoardType::sfml_driver() {
 
 			window.clear(sf::Color::White);
             //window.draw(sprite1);
-			window.draw(p1_txt);
-			window.draw(p2_txt);
+			// window.draw(p1_txt);
+			// window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
 			// for (int i = 0; i < num_cards; i++) {
@@ -730,10 +730,12 @@ void BoardType::sfml_driver() {
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
+						window.draw(p2_txt);
 					}
 					else {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
+						window.draw(p1_txt);
 					}
 					//cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
 				}
