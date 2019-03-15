@@ -400,13 +400,15 @@ void BoardType::sfml_driver() {
 			window.clear(sf::Color::White);
             
 			set_cards("female_cs.txt");
-			
+			int ctr = 0;
+			is_match = false;
 			if(cards_clicked >= 2) {
+
 				cards_clicked = 0;
 				if(first_i == second_i && first_j == second_j) {
 					cout << "Same card! Pick again" << endl;
 					cards_clicked = 1;
-					//repick = true;
+					repick = true;
 				}
 					
 				
@@ -438,10 +440,7 @@ void BoardType::sfml_driver() {
 					}
 					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
 					window.draw(matrix[second_i][second_j]->getSprite());
-					usleep(1000000);
-					matrix[second_i][second_j]->flip();
-					matrix[first_i][first_j]->flip();
-					
+					//usleep(1000000);
 				}
 				else {
 					cout << "Cards match!" << endl;
@@ -450,17 +449,46 @@ void BoardType::sfml_driver() {
 					if(player_turn == 1) {
 						player1_pile += 1;
 						cout << "Added to player 1's pile" << endl;
+						window.draw(p1_txt);
+
 					}
 					else {
 						player2_pile += 1;
 						cout << "Added to player 2's pile" << endl;
+						window.draw(p2_txt);
 					}
+					is_match = true;
 
 				}
 				cout << endl;
+				
+				if(!is_match) {
+					for (int i = 0; i < num_cards; i ++) {
+						for (int j = 0; j < num_cards; j++) {
+							set_buffer(4);
+							const float x = set_card_h(i);
+							const float y = set_card_w(j);
+							matrix[i][j]->set_coords(x, y);
+							
+							if(matrix[i][j]->is_flipped) {
+								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+							}
+							else {
+								matrix[i][j] -> getSprite().setTexture(back);
+							}
+							(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
+							ctr += 1;
+							window.draw(matrix[i][j] -> getSprite(), half);
+						}
+					}
+					window.display();
+					usleep(1000000);
+					matrix[second_i][second_j]->flip();
+					matrix[first_i][first_j]->flip();
+				}
 			}
 			
-			int ctr = 0;
+			ctr = 0;
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
 					set_buffer(4);
