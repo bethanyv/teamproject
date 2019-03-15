@@ -68,25 +68,12 @@ void BoardType::make_cards_to_place(const int amt) {
 }
 
 BoardType::BoardType() {
-
-	// PlayerType player1;
-	// PlayerType player2;
-	// player1.setType(1);
- // 	player2.setType(2);
-	//makeFileList("female_cs.txt", pics);
-	//cout << "Holding: " << pics[16] << endl;
 	make_cards_to_place(8);
-	//cout << cards_to_place[0] << endl;
 	matrix.reserve(num_cards);
 	random_shuffle(cards_to_place.begin(), cards_to_place.end());
-	//cout << "Holding: " << cards_to_place[0] << endl;
 	for (int i = 0; i < num_cards; i++) {
 		matrix[i].reserve(num_cards);
 		for (int j = 0; j < num_cards; j++) {
-			//try {
-		
-			//cout << *cards_to_place.back() << endl;
-		//	cout << *cards_to_place.back() << endl;
 			try {
 				CardType* card = new CardType(cards_to_place.back());
 				cards_to_place.pop_back();
@@ -96,38 +83,9 @@ BoardType::BoardType() {
 			{
 				cerr << "bad_alloc caught: " << ba.what() << endl;
 			}
-			//CardType* card = new CardType();
-			/*cards_to_place.pop_back();*/
-			//cout << card->getFront() << endl;
-			// TODO Bethany set front
-			//}
-			//catch (exception& e)
-			//{
-			//	cout << "Standard exception: " << e.what() << endl;
-			//}
-			/*matrix[i][j] = card;*/
 		}
 	}
-
-	// matrix2.resize(num_cards);
-	// for (int i = 0; i < matrix2.size(); i++) {
-	// 	matrix2[i].resize(num_cards);
-	// }
-
-	//placed_cards.reserve(num_cards);
-	// empty = new CardType;
-	// empty->set_file("pics/empty.png");
-	// empty.set_file("pics/empty.png");
- //    empty.flip();
 }
-
-// GameType::GameType(){
-// 	BoardType board;
-// 	player1.setType(1);
-// 	player2.setType(2);
-
-// 	//importing 
-// }
 
 bool CardType::is_empty() {
 	//if(front ==)
@@ -144,7 +102,6 @@ int CardType::get_h() {
 
 bool CardType::check_match(CardType card) {
 	return front == card.getFront();
-    // return 0;
 }
 
 int CardType::getFront() {
@@ -427,14 +384,10 @@ void BoardType::sfml_driver() {
 									second_i = i;
 									second_j = j;
 								}
-								if(!repick) {
-									matrix[i][j]->flip();
-									matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
-								}
-								repick = false;
-								//matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
-								
-								//window.draw(matrix[i][j] -> getSprite());
+								matrix[i][j]->flip();
+								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+								//repick = false;
+
 								cards_clicked = cards_clicked + 1;
 							}
 
@@ -448,56 +401,21 @@ void BoardType::sfml_driver() {
 		}
 
 			window.clear(sf::Color::White);
-            //window.draw(sprite1);
-			// window.draw(p1_txt);
-			// window.draw(p2_txt);
+            
 			set_cards("female_cs.txt");
-
-			// for (int i = 0; i < num_cards; i++) {
-			// 	for (int j = 0; j < num_cards; j++) {
-			// 		window.draw(matrix[i][j] -> sprite);
-			// 	}
-			// }
-
-			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
-			// int x = set_card_w(0);
-			// sprite1.setPosition(sf::Vector2f(x, 10.f));
-			// window.draw(sprite2);
-			// x = set_card_w(1);
-			// sprite2.setPosition(sf::Vector2f(x, 10.f));
-			// window.draw(sprite3);
-			// x = set_card_w(2);
-			// sprite3.setPosition(sf::Vector2f(x, 10.f));
-			// window.draw(sprite4);
-			// x = set_card_w(3);
-			// sprite4.setPosition(sf::Vector2f(x, 10.f));
-			
-			// //vertical
-			// window.draw(sprite5);
-			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
-			// window.draw(sprite6);
-			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
-			// window.draw(sprite7);
-			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
-
-			// >= because it clicks seem inconsistent?
 			
 			if(cards_clicked >= 2) {
-				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
 				if(first_i == second_i && first_j == second_j) {
 					cout << "Same card! Pick again" << endl;
 					cards_clicked = 1;
-					repick = true;
+					//repick = true;
 				}
 					
 				
 				else if(first_index != second_index) {
 					cout << "Cards don't match" << endl;
-					// if the cards don't match, flip them back over
-					
-					// usleep(1000000);
-					//matrix[first_i][first_j]->flip();
+			
 					if(matrix[first_i][first_j]->is_flipped) {
 						matrix[first_i][first_j] -> getSprite().setTexture(textures[first_index]);
 					}
@@ -542,9 +460,9 @@ void BoardType::sfml_driver() {
 					}
 
 				}
-
+				cout << endl;
 			}
-		
+			
 			int ctr = 0;
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
@@ -565,10 +483,20 @@ void BoardType::sfml_driver() {
 				}
 			}
 			window.display();
-	}
+	if (matches_found.size() >= 8) {
+		cout << endl << "Player 1 had " << player1_pile << " matches!" << endl;
+		cout << "Player 2 had " << player2_pile << " matches!" << endl << endl;
+		if(player1_pile > player2_pile) {
+			cout << "Player 1 WINS!" << endl << endl;
+		}
+		else {
+			cout << "Player 2 WINS!" << endl << endl;
+		}
+		break;
+		}
+	} 
 }
 
-//int GameType::runGame()
 int BoardType::runGame()
 {
 
