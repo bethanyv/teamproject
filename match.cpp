@@ -319,7 +319,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p1_txt.setFont(font);
 	//set the string to display 
-	p1_txt.setString("Player 1 found a match!");
+	p1_txt.setString("Player 1's turn'!");
 	//set the character size
 	p1_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -333,7 +333,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p2_txt.setFont(font);
 	//set the string to display 
-	p2_txt.setString("Player 2 found a match!");
+	p2_txt.setString("Player 2's turn'!");
 	//set the character size
 	p2_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -398,6 +398,10 @@ void BoardType::sfml_driver() {
 									second_i = i;
 									second_j = j;
 								}
+								if(repick) {
+									matrix[first_i][first_j]->flip();
+									
+								}
 								matrix[i][j]->flip();
 								
 								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
@@ -431,8 +435,9 @@ void BoardType::sfml_driver() {
 					cout << "Same card! Pick again" << endl;
 					cards_clicked = 1;
 					repick = true;
-				}
 					
+				}
+				
 				
 				else if(first_index != second_index) {
 					cout << "Cards don't match" << endl;
