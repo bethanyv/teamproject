@@ -38,12 +38,12 @@ CardType::CardType(int index) : front(index) {
 	//const string back = "pics/back.jpg";
 	//string* front = fr;
 
-	//try {
+	try {
 	sprite = new sf::Sprite;
-	//}
-	//catch (exception& e) {
-	//	cout << "Standard exception: " << e.what() << endl;
-	//}
+	}
+	catch (bad_alloc& ba) {
+		cout << "bad_alloc caught: " << ba.what() << endl;
+	}
 	
 
 	// sf::Texture* back_texture = new sf::Texture;
@@ -138,10 +138,17 @@ BoardType::BoardType() {
 		
 			//cout << *cards_to_place.back() << endl;
 		//	cout << *cards_to_place.back() << endl;
-			
-			CardType* card = new CardType(cards_to_place.back());
+			try {
+				CardType* card = new CardType(cards_to_place.back());
+				cards_to_place.pop_back();
+				matrix[i][j] = card;
+			}
+			catch (std::bad_alloc& ba)
+			{
+				cerr << "bad_alloc caught: " << ba.what() << endl;
+			}
 			//CardType* card = new CardType();
-			cards_to_place.pop_back();
+			/*cards_to_place.pop_back();*/
 			//cout << card->getFront() << endl;
 			// TODO Bethany set front
 			//}
@@ -149,7 +156,7 @@ BoardType::BoardType() {
 			//{
 			//	cout << "Standard exception: " << e.what() << endl;
 			//}
-			matrix[i][j] = card;
+			/*matrix[i][j] = card;*/
 		}
 	}
 
@@ -228,7 +235,7 @@ void AI::move() {
     // return 0;
 }
 int AI::random_pick() {
-    // return 0;
+    return 0;
 }
 
 // do we need this function if we are just removing cards if they are a match?
@@ -340,11 +347,19 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
         //cout << line << endl;
             while(getline(myfile, line)){
                 //cout << "In makeFileList and saving: " << line << endl;
-				string* new_line = new string;
-				new_line = &line;
+				try {
+					string* new_line = new string;
+					new_line = &line;
+					name.push_back(*new_line);
+				}
+				catch (bad_alloc& ba)
+				{
+					cerr << "bad_alloc caught: " << ba.what() << endl;
+				}
+				/*new_line = &line;*/
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
-                name.push_back(*new_line);
+                /*name.push_back(*new_line);*/
                 // cout << "Pushed back: " << name.size() << endl;
             }
         }
@@ -358,7 +373,8 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
 }
 
 vector<string*> BoardType::populate_random_vector() {
-
+	vector<string*> place_holder;
+	return place_holder;
 }
 
 int BoardType::randomNumber(int max) {
@@ -370,104 +386,6 @@ int BoardType::randomNumber(int max) {
 	return num;
 
 }
-
-// void BoardType::sfml_driver() {
-// 	/*******************************************
-//      * SFML Events Here
-//      ******************************************/
-// 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
-
-//     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
-//     sf::Texture texture;
-// 	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-// 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-// 	}
-
-//     /* MAIN SFML PROGRAM LOOP */
-//     while (window.isOpen()) {
-// 		sf::Event event;
-// 		while (window.pollEvent(event)) {
-
-// 			if (event.type == sf::Event::Closed) {
-// 				window.close();
-// 			}
-// 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				
-// 				cout << "Found a mouse click!" << endl;
-
-// 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
-
-// 				// transform the mouse position from window coordinates to world coordinates
-//     			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-// 				for (int i = 0; i < num_cards; i ++) {
-// 					for (int j = 0; j < num_cards; j++) {
-// 						CardType cardd = *matrix[i][j];
-// 						sf::FloatRect boundingBox = (cardd.getSprite()).getGlobalBounds();
-// 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
-// 						if (boundingBox.contains(mouse))
-// 						{
-// 							//TODO: BETHANY! We need to add logic here for what to do when we click 
-// 							//on a specific card. YOu can find the card at matrix[i][j]
-// 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
-
-// 						}
-// 					}
-// 				}
-
-// 			}
-// 		}
-
-// 			window.clear();
-//             //window.draw(sprite1);
-
-// 			set_cards("female_cs.txt");
-
-// 			// for (int i = 0; i < num_cards; i++) {
-// 			// 	for (int j = 0; j < num_cards; j++) {
-// 			// 		window.draw(matrix[i][j] -> sprite);
-// 			// 	}
-// 			// }
-
-// 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
-// 			// int x = set_card_w(0);
-// 			// sprite1.setPosition(sf::Vector2f(x, 10.f));
-// 			// window.draw(sprite2);
-// 			// x = set_card_w(1);
-// 			// sprite2.setPosition(sf::Vector2f(x, 10.f));
-// 			// window.draw(sprite3);
-// 			// x = set_card_w(2);
-// 			// sprite3.setPosition(sf::Vector2f(x, 10.f));
-// 			// window.draw(sprite4);
-// 			// x = set_card_w(3);
-// 			// sprite4.setPosition(sf::Vector2f(x, 10.f));
-			
-// 			// //vertical
-// 			// window.draw(sprite5);
-// 			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
-// 			// window.draw(sprite6);
-// 			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
-// 			// window.draw(sprite7);
-// 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
-
-
-// 			for (int i = 0; i < num_cards; i ++) {
-// 				for (int j = 0; j < num_cards; j++) {
-// 					CardType cardd = *matrix[i][j];
-// 					(cardd.getSprite()).setTexture(texture);
-// 					set_buffer(4);
-// 					const float x = set_card_h(i);
-// 					const float y = set_card_w(j);
-
-// 					//KRISTINE TODO: save x and y into that specific card
-
-// 					(cardd.getSprite()).setPosition(sf::Vector2f(x, y));
-
-// 					window.draw(matrix[i][j] -> getSprite());
-// 				}
-// 			}
-// 			window.display();
-// 	}
-// }
 
 void BoardType::sfml_driver() {
 	/*******************************************
@@ -616,7 +534,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p1_txt.setFont(font);
 	//set the string to display 
-	p1_txt.setString("Player 1");
+	p1_txt.setString("Player 1's Turn");
 	//set the character size
 	p1_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -630,7 +548,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p2_txt.setFont(font);
 	//set the string to display 
-	p2_txt.setString("Player 2");
+	p2_txt.setString("Player 2's Turn");
 	//set the character size
 	p2_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -704,8 +622,8 @@ void BoardType::sfml_driver() {
 
 			window.clear(sf::Color::White);
             //window.draw(sprite1);
-			window.draw(p1_txt);
-			window.draw(p2_txt);
+			// window.draw(p1_txt);
+			// window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
 			// for (int i = 0; i < num_cards; i++) {
@@ -772,10 +690,12 @@ void BoardType::sfml_driver() {
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
+						window.draw(p2_txt);
 					}
 					else {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
+						window.draw(p1_txt);
 					}
 					
 				}
@@ -842,25 +762,6 @@ int BoardType::runGame()
 	// board.set_cards("female_cs.txt");
 
 	sfml_driver();
-
-	// TODO HERE FIX: cout not even working?
-	// cout << 5 << endl;
-	// int num = randomNumber(15);
-
-	// int size = 0;
-	// while(size < 5) {
-	// 	cout << randomNumber(15);
-	// 	size++;
-	// }
-
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	cout << "Placed card:" << board.placed_cards[i] << endl;
-	// }
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	for (int j = 0; j < board.num_cards; j++) {
-	// 		cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
-	// 	}
-	// }
 
     return 0;
 }
