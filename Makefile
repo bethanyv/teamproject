@@ -7,7 +7,7 @@ CXXFLAGS = -g -std=c++14
 all: match.exe
 
 match.exe: match_main.o match.o #random_string.cpp
-	$(CXX) -o $@ $^ -lsfml-graphics -lsfml-window -lsfml-system -sfml-sound
+	$(CXX) -o $@ $^ -lsfml-graphics -lsfml-window -lsfml-system -sfml-audio
 
 ## Defie your own test* targets here and then add them to the all: target
 ## For example, if you implement a Caesar cipher, define a testCaesar.exe target
