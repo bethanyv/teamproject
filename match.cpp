@@ -358,7 +358,7 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
 }
 
 vector<string*> BoardType::populate_random_vector() {
-	vector<string> place_holder;
+	vector<string*> place_holder;
 	return place_holder;
 }
 
