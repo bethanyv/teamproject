@@ -733,9 +733,9 @@ void BoardType::sfml_driver() {
 					// else {
 					// 	matrix[i][j] -> getSprite().setTexture(back);
 					// }
-					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y), half);
+					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
 					ctr += 1;
-					window.draw(matrix[i][j] -> getSprite());
+					window.draw(matrix[i][j] -> getSprite(), half);
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
