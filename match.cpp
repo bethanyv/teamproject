@@ -17,6 +17,11 @@
 
 using namespace std;
 
+//ALSO: I remembered wnhy there is a black space to the right!
+//
+//I wanted to make sure that we had a place to display the Player Piles (with the matches they found)
+//We originally had those piles on the bottom but we do not have very much vertical real estate
+//so I thought we could change it to displaying that info on the right hand side
 
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
@@ -181,7 +186,6 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
-	cout << "comparing " << front << " and " << card.getFront() << endl;
 	return front == card.getFront();
     // return 0;
 }
@@ -671,8 +675,8 @@ void BoardType::sfml_driver() {
 
 			window.clear(sf::Color::White);
             //window.draw(sprite1);
-			// window.draw(p1_txt);
-			// window.draw(p2_txt);
+			window.draw(p1_txt);
+			window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
 			// for (int i = 0; i < num_cards; i++) {
@@ -703,7 +707,7 @@ void BoardType::sfml_driver() {
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 
 			// >= because it clicks seem inconsistent?
-			if(cards_clicked > 1) {
+			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
 				// if(cards_selected[0]->is_same_card(*cards_selected[1])) {
@@ -726,12 +730,10 @@ void BoardType::sfml_driver() {
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
-						window.draw(p2_txt);
 					}
 					else {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
-						window.draw(p1_txt);
 					}
 					
 				}
