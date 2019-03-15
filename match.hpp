@@ -13,7 +13,7 @@
 #include <cstdio>
 #include <ctime>
 
-#define FACTOR .75
+#define FACTOR 1
 
 using namespace std;
 
