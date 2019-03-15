@@ -351,12 +351,12 @@ void BoardType::sfml_driver() {
 	sf::Sound sound;
 	sound.setBuffer(sound_buffer);
 
-	sf::SoundBuffer cheer;
-	if (!cheer.loadFromFile("cheer.wav"))
-		cout << "Error loading sound" << endl;
+	// sf::SoundBuffer cheer;
+	// if (!cheer.loadFromFile("cheer.wav"))
+	// 	cout << "Error loading cheer" << endl;
 	
-	sf::Sound match_sound;
-	match_sound.setBuffer(cheer);
+	// sf::Sound match_sound;
+	// match_sound.setBuffer(cheer);
 	
 
 
@@ -385,7 +385,7 @@ void BoardType::sfml_driver() {
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
-
+							sound.play();
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 							if(!(find(matches_found.begin(), matches_found.end(), matrix[i][j]->getFront()) != matches_found.end())) {
 								if(cards_clicked == 0) {
@@ -399,11 +399,9 @@ void BoardType::sfml_driver() {
 									second_j = j;
 								}
 								matrix[i][j]->flip();
-								sound.play();
+								
 								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
-								sound.play();
 								//repick = false;
-
 								cards_clicked = cards_clicked + 1;
 							}
 
@@ -545,7 +543,7 @@ void BoardType::sfml_driver() {
 	if (matches_found.size() >= 8) {
 		cout << endl << "Player 1 had " << player1_pile << " matches!" << endl;
 		cout << "Player 2 had " << player2_pile << " matches!" << endl << endl;
-		match_sound.play();
+		//match_sound.play();
 		if(player1_pile > player2_pile) {
 			cout << "Player 1 WINS!" << endl << endl;
 		}
