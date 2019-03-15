@@ -138,8 +138,13 @@ BoardType::BoardType() {
 		
 			//cout << *cards_to_place.back() << endl;
 		//	cout << *cards_to_place.back() << endl;
-			
-			CardType* card = new CardType(cards_to_place.back());
+			try {
+				CardType* card = new CardType(cards_to_place.back());
+			}
+			catch (std::bad_alloc& ba)
+			{
+				cerr << "bad_alloc caught: " << ba.what() << endl;
+			}
 			//CardType* card = new CardType();
 			cards_to_place.pop_back();
 			//cout << card->getFront() << endl;
@@ -340,7 +345,13 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
         //cout << line << endl;
             while(getline(myfile, line)){
                 //cout << "In makeFileList and saving: " << line << endl;
-				string* new_line = new string;
+				try {
+					string* new_line = new string;
+				}
+				catch (bad_alloc& ba)
+				{
+					cerr << "bad_alloc caught: " << ba.what() << endl;
+				}
 				new_line = &line;
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
