@@ -13,6 +13,8 @@
 #include <cstdio>
 #include <ctime>
 
+#define FACTOR .75
+
 using namespace std;
 
 //Kristine 3/1 - added more includes.
@@ -139,13 +141,13 @@ public:
     //int player_turn;
 
     //window height/width
-    int height = 1250;
-    int width = 1050;
-    int buffer_w = 10;
-    int buffer_h = 10;
+    float height = 1250 * FACTOR;
+    float width = 1050 * FACTOR;
+    float buffer_w = 10 * FACTOR;
+    float buffer_h = 10 * FACTOR;
 
-    int card_w = 200;
-    int card_h = 300;
+    float card_w = 200 * FACTOR;
+    float card_h = 300 * FACTOR;
 
     void init();
     int set_card_h(int x);
