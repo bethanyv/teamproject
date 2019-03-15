@@ -228,7 +228,7 @@ void AI::move() {
     // return 0;
 }
 int AI::random_pick() {
-    // return 0;
+    return 0;
 }
 
 // do we need this function if we are just removing cards if they are a match?
