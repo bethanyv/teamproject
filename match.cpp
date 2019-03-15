@@ -119,6 +119,7 @@ void BoardType::make_cards_to_place(const int amt) {
 }
 
 BoardType::BoardType() {
+
 	// PlayerType player1;
 	// PlayerType player2;
 	// player1.setType(1);
@@ -576,6 +577,10 @@ void BoardType::sfml_driver() {
 	textures.push_back(teitelbaum);
 
 	
+	sf::Texture back;
+	if(!back.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+		cout << "Error! back.jpg isn't loading." << endl;
+	}
     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
  //    sf::Texture texture;
 	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
@@ -658,9 +663,9 @@ void BoardType::sfml_driver() {
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 							cout << matrix[i][j]->getFront() << endl;
-							// matrix[i][j]->flip();
+							matrix[i][j]->flip();
 							// now have flip(), so it should update automatically?
-							cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
+							//cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
 							cards_selected.push_back(matrix[i][j]);
 							cards_clicked = cards_clicked + 1;
 							cout << "Cards clicked: " << cards_clicked << endl;
@@ -726,6 +731,7 @@ void BoardType::sfml_driver() {
 					cards_selected[0]->flip();
 					window.draw(cards_selected[0] -> getSprite());
 					cards_selected[1]->flip();
+					
 					window.draw(cards_selected[1] -> getSprite());
 					if(player_turn == 1) {
 						player_turn = 2;
@@ -763,7 +769,12 @@ void BoardType::sfml_driver() {
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
 					//TODO: MAKE SURE THIS WORKS ^
-					matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+					if(matrix[i][j]->is_flipped) {
+						matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+					}
+					else {
+						matrix[i][j] -> getSprite().setTexture(back);
+					}
 					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
 					ctr += 1;
 					window.draw(matrix[i][j] -> getSprite());

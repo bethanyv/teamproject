@@ -47,10 +47,11 @@ public:
     bool is_flipped;
     // call set_coords when placing a card so we know where it is
     void set_coords(int x, int y);
+    
 
 private:
     int front; // index into jpeg vector
-    const string back; // card_type_vector[0]
+    //const string back; // card_type_vector[0]
 
     string file_name;
     //sf::Sprite sprite;
@@ -134,6 +135,7 @@ public:
     vector<int> cards_to_place;
     vector<string> pics;
 
+    //sf::Texture back;
     //int player_turn;
 
     //window height/width
