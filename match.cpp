@@ -87,11 +87,6 @@ BoardType::BoardType() {
 	}
 }
 
-bool CardType::is_empty() {
-	//if(front ==)
-	return false;
-}
-
 int CardType::get_w() {
 	return this -> width;
 }
