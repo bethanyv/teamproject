@@ -139,10 +139,10 @@ public:
     //int player_turn;
 
     //window height/width
-    int height =625;
-    int width = 525;
-    int buffer_w = 5;
-    int buffer_h = 5;
+    int height = 1250;
+    int width = 1050;
+    int buffer_w = 10;
+    int buffer_h = 10;
 
     int card_w = 200;
     int card_h = 300;

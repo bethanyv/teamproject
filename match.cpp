@@ -17,6 +17,12 @@
 
 using namespace std;
 
+//ALSO: I remembered wnhy there is a black space to the right!
+//
+//I wanted to make sure that we had a place to display the Player Piles (with the matches they found)
+//We originally had those piles on the bottom but we do not have very much vertical real estate
+//so I thought we could change it to displaying that info on the right hand side
+
 void PileType::add_to_pile(CardType card) {
 	// add to number of cards matched and to the 
 	// vector of which card was matched
@@ -30,8 +36,27 @@ CardType::CardType(int index) : front(index) {
 	//is flipped - true: face
 	bool is_flipped = false;
 	const string back = "pics/back.jpg";
-	sprite = new sf::Sprite;
+	//string* front = fr;
 
+	//try {
+	sprite = new sf::Sprite;
+	//}
+	//catch (exception& e) {
+	//	cout << "Standard exception: " << e.what() << endl;
+	//}
+	
+
+	// sf::Texture* back_texture = new sf::Texture;
+	// if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
+	// 	cout << "Error! back.jpg isn't loading." << endl;
+	// }
+	// sf::Texture* front_texture = new sf::Texture;
+	// if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
+	// 	cout << "Error! back.jpg isn't loading." << endl;
+	// }
+	// sprite->setTexture(*back_texture);
+	// back = texture;
+	// front = texture;
 }
 
 sf::Sprite& CardType::getSprite() {
@@ -95,6 +120,11 @@ void BoardType::make_cards_to_place(const int amt) {
 
 BoardType::BoardType() {
 
+	// PlayerType player1;
+	// PlayerType player2;
+	// player1.setType(1);
+ // 	player2.setType(2);
+	//makeFileList("female_cs.txt", pics);
 	//cout << "Holding: " << pics[16] << endl;
 	make_cards_to_place(8);
 	//cout << cards_to_place[0] << endl;
@@ -123,7 +153,25 @@ BoardType::BoardType() {
 		}
 	}
 
+	// matrix2.resize(num_cards);
+	// for (int i = 0; i < matrix2.size(); i++) {
+	// 	matrix2[i].resize(num_cards);
+	// }
+
+	//placed_cards.reserve(num_cards);
+	// empty = new CardType;
+	// empty->set_file("pics/empty.png");
+	// empty.set_file("pics/empty.png");
+ //    empty.flip();
 }
+
+// GameType::GameType(){
+// 	BoardType board;
+// 	player1.setType(1);
+// 	player2.setType(2);
+
+// 	//importing 
+// }
 
 bool CardType::is_empty() {
 	//if(front ==)
@@ -142,6 +190,15 @@ bool CardType::check_match(CardType card) {
 	return front == card.getFront();
     // return 0;
 }
+
+// void CardType::set_file(string file) {
+// 	this -> file_name = file;
+// }
+
+
+// string CardType::getFile_name() {
+// 	return *file_name;
+// } 
 
 int CardType::getFront() {
 	return front;
@@ -313,6 +370,104 @@ int BoardType::randomNumber(int max) {
 	return num;
 
 }
+
+// void BoardType::sfml_driver() {
+// 	/*******************************************
+//      * SFML Events Here
+//      ******************************************/
+// 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
+
+//     //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
+//     sf::Texture texture;
+// 	if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
+// 		cout << "Error! ada_lovelace.jpg isn't loading." << endl;
+// 	}
+
+//     /* MAIN SFML PROGRAM LOOP */
+//     while (window.isOpen()) {
+// 		sf::Event event;
+// 		while (window.pollEvent(event)) {
+
+// 			if (event.type == sf::Event::Closed) {
+// 				window.close();
+// 			}
+// 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				
+// 				cout << "Found a mouse click!" << endl;
+
+// 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
+
+// 				// transform the mouse position from window coordinates to world coordinates
+//     			sf::Vector2f mouse = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+// 				for (int i = 0; i < num_cards; i ++) {
+// 					for (int j = 0; j < num_cards; j++) {
+// 						CardType cardd = *matrix[i][j];
+// 						sf::FloatRect boundingBox = (cardd.getSprite()).getGlobalBounds();
+// 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
+// 						if (boundingBox.contains(mouse))
+// 						{
+// 							//TODO: BETHANY! We need to add logic here for what to do when we click 
+// 							//on a specific card. YOu can find the card at matrix[i][j]
+// 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
+
+// 						}
+// 					}
+// 				}
+
+// 			}
+// 		}
+
+// 			window.clear();
+//             //window.draw(sprite1);
+
+// 			set_cards("female_cs.txt");
+
+// 			// for (int i = 0; i < num_cards; i++) {
+// 			// 	for (int j = 0; j < num_cards; j++) {
+// 			// 		window.draw(matrix[i][j] -> sprite);
+// 			// 	}
+// 			// }
+
+// 			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
+// 			// int x = set_card_w(0);
+// 			// sprite1.setPosition(sf::Vector2f(x, 10.f));
+// 			// window.draw(sprite2);
+// 			// x = set_card_w(1);
+// 			// sprite2.setPosition(sf::Vector2f(x, 10.f));
+// 			// window.draw(sprite3);
+// 			// x = set_card_w(2);
+// 			// sprite3.setPosition(sf::Vector2f(x, 10.f));
+// 			// window.draw(sprite4);
+// 			// x = set_card_w(3);
+// 			// sprite4.setPosition(sf::Vector2f(x, 10.f));
+			
+// 			// //vertical
+// 			// window.draw(sprite5);
+// 			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
+// 			// window.draw(sprite6);
+// 			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
+// 			// window.draw(sprite7);
+// 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+
+
+// 			for (int i = 0; i < num_cards; i ++) {
+// 				for (int j = 0; j < num_cards; j++) {
+// 					CardType cardd = *matrix[i][j];
+// 					(cardd.getSprite()).setTexture(texture);
+// 					set_buffer(4);
+// 					const float x = set_card_h(i);
+// 					const float y = set_card_w(j);
+
+// 					//KRISTINE TODO: save x and y into that specific card
+
+// 					(cardd.getSprite()).setPosition(sf::Vector2f(x, y));
+
+// 					window.draw(matrix[i][j] -> getSprite());
+// 				}
+// 			}
+// 			window.display();
+// 	}
+// }
 
 void BoardType::sfml_driver() {
 	/*******************************************
@@ -529,6 +684,33 @@ void BoardType::sfml_driver() {
 			window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
+			// for (int i = 0; i < num_cards; i++) {
+			// 	for (int j = 0; j < num_cards; j++) {
+			// 		window.draw(matrix[i][j] -> sprite);
+			// 	}
+			// }
+
+			//sprite1.setPosition(sf::Vector2f(this -> set_CARD_W.f, 10.f));
+			// int x = set_card_w(0);
+			// sprite1.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite2);
+			// x = set_card_w(1);
+			// sprite2.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite3);
+			// x = set_card_w(2);
+			// sprite3.setPosition(sf::Vector2f(x, 10.f));
+			// window.draw(sprite4);
+			// x = set_card_w(3);
+			// sprite4.setPosition(sf::Vector2f(x, 10.f));
+			
+			// //vertical
+			// window.draw(sprite5);
+			// sprite5.setPosition(sf::Vector2f(10.f, 170.f));
+			// window.draw(sprite6);
+			// sprite6.setPosition(sf::Vector2f(10.f, 330.f));
+			// window.draw(sprite7);
+			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
+
 			// >= because it clicks seem inconsistent?
 			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
@@ -618,6 +800,29 @@ void BoardType::sfml_driver() {
 //int GameType::runGame()
 int BoardType::runGame()
 {
+	//this -> board.set_buffer(4);
+	// board.set_cards("female_cs.txt");
+
 	sfml_driver();
+
+	// TODO HERE FIX: cout not even working?
+	// cout << 5 << endl;
+	// int num = randomNumber(15);
+
+	// int size = 0;
+	// while(size < 5) {
+	// 	cout << randomNumber(15);
+	// 	size++;
+	// }
+
+	// for (int i = 0; i < board.num_cards; i++) {
+	// 	cout << "Placed card:" << board.placed_cards[i] << endl;
+	// }
+	// for (int i = 0; i < board.num_cards; i++) {
+	// 	for (int j = 0; j < board.num_cards; j++) {
+	// 		cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
+	// 	}
+	// }
+
     return 0;
 }
