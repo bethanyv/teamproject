@@ -270,24 +270,24 @@ void BoardType::set_buffer(int num) {
 	// takes in  # of cards and computes
 	// where to place them
 	// hard-coded card size in but we can change that if needed?
-	int leftover_w = width - (card_w*num);
+	float leftover_w = width - (card_w*num);
 	//buffer_w = leftover_w/5;
-	int leftover_h = height - (card_h*num);
+	float leftover_h = height - (card_h*num);
 	//buffer_h = leftover_h/5;
 
 }
 
-int BoardType::set_card_h(int x) {
+float BoardType::set_card_h(int x) {
 	// takes in card position in array
 	// returns the x position on the board
-	int pos = buffer_w + (card_w * x) + (buffer_w * x);
+	float pos = buffer_w + (card_w * x) + (buffer_w * x);
 	return pos;
 }
 
-int BoardType::set_card_w(int y) {
+float BoardType::set_card_w(int y) {
 	// takes in card position in array
 	// returns the y position on the board
-	int pos = buffer_h + (card_h * y) + (buffer_h * y);
+	float pos = buffer_h + (card_h * y) + (buffer_h * y);
 	return pos;
 }
 
@@ -525,7 +525,7 @@ void BoardType::sfml_driver() {
 	// }
 	/****** TRANSFORM STUFF HERE *******/
 	sf::Transform half;
-	half.scale(0.5f, 0.5f); 
+	half.scale(FACTOR, FACTOR); 
 	/****** TEXT STUFF HERE ************/
 	sf::Font font;
 	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
@@ -741,7 +741,7 @@ void BoardType::sfml_driver() {
 					}
 					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
 					ctr += 1;
-					window.draw(matrix[i][j] -> getSprite());
+					window.draw(matrix[i][j] -> getSprite(), half);
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
