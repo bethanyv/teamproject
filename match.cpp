@@ -38,12 +38,12 @@ CardType::CardType(int index) : front(index) {
 	const string back = "pics/back.jpg";
 	//string* front = fr;
 
-	//try {
+	try {
 	sprite = new sf::Sprite;
-	//}
-	//catch (exception& e) {
-	//	cout << "Standard exception: " << e.what() << endl;
-	//}
+	}
+	catch (bad_alloc& ba) {
+		cout << "bad_alloc caught: " << ba.what() << endl;
+	}
 	
 
 	// sf::Texture* back_texture = new sf::Texture;
