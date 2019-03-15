@@ -349,15 +349,17 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
                 //cout << "In makeFileList and saving: " << line << endl;
 				try {
 					string* new_line = new string;
+					new_line = &line;
+					name.push_back(*new_line);
 				}
 				catch (bad_alloc& ba)
 				{
 					cerr << "bad_alloc caught: " << ba.what() << endl;
 				}
-				new_line = &line;
+				/*new_line = &line;*/
 				//cout << "after mallocing, we get :" << new_line << endl;
 				//cout << "Dereferencing that, we get: " << *new_line << endl;
-                name.push_back(*new_line);
+                /*name.push_back(*new_line);*/
                 // cout << "Pushed back: " << name.size() << endl;
             }
         }
