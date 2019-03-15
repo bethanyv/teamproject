@@ -398,7 +398,12 @@ void BoardType::sfml_driver() {
 		}
 
 			window.clear(sf::Color::White);
-            
+            if(player_turn == 1) {
+					window.draw(p1_txt);
+				}
+				else {
+					window.draw(p2_txt);
+				}
 			set_cards("female_cs.txt");
 			int ctr = 0;
 			is_match = false;
@@ -458,12 +463,9 @@ void BoardType::sfml_driver() {
 				}
 				cout << endl;
 				if(player_turn == 1) {
-				
-				window.draw(p1_txt);
-
+					window.draw(p1_txt);
 				}
 				else {
-					
 					window.draw(p2_txt);
 				}
 				if(!is_match) {
