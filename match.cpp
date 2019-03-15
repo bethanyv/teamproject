@@ -388,10 +388,10 @@ void BoardType::sfml_driver() {
      * SFML Events Here
      ******************************************/
 	sf::RenderWindow window(sf::VideoMode(width, height), "A Matching Game");
-	//window.setFramerateLimit(60);
+	// for the vertical sync not supported error
+	window.setFramerateLimit(60);
 	int player_turn = 1;
 	int cards_clicked = 0;
-	//std::vector<CardType> cards_selected;
 	int first_index;
 	int first_i;
 	int first_j;
@@ -504,26 +504,11 @@ void BoardType::sfml_driver() {
 	if(!back.loadFromFile("pics/back.jpg", sf::IntRect(0, 0, card_w, card_h))) {
 		cout << "Error! back.jpg isn't loading." << endl;
 	}
-    //TODO GET RID OF TEMP TEXTURE PLACE HOLDER
- //    sf::Texture texture;
-	// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	// }
- //    sf::Texture texture2;
-	// if(!texture2.loadFromFile("pics/lovelace.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	// }
- //    sf::Texture texture3;
-	// if(!texture3.loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	// }
- //    sf::Texture texture4;
-	// if(!texture4.loadFromFile("pics/sammet.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-	// 	cout << "Error! ada_lovelace.jpg isn't loading." << endl;
-	// }
+
 	/****** TRANSFORM STUFF HERE *******/
 	sf::Transform half;
 	half.scale(FACTOR, FACTOR); 
+
 	/****** TEXT STUFF HERE ************/
 	sf::Font font;
 	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
@@ -571,8 +556,6 @@ void BoardType::sfml_driver() {
 			
 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
-				//cout << "Found a mouse click!" << endl;
 
 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
 
