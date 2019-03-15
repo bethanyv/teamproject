@@ -325,9 +325,9 @@ void BoardType::sfml_driver() {
 	//set color
 	p1_txt.setFillColor(sf::Color::Magenta);
 	//set the text style
-	p1_txt.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	p1_txt.setStyle(sf::Text::Bold);
 	//setting location
-	p1_txt.setPosition(1000, 0);
+	p1_txt.setPosition(875, 0);
 
 	sf::Text p2_txt;
 	//select the font
@@ -339,9 +339,9 @@ void BoardType::sfml_driver() {
 	//set color
 	p2_txt.setFillColor(sf::Color::Magenta);
 	//set the text style
-	p1_txt.setStyle(sf::Text::Bold);
+	p2_txt.setStyle(sf::Text::Bold);
 	//setting location
-	p1_txt.setPosition(900, 0);
+	p2_txt.setPosition(875, 0);
 
 	bool repick = false;
 	bool is_match = false;
@@ -399,11 +399,11 @@ void BoardType::sfml_driver() {
 
 			window.clear(sf::Color::White);
             if(player_turn == 1) {
-					window.draw(p1_txt);
-				}
-				else {
-					window.draw(p2_txt);
-				}
+				window.draw(p1_txt);
+			}
+			else {
+				window.draw(p2_txt);
+			}
 			set_cards("female_cs.txt");
 			int ctr = 0;
 			is_match = false;
