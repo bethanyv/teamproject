@@ -140,13 +140,15 @@ BoardType::BoardType() {
 		//	cout << *cards_to_place.back() << endl;
 			try {
 				CardType* card = new CardType(cards_to_place.back());
+				cards_to_place.pop_back();
+				matrix[i][j] = card;
 			}
 			catch (std::bad_alloc& ba)
 			{
 				cerr << "bad_alloc caught: " << ba.what() << endl;
 			}
 			//CardType* card = new CardType();
-			cards_to_place.pop_back();
+			/*cards_to_place.pop_back();*/
 			//cout << card->getFront() << endl;
 			// TODO Bethany set front
 			//}
@@ -154,7 +156,7 @@ BoardType::BoardType() {
 			//{
 			//	cout << "Standard exception: " << e.what() << endl;
 			//}
-			matrix[i][j] = card;
+			/*matrix[i][j] = card;*/
 		}
 	}
 
