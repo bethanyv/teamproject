@@ -348,9 +348,15 @@ void BoardType::sfml_driver() {
 	if (!sound_buffer.loadFromFile("card_sound.wav")) {
 		cout << "Error loading sound" << endl;
 	}
-	
 	sf::Sound sound;
 	sound.setBuffer(sound_buffer);
+
+	sf::SoundBuffer cheer;
+	if (!cheer.loadFromFile("cheer.wav"))
+		cout << "Error loading sound" << endl;
+	
+	sf::Sound match_sound;
+	match_sound.setBuffer(cheer);
 	
 
 
@@ -539,6 +545,7 @@ void BoardType::sfml_driver() {
 	if (matches_found.size() >= 8) {
 		cout << endl << "Player 1 had " << player1_pile << " matches!" << endl;
 		cout << "Player 2 had " << player2_pile << " matches!" << endl << endl;
+		match_sound.play();
 		if(player1_pile > player2_pile) {
 			cout << "Player 1 WINS!" << endl << endl;
 		}
