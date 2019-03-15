@@ -325,9 +325,9 @@ void BoardType::sfml_driver() {
 	//set color
 	p1_txt.setFillColor(sf::Color::Magenta);
 	//set the text style
-	p1_txt.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	p1_txt.setStyle(sf::Text::Bold);
 	//setting location
-	p1_txt.setPosition(1000, 0);
+	p1_txt.setPosition(875, 0);
 
 	sf::Text p2_txt;
 	//select the font
@@ -339,9 +339,9 @@ void BoardType::sfml_driver() {
 	//set color
 	p2_txt.setFillColor(sf::Color::Magenta);
 	//set the text style
-	p1_txt.setStyle(sf::Text::Bold);
+	p2_txt.setStyle(sf::Text::Bold);
 	//setting location
-	p1_txt.setPosition(900, 0);
+	p2_txt.setPosition(875, 0);
 
 	bool repick = false;
 	bool is_match = false;
@@ -398,15 +398,22 @@ void BoardType::sfml_driver() {
 		}
 
 			window.clear(sf::Color::White);
-            
+            if(player_turn == 1) {
+				window.draw(p1_txt);
+			}
+			else {
+				window.draw(p2_txt);
+			}
 			set_cards("female_cs.txt");
-			
+			int ctr = 0;
+			is_match = false;
 			if(cards_clicked >= 2) {
+
 				cards_clicked = 0;
 				if(first_i == second_i && first_j == second_j) {
 					cout << "Same card! Pick again" << endl;
 					cards_clicked = 1;
-					//repick = true;
+					repick = true;
 				}
 					
 				
@@ -419,13 +426,9 @@ void BoardType::sfml_driver() {
 					else {
 						matrix[first_i][first_j] -> getSprite().setTexture(back);
 					}
-					//window.draw(matrix[first_i][first_j]->getSprite());
-
-					//matrix[second_i][second_j]->flip();
-					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
-					//window.draw(matrix[second_i][second_j]->getSprite());
 					
-					//window.draw(matrix[second_i][second_j]->getSprite());
+					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
+					
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
@@ -438,15 +441,12 @@ void BoardType::sfml_driver() {
 					}
 					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
 					window.draw(matrix[second_i][second_j]->getSprite());
-					usleep(1000000);
-					matrix[second_i][second_j]->flip();
-					matrix[first_i][first_j]->flip();
 					
 				}
 				else {
 					cout << "Cards match!" << endl;
 					matches_found.push_back(first_index);
-					// TODO: Can't initialize player for some reason??? Uncomment out when can
+					
 					if(player_turn == 1) {
 						player1_pile += 1;
 						cout << "Added to player 1's pile" << endl;
@@ -457,12 +457,52 @@ void BoardType::sfml_driver() {
 						cout << "Added to player 2's pile" << endl;
 						window.draw(p2_txt);
 					}
+					is_match = true;
 
 				}
 				cout << endl;
+				if(player_turn == 1) {
+					window.draw(p1_txt);
+				}
+				else {
+					window.draw(p2_txt);
+				}
+				if(!is_match) {
+					for (int i = 0; i < num_cards; i ++) {
+						for (int j = 0; j < num_cards; j++) {
+							set_buffer(4);
+							const float x = set_card_h(i);
+							const float y = set_card_w(j);
+							matrix[i][j]->set_coords(x, y);
+							
+							if(matrix[i][j]->is_flipped) {
+								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+							}
+							else {
+								matrix[i][j] -> getSprite().setTexture(back);
+							}
+							(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
+							ctr += 1;
+							window.draw(matrix[i][j] -> getSprite(), half);
+						}
+					}
+					window.display();
+					usleep(1000000);
+					matrix[second_i][second_j]->flip();
+					matrix[first_i][first_j]->flip();
+				}
 			}
 			
-			int ctr = 0;
+			ctr = 0;
+			if(player_turn == 1) {
+				
+				window.draw(p1_txt);
+
+			}
+			else {
+				
+				window.draw(p2_txt);
+			}
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
 					set_buffer(4);
