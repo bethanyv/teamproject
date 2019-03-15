@@ -421,13 +421,9 @@ void BoardType::sfml_driver() {
 					else {
 						matrix[first_i][first_j] -> getSprite().setTexture(back);
 					}
-					//window.draw(matrix[first_i][first_j]->getSprite());
-
-					//matrix[second_i][second_j]->flip();
-					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
-					//window.draw(matrix[second_i][second_j]->getSprite());
 					
-					//window.draw(matrix[second_i][second_j]->getSprite());
+					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
+					
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
@@ -440,12 +436,12 @@ void BoardType::sfml_driver() {
 					}
 					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
 					window.draw(matrix[second_i][second_j]->getSprite());
-					//usleep(1000000);
+					
 				}
 				else {
 					cout << "Cards match!" << endl;
 					matches_found.push_back(first_index);
-					// TODO: Can't initialize player for some reason??? Uncomment out when can
+					
 					if(player_turn == 1) {
 						player1_pile += 1;
 						cout << "Added to player 1's pile" << endl;
@@ -461,7 +457,15 @@ void BoardType::sfml_driver() {
 
 				}
 				cout << endl;
+				if(player_turn == 1) {
 				
+				window.draw(p1_txt);
+
+				}
+				else {
+					
+					window.draw(p2_txt);
+				}
 				if(!is_match) {
 					for (int i = 0; i < num_cards; i ++) {
 						for (int j = 0; j < num_cards; j++) {
@@ -489,6 +493,15 @@ void BoardType::sfml_driver() {
 			}
 			
 			ctr = 0;
+			if(player_turn == 1) {
+				
+				window.draw(p1_txt);
+
+			}
+			else {
+				
+				window.draw(p2_txt);
+			}
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
 					set_buffer(4);
