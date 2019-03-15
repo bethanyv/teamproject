@@ -107,17 +107,15 @@ PlayerType::PlayerType(int num) {
 
 void BoardType::make_cards_to_place(const int amt) {
 	auto size = cards_to_place.size();
-	while(size < (amt*2)) {
-		int index = randomNumber(amt*2);
-		if(!(find(cards_to_place.begin(), cards_to_place.end(), index) != cards_to_place.end())) {
-			cards_to_place.push_back(index);
-			cards_to_place.push_back(index);
-			size = cards_to_place.size();
-			//cout << "Index: " << index << endl;
-			//cout << "Size of cards_to_place: " << size << endl;
-		}
+	for(int i = 0; (cards_to_place.size() < (amt*2)); i ++) {
+		cards_to_place.push_back(i);
+		cards_to_place.push_back(i);
+		//size = cards_to_place.size();
+		//cout << "Index: " << index << endl;
+		//cout << "Size of cards_to_place: " << size << endl;
 
 	}
+	random_shuffle(cards_to_place.begin(), cards_to_place.end());
 }
 
 BoardType::BoardType() {
@@ -659,7 +657,7 @@ void BoardType::sfml_driver() {
 						{
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
-
+							cout << matrix[i][j]->getFront() << endl;
 							// matrix[i][j]->flip();
 							// now have flip(), so it should update automatically?
 							cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
@@ -670,6 +668,7 @@ void BoardType::sfml_driver() {
 						}
 					}
 				}
+
 
 			}
 		}
@@ -708,15 +707,16 @@ void BoardType::sfml_driver() {
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 
 			// >= because it clicks seem inconsistent?
-			if(cards_clicked >= 2) {
+			if(cards_clicked >= 1) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
 				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
 					// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
 						cout << "Same card! Pick again" << endl;
 						//cards_selected[0]->flip();
-						cards_selected.erase(cards_selected.begin() + 1, cards_selected.end());
+						cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
 						cards_clicked -= 1;
+						continue;
 					}
 					
 				
@@ -735,6 +735,7 @@ void BoardType::sfml_driver() {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
 					}
+					//cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
 				}
 				else {
 					cout << "Cards match!" << endl;
@@ -762,10 +763,10 @@ void BoardType::sfml_driver() {
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
 					//TODO: MAKE SURE THIS WORKS ^
-					matrix[i][j] -> getSprite().setTexture(textures[cards_to_place[ctr]]);
+					matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
 					(matrix[i][j] -> getSprite()).setPosition(sf::Vector2f(x, y));
 					ctr += 1;
-					window.draw(matrix[i][j] -> getSprite(), half);
+					window.draw(matrix[i][j] -> getSprite());
 				}
 			}
 			// for (int j = 0; j < num_cards; j++) {
