@@ -343,6 +343,17 @@ void BoardType::sfml_driver() {
 	//setting location
 	p2_txt.setPosition(875, 0);
 
+	/****** SOUND STUFF HERE *******/
+	sf::SoundBuffer buffer;
+	if (!buffer.loadFromFile("card_sound.wav")) {
+		cout << "Error loading sound" << endl;
+	}
+	
+	sf::Sound sound;
+	sound.setBuffer(buffer);
+	
+
+
 	bool repick = false;
 	bool is_match = false;
     /* MAIN SFML PROGRAM LOOP */
@@ -382,7 +393,9 @@ void BoardType::sfml_driver() {
 									second_j = j;
 								}
 								matrix[i][j]->flip();
+								sound.play();
 								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+								sound.play();
 								//repick = false;
 
 								cards_clicked = cards_clicked + 1;
@@ -490,6 +503,7 @@ void BoardType::sfml_driver() {
 					usleep(1000000);
 					matrix[second_i][second_j]->flip();
 					matrix[first_i][first_j]->flip();
+					sound.play();
 				}
 			}
 			
