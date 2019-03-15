@@ -186,6 +186,7 @@ int CardType::get_h() {
 }
 
 bool CardType::check_match(CardType card) {
+	cout << "comparing " << front << " and " << card.getFront() << endl;
 	return front == card.getFront();
     // return 0;
 }
@@ -707,17 +708,17 @@ void BoardType::sfml_driver() {
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 
 			// >= because it clicks seem inconsistent?
-			if(cards_clicked >= 1) {
+			if(cards_clicked > 1) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
-				if(cards_selected[0]->is_same_card(*cards_selected[1])) {
-					// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
-						cout << "Same card! Pick again" << endl;
-						//cards_selected[0]->flip();
-						cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
-						cards_clicked -= 1;
-						continue;
-					}
+				// if(cards_selected[0]->is_same_card(*cards_selected[1])) {
+				// 	// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
+				// 		cout << "Same card! Pick again" << endl;
+				// 		//cards_selected[0]->flip();
+				// 		cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
+				// 		cards_clicked -= 1;
+				// 		continue;
+				// 	}
 					
 				
 				if(!(cards_selected[0])->check_match(*cards_selected[1])) {
@@ -735,7 +736,7 @@ void BoardType::sfml_driver() {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
 					}
-					//cards_selected.erase(cards_selected.begin()+1, cards_selected.end());
+					
 				}
 				else {
 					cout << "Cards match!" << endl;
@@ -754,7 +755,7 @@ void BoardType::sfml_driver() {
 				}
 				cards_selected.clear();
 			}
-
+			cards_selected.clear();
 			int ctr = 0;
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
