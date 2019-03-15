@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <bits/stdc++.h>
 #include <unistd.h>
 #include <cassert>
 #include <cstddef>  // For size_t
@@ -60,6 +61,7 @@ void CardType::set_coords(int x, int y) {
 
 void BoardType::make_cards_to_place(const int amt) {
 	auto size = cards_to_place.size();
+	srand(unsigned(time(0)));
 	for(int i = 0; (cards_to_place.size() < (amt*2)); i ++) {
 		cards_to_place.push_back(i);
 		cards_to_place.push_back(i);
@@ -177,7 +179,7 @@ int BoardType::randomNumber(int max) {
 	// returns random number between 1 and max
 	int num = 0;
 	srand (time(NULL));
-    num = (rand() % (max)); // + 1 here if it doesn't work
+    num = (rand() % (max));
 	return num;
 
 }
