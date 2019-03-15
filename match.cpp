@@ -398,6 +398,7 @@ void BoardType::sfml_driver() {
 									second_i = i;
 									second_j = j;
 								}
+								
 								if(repick) {
 									matrix[first_i][first_j]->flip();
 									
