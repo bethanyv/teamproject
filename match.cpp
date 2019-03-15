@@ -528,7 +528,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p1_txt.setFont(font);
 	//set the string to display 
-	p1_txt.setString("Player 1");
+	p1_txt.setString("Player 1's Turn");
 	//set the character size
 	p1_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -542,7 +542,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p2_txt.setFont(font);
 	//set the string to display 
-	p2_txt.setString("Player 2");
+	p2_txt.setString("Player 2's Turn");
 	//set the character size
 	p2_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -598,8 +598,8 @@ void BoardType::sfml_driver() {
 
 			window.clear(sf::Color::White);
             //window.draw(sprite1);
-			window.draw(p1_txt);
-			window.draw(p2_txt);
+			// window.draw(p1_txt);
+			// window.draw(p2_txt);
 			set_cards("female_cs.txt");
 
 			// for (int i = 0; i < num_cards; i++) {
@@ -654,10 +654,12 @@ void BoardType::sfml_driver() {
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
+						window.draw(p2_txt);
 					}
 					else {
 						player_turn = 1;
 						cout << "Changing to player 1" << endl;
+						window.draw(p1_txt);
 					}
 					
 				}
@@ -722,25 +724,6 @@ int BoardType::runGame()
 	// board.set_cards("female_cs.txt");
 
 	sfml_driver();
-
-	// TODO HERE FIX: cout not even working?
-	// cout << 5 << endl;
-	// int num = randomNumber(15);
-
-	// int size = 0;
-	// while(size < 5) {
-	// 	cout << randomNumber(15);
-	// 	size++;
-	// }
-
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	cout << "Placed card:" << board.placed_cards[i] << endl;
-	// }
-	// for (int i = 0; i < board.num_cards; i++) {
-	// 	for (int j = 0; j < board.num_cards; j++) {
-	// 		cout << "matrix at [" << i << "][" << j << "] is: " << board.matrix[i][j]->file_name << endl;
-	// 	}
-	// }
 
     return 0;
 }
