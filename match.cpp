@@ -344,13 +344,13 @@ void BoardType::sfml_driver() {
 	p2_txt.setPosition(875, 0);
 
 	/****** SOUND STUFF HERE *******/
-	sf::SoundBuffer buffer;
-	if (!buffer.loadFromFile("card_sound.wav")) {
+	sf::SoundBuffer sound_buffer;
+	if (!sound_buffer.loadFromFile("card_sound.wav")) {
 		cout << "Error loading sound" << endl;
 	}
 	
 	sf::Sound sound;
-	sound.setBuffer(buffer);
+	sound.setBuffer(sound_buffer);
 	
 
 
