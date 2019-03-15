@@ -213,16 +213,11 @@ int CardType::getFront() {
 }
 
 void CardType::flip() {
-	// Kristine TODO: add in set textures
 	if(is_flipped) {
-		//sprite->setTexture(*back_texture);
-		//window.draw(matrix[i][j] -> getSprite());
 		is_flipped = false;
 		return;
 	}
 	else {
-		//sprite->setTexture(*front_texture);
-		//window.draw(matrix[i][j] -> getSprite());
 		is_flipped = true;
 		return;
 	}
@@ -404,6 +399,7 @@ void BoardType::sfml_driver() {
 	int second_i;
 	int second_j;
 	vector<sf::Texture> textures;
+	vector<int> matches_found;
 
 	sf::Texture allen;
 	if(!allen.loadFromFile("pics/allen.jpg", sf::IntRect(0, 0, card_w, card_h))) {
@@ -559,7 +555,8 @@ void BoardType::sfml_driver() {
 	//setting location
 	p1_txt.setPosition(900, 0);
 
-
+	bool repick = false;
+	bool is_match = false;
     /* MAIN SFML PROGRAM LOOP */
     while (window.isOpen()) {
 		sf::Event event;
@@ -573,7 +570,7 @@ void BoardType::sfml_driver() {
 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-				cout << "Found a mouse click!" << endl;
+				//cout << "Found a mouse click!" << endl;
 
 				sf::Vector2i mousePos = sf::Mouse::getPosition(window); // window is a sf::Window
 
@@ -587,32 +584,27 @@ void BoardType::sfml_driver() {
 						{
 
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
-							//cout << matrix[i][j]->getFront() << endl;
-
-							// now have flip(), so it should update automatically?
-							//cout << "Flipped card at [" << i << "][" << j << "]!!!" << endl;
-							
-							if(cards_clicked == 0) {
-								first_index = matrix[i][j]->getFront();
-								first_i = i;
-								first_j = j;
-							}
-							if(cards_clicked == 1) {
-								second_index = matrix[i][j]->getFront();
-								second_i = i;
-								second_j = j;
-							}
-							matrix[i][j]->flip();
-							if(matrix[i][j]->is_flipped) {
-								cout << "HERE" << endl;
-								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
-							}
-							else {
-								matrix[i][j] -> getSprite().setTexture(back);
-							}
-							window.draw(matrix[i][j] -> getSprite());
-							cards_clicked = cards_clicked + 1;
-							cout << "Cards clicked: " << cards_clicked << endl;
+							if(!(find(matches_found.begin(), matches_found.end(), matrix[i][j]->getFront()) != matches_found.end())) {
+								if(cards_clicked == 0) {
+									first_index = matrix[i][j]->getFront();
+									first_i = i;
+									first_j = j;
+								}
+								else if(cards_clicked == 1) {
+									second_index = matrix[i][j]->getFront();
+									second_i = i;
+									second_j = j;
+								}
+								if(!repick) {
+									matrix[i][j]->flip();
+									matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+								}
+								repick = false;
+								//matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+								
+								//window.draw(matrix[i][j] -> getSprite());
+								cards_clicked = cards_clicked + 1;
+						}
 
 						}
 					}
@@ -657,42 +649,36 @@ void BoardType::sfml_driver() {
 			// sprite7.setPosition(sf::Vector2f(10.f, 490.f));
 
 			// >= because it clicks seem inconsistent?
+			
 			if(cards_clicked >= 2) {
 				cout << "Cards clicked is 2" << endl;
 				cards_clicked = 0;
-				// if(cards_selected[0]->is_same_card(*cards_selected[1])) {
-				// 	// TODO HERE: CHANGE TO PICKING A DIFFERENT CARD FOR 2ND
-				// 		cout << "Same card! Pick again" << endl;
-				// 		//cards_selected[0]->flip();
-				// 		//cards_selected.clear();
-				// 		cards_selected.push_back(*cards_selected[0]);
-				// 		cards_clicked = 1;
-				// 		continue;
-				// 	}
+				if(first_i == second_i && first_j == second_j) {
+					cout << "Same card! Pick again" << endl;
+					cards_clicked = 1;
+					repick = true;
+				}
 					
 				
-				if(first_index != second_index) {
+				else if(first_index != second_index) {
 					cout << "Cards don't match" << endl;
 					// if the cards don't match, flip them back over
-					window.draw(matrix[second_i][second_j]->getSprite());
-					usleep(1000000);
-					matrix[first_i][first_j]->flip();
+					
+					// usleep(1000000);
+					//matrix[first_i][first_j]->flip();
 					if(matrix[first_i][first_j]->is_flipped) {
 						matrix[first_i][first_j] -> getSprite().setTexture(textures[first_index]);
 					}
 					else {
 						matrix[first_i][first_j] -> getSprite().setTexture(back);
 					}
-					window.draw(matrix[first_i][first_j]->getSprite());
+					//window.draw(matrix[first_i][first_j]->getSprite());
 
-					matrix[second_i][second_j]->flip();
-					if(matrix[second_i][second_j]->is_flipped) {
-						matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
-					}
-					else {
-						matrix[second_i][second_j] -> getSprite().setTexture(back);
-					}
-					window.draw(matrix[second_i][second_j]->getSprite());
+					//matrix[second_i][second_j]->flip();
+					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
+					//window.draw(matrix[second_i][second_j]->getSprite());
+					
+					//window.draw(matrix[second_i][second_j]->getSprite());
 					if(player_turn == 1) {
 						player_turn = 2;
 						cout << "Changing to player 2" << endl;
@@ -703,10 +689,16 @@ void BoardType::sfml_driver() {
 						cout << "Changing to player 1" << endl;
 						window.draw(p1_txt);
 					}
+					matrix[second_i][second_j] -> getSprite().setTexture(textures[second_index]);
+					window.draw(matrix[second_i][second_j]->getSprite());
+					usleep(1000000);
+					matrix[second_i][second_j]->flip();
+					matrix[first_i][first_j]->flip();
 					
 				}
 				else {
 					cout << "Cards match!" << endl;
+					matches_found.push_back(first_index);
 					// TODO: Can't initialize player for some reason??? Uncomment out when can
 					if(player_turn == 1) {
 						//(player1.pile).add_to_pile(*cards_selected[0]);
@@ -722,6 +714,7 @@ void BoardType::sfml_driver() {
 				}
 
 			}
+			
 			//cards_selected.clear();
 			//cards_selected.erase(cards_selected.begin(), cards_selected.begin() + cards_selected.size());
 			int ctr = 0;
