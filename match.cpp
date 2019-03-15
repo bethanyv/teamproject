@@ -398,6 +398,8 @@ void BoardType::sfml_driver() {
 	int second_index;
 	int second_i;
 	int second_j;
+	int player1_pile = 0;
+	int player2_pile = 0;
 	vector<sf::Texture> textures;
 	vector<int> matches_found;
 
@@ -604,7 +606,7 @@ void BoardType::sfml_driver() {
 								
 								//window.draw(matrix[i][j] -> getSprite());
 								cards_clicked = cards_clicked + 1;
-						}
+							}
 
 						}
 					}
@@ -701,22 +703,18 @@ void BoardType::sfml_driver() {
 					matches_found.push_back(first_index);
 					// TODO: Can't initialize player for some reason??? Uncomment out when can
 					if(player_turn == 1) {
-						//(player1.pile).add_to_pile(*cards_selected[0]);
+						player1_pile += 1;
 						cout << "Added to player 1's pile" << endl;
 					}
 					else {
-						//(player2.pile).add_to_pile(*cards_selected[0]);
+						player2_pile += 1;
 						cout << "Added to player 2's pile" << endl;
 					}
-					// TODO: make sure this moves the cards
-					//remove_match(cards_selected[0]);
 
 				}
 
 			}
-			
-			//cards_selected.clear();
-			//cards_selected.erase(cards_selected.begin(), cards_selected.begin() + cards_selected.size());
+		
 			int ctr = 0;
 			for (int i = 0; i < num_cards; i ++) {
 				for (int j = 0; j < num_cards; j++) {
@@ -724,8 +722,7 @@ void BoardType::sfml_driver() {
 					const float x = set_card_h(i);
 					const float y = set_card_w(j);
 					matrix[i][j]->set_coords(x, y);
-					//TODO: MAKE SURE THIS WORKS ^
-					// matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
+					
 					if(matrix[i][j]->is_flipped) {
 						matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
 					}
@@ -737,19 +734,6 @@ void BoardType::sfml_driver() {
 					window.draw(matrix[i][j] -> getSprite(), half);
 				}
 			}
-			// for (int j = 0; j < num_cards; j++) {
-
-			//matrix[1][2] -> getSprite().setTexture(textures[2]);
-			// 	// matrix[2][j] -> getSprite().setTexture(texture3);
-			// 	// matrix[3][j] -> getSprite().setTexture(texture4);
-				
-			//window.draw(matrix[1][2] -> getSprite());
-
-
-			// 	window.draw(matrix[1][j] -> getSprite());
-			// 	window.draw(matrix[2][j] -> getSprite());
-			// 	window.draw(matrix[3][j] -> getSprite());
-			// }
 			window.display();
 	}
 }
@@ -757,8 +741,6 @@ void BoardType::sfml_driver() {
 //int GameType::runGame()
 int BoardType::runGame()
 {
-	//this -> board.set_buffer(4);
-	// board.set_cards("female_cs.txt");
 
 	sfml_driver();
 
