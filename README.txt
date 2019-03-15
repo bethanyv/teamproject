@@ -9,6 +9,9 @@ Needed Libraries: SFML
 You can get the version of SFML we used at:
 https://www.sfml-dev.org/download/sfml/2.5.1/
 Follow the install directions for your system.
+For Linxux:
+Follow the directions on:
+https://www.sfml-dev.org/tutorials/2.5/start-linux.php
 
 Included File List:
 
