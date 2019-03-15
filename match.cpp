@@ -18,46 +18,17 @@
 
 using namespace std;
 
-//ALSO: I remembered wnhy there is a black space to the right!
-//
-//I wanted to make sure that we had a place to display the Player Piles (with the matches they found)
-//We originally had those piles on the bottom but we do not have very much vertical real estate
-//so I thought we could change it to displaying that info on the right hand side
 
-void PileType::add_to_pile(CardType card) {
-	// add to number of cards matched and to the 
-	// vector of which card was matched
-	num_matched += 1;
-	matches.push_back(card);
-}
-
-//CardType::CardType() {
 CardType::CardType(int index) : front(index) {
-	//is flipped - false: back.jpg
-	//is flipped - true: face
 	bool is_flipped = false;
-	//const string back = "pics/back.jpg";
-	//string* front = fr;
 
 	try {
-	sprite = new sf::Sprite;
+		sprite = new sf::Sprite;
 	}
 	catch (bad_alloc& ba) {
 		cout << "bad_alloc caught: " << ba.what() << endl;
 	}
 	
-
-	// sf::Texture* back_texture = new sf::Texture;
-	// if(!back_texture->loadFromFile("pics/back.jpg", sf::IntRect(0, 0, width, height))) {
-	// 	cout << "Error! back.jpg isn't loading." << endl;
-	// }
-	// sf::Texture* front_texture = new sf::Texture;
-	// if(!front_texture->loadFromFile("pics/meltzer.jpg", sf::IntRect(0, 0, width, height))) {
-	// 	cout << "Error! back.jpg isn't loading." << endl;
-	// }
-	// sprite->setTexture(*back_texture);
-	// back = texture;
-	// front = texture;
 }
 
 sf::Sprite& CardType::getSprite() {
@@ -65,8 +36,7 @@ sf::Sprite& CardType::getSprite() {
 }
 
 // this function compares coordinates. If two cards selected have the same 
-// x and y, then it can't be selected again in sfml_driver where it's called
-//  && card.getFront() == *front
+// x and y, then it can't be selected
 bool CardType::is_same_card(CardType card) {
 	if(card.get_x() == x_coord && card.get_y() == y_coord) {
 		return true;
@@ -88,33 +58,11 @@ void CardType::set_coords(int x, int y) {
 	y_coord = y;
 }
 
-PileType::PileType() {
-	vector<CardType> matches;
-}
-
-void PlayerType::setType(int num) {
-	number = num;
-}
-
-PlayerType::PlayerType() {
-	number = 0;
-	PileType pile;
-}
-
-PlayerType::PlayerType(int num) {
-	number = num;
-	PileType pile;
-}
-
 void BoardType::make_cards_to_place(const int amt) {
 	auto size = cards_to_place.size();
 	for(int i = 0; (cards_to_place.size() < (amt*2)); i ++) {
 		cards_to_place.push_back(i);
 		cards_to_place.push_back(i);
-		//size = cards_to_place.size();
-		//cout << "Index: " << index << endl;
-		//cout << "Size of cards_to_place: " << size << endl;
-
 	}
 	random_shuffle(cards_to_place.begin(), cards_to_place.end());
 }
@@ -199,15 +147,6 @@ bool CardType::check_match(CardType card) {
     // return 0;
 }
 
-// void CardType::set_file(string file) {
-// 	this -> file_name = file;
-// }
-
-
-// string CardType::getFile_name() {
-// 	return *file_name;
-// } 
-
 int CardType::getFront() {
 	return front;
 }
@@ -221,44 +160,6 @@ void CardType::flip() {
 		is_flipped = true;
 		return;
 	}
-}
-
-void PlayerType::move() {
-    // return 0;
-}
-
-void AI::move() {
-    // return 0;
-}
-int AI::random_pick() {
-    return 0;
-}
-
-// do we need this function if we are just removing cards if they are a match?
-void BoardType::update_board() {
-    // return 0;
-}
-bool BoardType::is_empty() {
-	// for(int i = 0; i < num_cards; i++) {
-	// 	for(int j = 0; j < num_cards; j++) {
-	// 		if(!(matrix[i][j]->getFront() == empty->getFront())) {
-	// 			return false;
-	// 		}
-	// 	}
-	// }
-    return true;
-}
-
-// if remove match is found, we want to get rid of the card types
-// remove comments once we get pics working
-void BoardType::remove_match(CardType card) {
-	// for(int i = 0; i < num_cards; i++) {
-	// 	for(int j = 0; j < num_cards; j++) {
-	// 		if(matrix[i][j]->getFront() == card.getFront()) {
-	// 			matrix[i][j] = empty;
-	// 		}
-	// 	}
-	// }
 }
 
 void BoardType::set_buffer(int num) {
@@ -287,50 +188,10 @@ float BoardType::set_card_w(int y) {
 }
 
 void BoardType::set_cards(string path) {
-	string pic;
 	//fill our vector up with picture file names
 	makeFileList(path, pics);
-
-	int max = 16;
-	for (int i = 0; i < num_cards; i++) {
-		for (int j = 0; j < num_cards; j++) {
-			//testing random number instead of string
-			// int rand_num = randomNumber(max);
-			// matrix2[i][j] = rand_num;
-			// // use random number to index into pics
-			// // check placed_cards and if not there then 
-			// // set it to this position on the board
-			// cout << "pics[rand_num] is: " << pics[rand_num] << endl;
-			// cout << "Dereferencing that we get: " << *pics[rand_num] << endl;
-			// string* file_name = pics[rand_num];
-			// cout << "File_name is: " << *file_name << endl;
-			//file_name = file_name.c_str();
-
-			// sf::Texture texture;
-			// if(!texture.loadFromFile("pics/perlman.jpg", sf::IntRect(0, 0, card_w, card_h))) {
-			// 	cout << "Error! File isn't loading." << endl;
-			// }			
-
-			// if (find(placed_cards.begin(), placed_cards.end(), file_name) == placed_cards.end());
-			// 	matrix[i][j] -> file_name = file_name;
-			// 	matrix[i][j] -> sprite.setTexture(texture);
-
-			// 	//TODO: figure out why this isn't adding file_name to placed cards
-			// 	pics.erase(std::remove(pics.begin(), pics.end(), file_name), pics.end());
-
-			// set buffer only does one row and one column
-			// set_buffer(4);
-			// float x = set_card_h(i);
-			// float y = set_card_w(j);
-
-			// matrix[i][j] -> sprite.setPosition(sf::Vector2f(x, y));
-
-
-			max --;
-			
-		}
-	}
 }
+
 
 int BoardType::makeFileList(string filepath, vector<string> &name) {
     string line;
@@ -339,10 +200,7 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
     {
         while ( myfile.good() )
         {
-        //getline (myfile,line);
-        //cout << line << endl;
             while(getline(myfile, line)){
-                //cout << "In makeFileList and saving: " << line << endl;
 				try {
 					string* new_line = new string;
 					new_line = &line;
@@ -352,25 +210,14 @@ int BoardType::makeFileList(string filepath, vector<string> &name) {
 				{
 					cerr << "bad_alloc caught: " << ba.what() << endl;
 				}
-				/*new_line = &line;*/
-				//cout << "after mallocing, we get :" << new_line << endl;
-				//cout << "Dereferencing that, we get: " << *new_line << endl;
-                /*name.push_back(*new_line);*/
-                // cout << "Pushed back: " << name.size() << endl;
             }
         }
         myfile.close();
     }
-    // return 0;
 
-  else cout << "Unable to open file";
+	else cout << "Unable to open file";
 
-  return 0;
-}
-
-vector<string*> BoardType::populate_random_vector() {
-	vector<string*> place_holder;
-	return place_holder;
+	return 0;
 }
 
 int BoardType::randomNumber(int max) {

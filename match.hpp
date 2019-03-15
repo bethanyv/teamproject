@@ -65,52 +65,6 @@ private:
 
 };
 
-class PileType{
-public:
-    PileType();
-    // default destructor
-
-    vector<CardType> matches;
-    
-    int num_matched;
-    // in notes we said function call
-    // but couldn't it just be an running total
-    // with an int? Yes!
-
-    // Maybe add in later a view for piletype
-    void add_to_pile(CardType card);
-    //TODO write a remove_card function
-    //TODO Maybe add an init function to fill the board's pile?
-};
-
-class PlayerType {
-public:
-    PlayerType(int number);
-    PlayerType();
-    // default destructor
-
-    int number; // number of player (player 1/player 2)
-    PileType pile; // each player has a pile
-
-    virtual void move(); // each player makes a move
-    void setType(int num);
-};
-
-class AI : public PlayerType {
-public:
-    AI();
-    // default destructor
-
-    PileType pile;
-
-    // memory of lastfour cards picked
-    vector<CardType> last_four; 
-
-    void move();
-    int random_pick();
-
-};
-
 class BoardType{
 public:
     // for when the user doesn't specify a size
@@ -154,13 +108,9 @@ public:
     float set_card_w(int y);
     void set_buffer(int num);
     void set_cards(string path);
-    // in update board, update the screen too
-    void update_board();
-    bool is_empty();
+
     void make_cards_to_place(const int amt);
-    void remove_match(CardType card);
     void sfml_driver();
-    vector<string*> populate_random_vector();
 
 
     int makeFileList(string filepath, vector<string> &name);
@@ -168,21 +118,5 @@ public:
     int randomNumber(int max);
     int runGame();
 };
-
-// class GameType{
-// public:
-//     GameType();
-//     // default destructor
-
-//     BoardType board;
-
-//     PlayerType player1;
-//     PlayerType player2;
-
-//     vector<CardType> all_cards;
-
-//     // need if's in the run_game() to determine what type players are ->
-//     int runGame();
-// };
 
 #endif /* MATCH_HPP_ */
