@@ -524,7 +524,7 @@ void BoardType::sfml_driver() {
 	// }
 	/****** TRANSFORM STUFF HERE *******/
 	sf::Transform half;
-	half.scale(FACTORf, FACTORf); 
+	half.scale(FACTOR, FACTOR); 
 	/****** TEXT STUFF HERE ************/
 	sf::Font font;
 	if (!font.loadFromFile("Aileron/Aileron-Regular.ttf")) {
