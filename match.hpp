@@ -150,8 +150,8 @@ public:
     float card_h = 300 * FACTOR;
 
     void init();
-    int set_card_h(int x);
-    int set_card_w(int y);
+    float set_card_h(int x);
+    float set_card_w(int y);
     void set_buffer(int num);
     void set_cards(string path);
     // in update board, update the screen too
