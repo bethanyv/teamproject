@@ -319,7 +319,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p1_txt.setFont(font);
 	//set the string to display 
-	p1_txt.setString("Player 1 found a match!");
+	p1_txt.setString("Player 1's turn'!");
 	//set the character size
 	p1_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -333,7 +333,7 @@ void BoardType::sfml_driver() {
 	//select the font
 	p2_txt.setFont(font);
 	//set the string to display 
-	p2_txt.setString("Player 2 found a match!");
+	p2_txt.setString("Player 2's turn'!");
 	//set the character size
 	p2_txt.setCharacterSize(24); //in pixels, not points
 	//set color
@@ -351,12 +351,12 @@ void BoardType::sfml_driver() {
 	sf::Sound sound;
 	sound.setBuffer(sound_buffer);
 
-	sf::SoundBuffer cheer;
-	if (!cheer.loadFromFile("cheer.wav"))
-		cout << "Error loading sound" << endl;
+	// sf::SoundBuffer cheer;
+	// if (!cheer.loadFromFile("cheer.wav"))
+	// 	cout << "Error loading cheer" << endl;
 	
-	sf::Sound match_sound;
-	match_sound.setBuffer(cheer);
+	// sf::Sound match_sound;
+	// match_sound.setBuffer(cheer);
 	
 
 
@@ -385,7 +385,7 @@ void BoardType::sfml_driver() {
 						// if (matrix[i][j] -> sprite.getGlobalBounds().contains(mousePos))
 						if (boundingBox.contains(mouse))
 						{
-
+							sound.play();
 							cout << "Our click happened in matrix[" << i << "][" << j << "]!!!" << endl;
 							if(!(find(matches_found.begin(), matches_found.end(), matrix[i][j]->getFront()) != matches_found.end())) {
 								if(cards_clicked == 0) {
@@ -398,12 +398,15 @@ void BoardType::sfml_driver() {
 									second_i = i;
 									second_j = j;
 								}
+								
+								if(repick) {
+									matrix[first_i][first_j]->flip();
+									
+								}
 								matrix[i][j]->flip();
-								sound.play();
+								
 								matrix[i][j] -> getSprite().setTexture(textures[matrix[i][j]->getFront()]);
-								sound.play();
 								//repick = false;
-
 								cards_clicked = cards_clicked + 1;
 							}
 
@@ -433,8 +436,9 @@ void BoardType::sfml_driver() {
 					cout << "Same card! Pick again" << endl;
 					cards_clicked = 1;
 					repick = true;
-				}
 					
+				}
+				
 				
 				else if(first_index != second_index) {
 					cout << "Cards don't match" << endl;
@@ -545,7 +549,7 @@ void BoardType::sfml_driver() {
 	if (matches_found.size() >= 8) {
 		cout << endl << "Player 1 had " << player1_pile << " matches!" << endl;
 		cout << "Player 2 had " << player2_pile << " matches!" << endl << endl;
-		match_sound.play();
+		//match_sound.play();
 		if(player1_pile > player2_pile) {
 			cout << "Player 1 WINS!" << endl << endl;
 		}
