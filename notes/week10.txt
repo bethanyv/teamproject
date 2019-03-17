@@ -1,0 +1,5 @@
+This week we met up almost every day. We split up the remaining work. We met up for hours at a time just to make sure we were on the same page for the reamining parts of the projects and to help each other where we were stuck.
+
+Bethany completed the logic of the game and cleaned up the comments and unneeded functions. The logic was almost working, and once we got rid of unneeded functions and simplified our idea of how we wanted to code things, the logic was much easier to finish. Bethany completed almost all the logic except for making a card stay flipped if a user clicks the same card twice (so close!).
+
+Kristine:
